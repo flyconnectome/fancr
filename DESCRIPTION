@@ -7,7 +7,7 @@ Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line) Use four
     spaces when indenting paragraphs within the Description.
 License: What license is it under?
-URL: https://github.com/flyconnectome/fanc
+URL: https://flyconnectome.github.io/fanc, https://github.com/flyconnectome/fanc
 BugReports: https://github.com/flyconnectome/fanc/issues
 Depends: 
     fafbseg,
@@ -20,3 +20,4 @@ Remotes:
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.1
