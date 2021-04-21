@@ -6,16 +6,20 @@
 \alias{fanc-package}
 \title{fanc: Support Acccess to the Full Adult Nerve Cord (FANC) Dataset}
 \description{
-More about what it does (maybe more than one line) Use four
-    spaces when indenting paragraphs within the Description.
+Access to the FANC EM dataset, focussing on support for
+    autosegmentation. Organised as a thin wrapper around the fabseg
+    package.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://flyconnectome.github.io/fanc}
   \item \url{https://github.com/flyconnectome/fanc}
   \item Report bugs at \url{https://github.com/flyconnectome/fanc/issues}
 }
+
+}
+\author{
+\strong{Maintainer}: Gregory Jefferis \email{jefferis@gmail.com} (\href{https://orcid.org/0000-0002-0587-9355}{ORCID})
 
 }
 \keyword{internal}
