@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://flyconnectome.github.io/fanc/index.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fanc/reference/fanc-package.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fanc/reference/fanc_leaves.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fanc/reference/fanc_rootid.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fanc/reference/fanc_scene.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fanc/reference/fanc_set_token.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fanc/reference/fanc_xyz2id.html</loc>
+  </url>
+</urlset>
