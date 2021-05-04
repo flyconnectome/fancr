@@ -33,10 +33,6 @@ jobs:
           remotes::install_cran("covr")
         shell: Rscript {0}
 
-      - name: writetoken
-        run: fafbseg::flywire_set_token(token=Sys.getenv("CHUNKEDGRAPH_SECRET"), domain='wclee.api.zetta.ai')
-        shell: Rscript {0}
-
       - name: Fix Conda permissions on macOS
         if: runner.os == 'macOS'
         run: sudo chown -R $UID $CONDA
@@ -47,6 +43,10 @@ jobs:
           library(fafbseg)
           simple_python()
           dr_fafbseg()
+
+      - name: writetoken
+        run: fafbseg::flywire_set_token(token=Sys.getenv("CHUNKEDGRAPH_SECRET"), domain='wclee.api.zetta.ai')
+        shell: Rscript {0}
 
       - name: Check
         env:
