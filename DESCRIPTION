@@ -15,7 +15,7 @@ License: GPL-3
 URL: https://github.com/flyconnectome/fanc
 BugReports: https://github.com/flyconnectome/fanc/issues
 Depends: 
-    fafbseg,
+    fafbseg (>= 0.9.1),
     nat.flybrains
 Suggests: 
     testthat (>= 3.0.0)
