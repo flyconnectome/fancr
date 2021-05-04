@@ -9,8 +9,8 @@ fanc_leaves(x, integer64 = TRUE, ...)
 \arguments{
 \item{x}{One or more FlyWire segment ids}
 
-\item{integer64}{Whether to return ids as integer64 type (more compact but a
-little fragile) rather than character (default \code{FALSE}).}
+\item{integer64}{Whether to return ids as integer64 type (the default, more
+compact but a little fragile) rather than character (when \code{FALSE}).}
 
 \item{...}{additional arguments passed to \code{\link{flywire_leaves}}}
 }
