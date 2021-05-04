@@ -1,4 +1,6 @@
 #' @keywords internal
+#' @import fafbseg
+#' @import nat.flybrains
 "_PACKAGE"
 
 # The following block is used by usethis to automatically manage
