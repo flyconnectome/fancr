@@ -2,8 +2,8 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-05-05T15:53Z
+last_built: 2021-05-05T16:29Z
 urls:
-  reference: https://flyconnectome.github.io/fanc/reference
-  article: https://flyconnectome.github.io/fanc/articles
+  reference: https://flyconnectome.github.io/fancr/reference
+  article: https://flyconnectome.github.io/fancr/articles
 
