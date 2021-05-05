@@ -24,11 +24,12 @@ points at once.}
 direction e.g. to give a coarse mapping of points FAFB->FlyWire. This is
 wrong but may be useful.}
 
-\item{...}{Additional arguments passed to \code{httr::GET}/\code{POST}
-operation}
+\item{...}{additional arguments for \code{pbapply::pblapply} (used to chunk
+requests for many points) and eventually the POST command against the
+transform services server.}
 }
 \value{
-
+a Nx3 matrix of coordinates.
 }
 \description{
 Convert XYZ locations between FANC4 (autoseg) and FANC3 (CATMAID)
@@ -40,7 +41,8 @@ fanc4to3(fanc4)-fanc3
 
 # rather small error for the approx inverse in this case
 fanc4to3(fanc3, swap=TRUE)-fanc4
-
+\donttest{
 # ... so reverse mapping works in this case, but not always
-fanc_xyz2id(fanc4to3(fanc3, swap = T))
+fanc_xyz2id(fanc4to3(fanc3, swap = TRUE))
+}
 }

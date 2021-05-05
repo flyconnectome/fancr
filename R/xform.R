@@ -1,7 +1,9 @@
 #' Convert XYZ locations between FANC4 (autoseg) and FANC3 (CATMAID)
 #'
 #' @param xyz An Nx3 matrix of coordinates
-#' @param ...
+#' @param ... additional arguments for \code{pbapply::pblapply} (used to chunk
+#'   requests for many points) and eventually the POST command against the
+#'   transform services server.
 #' @inheritParams fafbseg::flywire2fafb
 #'
 #' @return a Nx3 matrix of coordinates.
