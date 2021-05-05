@@ -4,7 +4,7 @@
     <loc>https://flyconnectome.github.io/fanc/index.html</loc>
   </url>
   <url>
-    <loc>https://flyconnectome.github.io/fanc/reference/fanc-package.html</loc>
+    <loc>https://flyconnectome.github.io/fanc/reference/fanc4to3.html</loc>
   </url>
   <url>
     <loc>https://flyconnectome.github.io/fanc/reference/fanc_leaves.html</loc>
@@ -20,5 +20,11 @@
   </url>
   <url>
     <loc>https://flyconnectome.github.io/fanc/reference/fanc_xyz2id.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fanc/reference/fancr-package.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fanc/reference/read_fanc_meshes.html</loc>
   </url>
 </urlset>

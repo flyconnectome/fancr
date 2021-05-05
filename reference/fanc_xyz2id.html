@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert xyz location to a root or supervoxel id — fanc_xyz2id • fanc</title>
+<title>Convert xyz location to a root or supervoxel id — fanc_xyz2id • fancr</title>
 
 
 <!-- jquery -->
@@ -71,7 +71,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">fanc</a>
+        <a class="navbar-link" href="../index.html">fancr</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
@@ -146,7 +146,7 @@ compatible with <code><a href='https://rdrr.io/pkg/fafbseg/man/xyzmatrix.html'>x
     </tr>
     <tr>
       <th>voxdims</th>
-      <td><p>The voxel dimensions (in nm)</p></td>
+      <td><p>The voxel dimensions (in nm). See details.</p></td>
     </tr>
     <tr>
       <th>root</th>
@@ -167,6 +167,9 @@ multiple positions.</p></td>
 
     <p>This is currently very slow because we do not have a supervoxel
 field on spine.</p>
+<p>I am somewhat puzzled by the voxel dimensions for FANC. Neuroglancer
+clearly shows voxel coordinates of 4.3x4.3x45. But in this function, the
+voxel coordinates must be set to 4.25 in x-y to give the correct answers.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code>flywire_xyz2id</code></p>

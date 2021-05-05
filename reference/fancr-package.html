@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return a sample Neuroglancer scene URL for FANC dataset — fanc_scene • fancr</title>
+<title>fancr: Support Acccess to the Full Adult Nerve Cord (FANC) Dataset — fancr-package • fancr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Return a sample Neuroglancer scene URL for FANC dataset — fanc_scene" />
-<meta property="og:description" content="Return a sample Neuroglancer scene URL for FANC dataset" />
+<meta property="og:title" content="fancr: Support Acccess to the Full Adult Nerve Cord (FANC) Dataset — fancr-package" />
+<meta property="og:description" content="Access to the FANC EM dataset, focussing on support for
+    autosegmentation. Organised as a thin wrapper around the fabseg
+    package." />
 
 
 
@@ -114,40 +116,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return a sample Neuroglancer scene URL for FANC dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/flyconnectome/fanc/blob/master/R/urls.R'><code>R/urls.R</code></a></small>
-    <div class="hidden name"><code>fanc_scene.Rd</code></div>
+    <h1>fancr: Support Acccess to the Full Adult Nerve Cord (FANC) Dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/flyconnectome/fanc/blob/master/R/fancr-package.R'><code>R/fancr-package.R</code></a></small>
+    <div class="hidden name"><code>fancr-package.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Return a sample Neuroglancer scene URL for FANC dataset</p>
+    <p>Access to the FANC EM dataset, focussing on support for
+    autosegmentation. Organised as a thin wrapper around the fabseg
+    package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fanc_scene</span><span class='op'>(</span>ids <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>ids</th>
-      <td><p>A set of root ids to include in the scene.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>A character vector containing a single Neuroglancer URL.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <div class='dont-index'><p>Useful links:</p><ul>
+<li><p><a href='https://github.com/flyconnectome/fanc'>https://github.com/flyconnectome/fanc</a></p></li>
+<li><p>Report bugs at <a href='https://github.com/flyconnectome/fanc/issues'>https://github.com/flyconnectome/fanc/issues</a></p></li>
+</ul>
 
-    <p>See
-<a href='https://fanc-reconstruction.slack.com/archives/C01RZP5JH9C/p1616522511001900'>FANC
-slack</a> for details.</p>
+</div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/browseURL.html'>browseURL</a></span><span class='op'>(</span><span class='fu'>fanc_scene</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'># }</span>
-</div></pre>
+    <p><strong>Maintainer</strong>: Gregory Jefferis <a href='mailto:jefferis@gmail.com'>jefferis@gmail.com</a> (<a href='https://orcid.org/0000-0002-0587-9355'>ORCID</a>)</p>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
