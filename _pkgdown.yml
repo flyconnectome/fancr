@@ -1,4 +1,4 @@
-url: https://flyconnectome.github.io/fanc
+url: https://flyconnectome.github.io/fancr
 navbar:
   structure:
     left:
@@ -21,7 +21,7 @@ navbar:
       href: reference/index.html
     github:
       icon: fab fa-github fa-lg
-      href: https://github.com/flyconnectome/fanc/
+      href: https://github.com/flyconnectome/fancr/
     natverse:
       text: natverse
       href: https://natverse.github.io
