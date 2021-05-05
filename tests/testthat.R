@@ -1,4 +1,4 @@
 library(testthat)
-library(fanc)
+library(fancr)
 
-test_check("fanc")
+test_check("fancr")

@@ -1,13 +1,13 @@
-# Getting help with fanc
+# Getting help with fancr
 
-Thanks for using fanc. We're sorry if you're having trouble, but don't worry,
+Thanks for using fancr. We're sorry if you're having trouble, but don't worry,
 we're here to help! To get help as quickly as possible, please read the following:
 
 ## Search
 The first thing is to see if anyone has had your problem before:
 
 * Search the [nat-user google group](https://groups.google.com/forum/#!forum/nat-user).
-* Search GitHub for [_issues_ with the fanc package](https://github.com/natverse/fanc/issues).
+* Search GitHub for [_issues_ with the fancr package](https://github.com/natverse/fanc/issues).
 * Search GitHub for [issues across the whole natverse](https://github.com/search?q=user%3Anatverse&type=Issues) in case 
   the problem is with a related package. You can add your own terms to the search 
   in the search box in the top left of that page.

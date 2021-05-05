@@ -1,5 +1,4 @@
-
-# fanc
+# fancr
 
 <!-- badges: start -->
 [![natverse](https://img.shields.io/badge/natverse-Part%20of%20the%20natverse-a241b6)](https://natverse.github.io)
@@ -7,7 +6,7 @@
 [![R-CMD-check](https://github.com/flyconnectome/fanc/workflows/R-CMD-check/badge.svg)](https://github.com/flyconnectome/fanc/actions)
 <!-- badges: end -->
 
-The goal of *fanc* is to provide a package to support analysis of the Full Adult
+The goal of **fancr** is to support analysis of the Full Adult
 Female Nerve Cord dataset aka (FANC), especially autosegmentation data. Those 
 data are made available by the FANC project led by Wei-Chung Allen Lee (Harvard) and his collaborators including John Tuthill and Sebastian Seung/Zetta. 
 
@@ -20,13 +19,13 @@ of the FANC proofreading and data ownership guidelines. At this point you should
 have a linked Google account that will be authorised (see below) for access to
 FANC online resources.
 
-Broadly speaking the *fanc* package is a thin wrapper over the 
+Broadly speaking the **fancr** package is a thin wrapper over the 
 [fafbseg](https://github.com/natverse/fafbseg) package setting up necessary 
 default paths etc.
 
 ## Installation
 
-You can install the development version of fanc from github:
+You can install the development version of fancr from github:
 
 ```r
 install.packages(natmanager)

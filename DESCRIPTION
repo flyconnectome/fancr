@@ -1,5 +1,5 @@
 Type: Package
-Package: fanc
+Package: fancr
 Title: Support Acccess to the Full Adult Nerve Cord (FANC) Dataset
 Version: 0.1.0
 Authors@R: 
