@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 [![natverse](https://img.shields.io/badge/natverse-Part%20of%20the%20natverse-a241b6)](https://natverse.github.io)
-<!-- [![Docs](https://img.shields.io/badge/docs-100%25-brightgreen.svg)](https://flyconnectome.github.io/fanc/reference/) -->
+[![Docs](https://img.shields.io/badge/docs-100%25-brightgreen.svg)](https://flyconnectome.github.io/fancr/reference/)
 [![R-CMD-check](https://github.com/flyconnectome/fanc/workflows/R-CMD-check/badge.svg)](https://github.com/flyconnectome/fanc/actions)
 <!-- badges: end -->
 
