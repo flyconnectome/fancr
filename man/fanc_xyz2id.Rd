@@ -19,7 +19,7 @@ compatible with \code{\link[fafbseg]{xyzmatrix}} including \code{neuron} or
 
 \item{rawcoords}{whether the input values are raw voxel indices or in nm}
 
-\item{voxdims}{The voxel dimensions (in nm)}
+\item{voxdims}{The voxel dimensions (in nm). See details.}
 
 \item{root}{Whether to return the root id of the whole segment rather than
 the supervoxel id.}
@@ -36,6 +36,10 @@ Convert xyz location to a root or supervoxel id
 \details{
 This is currently very slow because we do not have a supervoxel
 field on spine.
+
+I am somewhat puzzled by the voxel dimensions for FANC. Neuroglancer
+clearly shows voxel coordinates of 4.3x4.3x45. But in this function, the
+voxel coordinates must be set to 4.25 in x-y to give the correct answers.
 }
 \examples{
 # a point from neuroglancer, should map to 648518346479013777

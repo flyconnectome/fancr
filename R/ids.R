@@ -47,7 +47,11 @@ fanc_leaves <- function(x, integer64=TRUE, ...) {
 #' @details This is currently very slow because we do not have a supervoxel
 #'   field on spine.
 #'
-#' @param voxdims The voxel dimensions (in nm)
+#'   I am somewhat puzzled by the voxel dimensions for FANC. Neuroglancer
+#'   clearly shows voxel coordinates of 4.3x4.3x45. But in this function, the
+#'   voxel coordinates must be set to 4.25 in x-y to give the correct answers.
+#'
+#' @param voxdims The voxel dimensions (in nm). See details.
 #' @inheritParams fafbseg::flywire_xyz2id
 #'
 #' @return A character vector of segment ids, NA when lookup fails.

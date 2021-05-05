@@ -17,6 +17,9 @@ BugReports: https://github.com/flyconnectome/fanc/issues
 Depends: 
     fafbseg (>= 0.9.1),
     nat.flybrains
+Imports: 
+    nat,
+    nat.templatebrains
 Suggests: 
     testthat (>= 3.0.0),
     reticulate,
@@ -24,7 +27,8 @@ Suggests:
     Rvcg
 Remotes: 
     natverse/fafbseg,
-    natverse/nat.flybrains
+    natverse/nat.flybrains,
+    natverse/nat.templatebrains
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-GB
