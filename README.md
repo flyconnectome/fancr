@@ -34,11 +34,13 @@ natmanager::install(pkgs="flyconnectome/fanc")
 # install required python packages esp cloudvolume
 fafbseg::simple_python()
 ```
-To prove your authorisation for programmatic access you must generate and store
-a token in your web browser after logging in to an approved Google account.
 
-This should be streamlined by running the following command in R (which will 
-also set you up for Pythonin access via cloudvolume.)
+To do anything useful with the fancr package, you need authorisation to access
+FANC resources. To prove your authorisation for programmatic access you must
+generate and store a token in your web browser after logging in to an approved
+Google account. This should be streamlined by running the following command in R
+(which will also set you up for Pythonic access via cloudvolume.)
+
 ```r
 # set up token - will open your browser to generate a new token
 fanc_set_token()
