@@ -29,7 +29,7 @@ You can install the development version of fancr from github:
 
 ```r
 install.packages(natmanager)
-natmanager::install(pkgs="flyconnectome/fanc")
+natmanager::install(pkgs="flyconnectome/fancr")
 
 # install required python packages esp cloudvolume
 fafbseg::simple_python()
