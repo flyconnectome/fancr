@@ -49,3 +49,7 @@ with_fanc <- function(expr) {
   on.exit(options(op))
   force(expr)
 }
+
+fanc_fetch <- function(url, token=fanc_token(), ...) {
+  flywire_fetch(url, token=token, ...)
+}
