@@ -6,23 +6,26 @@
 \usage{
 fanc4to3(
   xyz,
-  method = c("mapmany", "map1"),
-  chunksize = 40000,
+  rawcoords = FALSE,
   swap = FALSE,
+  chunksize = 40000,
+  method = c("mapmany", "map1"),
   ...
 )
 }
 \arguments{
 \item{xyz}{An Nx3 matrix of coordinates}
 
-\item{method}{Whether to map many points at once (default) or just one}
-
-\item{chunksize}{The number of points to send to the server when mapping many
-points at once.}
+\item{rawcoords}{whether the input values are raw voxel indices or in nm}
 
 \item{swap}{When \code{TRUE} applies the deformation field in the opposite
 direction e.g. to give a coarse mapping of points FAFB->FlyWire. This is
 wrong but may be useful.}
+
+\item{chunksize}{The number of points to send to the server when mapping many
+points at once.}
+
+\item{method}{Whether to map many points at once (default) or just one}
 
 \item{...}{additional arguments for \code{pbapply::pblapply} (used to chunk
 requests for many points) and eventually the POST command against the
@@ -38,6 +41,8 @@ Convert XYZ locations between FANC4 (autoseg) and FANC3 (CATMAID)
 fanc3=xyzmatrix(cbind(194569.2, 470101.3, 117630))
 fanc4=cbind(45224, 109317, 2614)*c(4.3,4.3,45)
 fanc4to3(fanc4)-fanc3
+# can also pass in raw coordinates e.g. from neuroglancer
+fanc4to3(c(45224, 109317, 2614), rawcoords = T)
 
 # rather small error for the approx inverse in this case
 fanc4to3(fanc3, swap=TRUE)-fanc4

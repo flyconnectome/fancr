@@ -13,8 +13,8 @@ Access to the FANC EM dataset, focussing on support for
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/flyconnectome/fanc}
-  \item Report bugs at \url{https://github.com/flyconnectome/fanc/issues}
+  \item \url{https://github.com/flyconnectome/fancr}
+  \item Report bugs at \url{https://github.com/flyconnectome/fancr/issues}
 }
 
 }
