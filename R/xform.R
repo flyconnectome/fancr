@@ -15,7 +15,7 @@
 #' fanc4=cbind(45224, 109317, 2614)*c(4.3,4.3,45)
 #' fanc4to3(fanc4)-fanc3
 #' # can also pass in raw coordinates e.g. from neuroglancer
-#' fanc4to3(c(45224, 109317, 2614), rawcoords = T)
+#' fanc4to3(c(45224, 109317, 2614), rawcoords = TRUE)
 #'
 #' # rather small error for the approx inverse in this case
 #' fanc4to3(fanc3, swap=TRUE)-fanc4
