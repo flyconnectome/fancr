@@ -65,7 +65,9 @@ fanc_leaves <- function(x, integer64=TRUE, ...) {
 fanc_xyz2id <- function(xyz, rawcoords=FALSE, voxdims=c(4.25, 4.25, 45),
                         root=TRUE, ...){
   ids=flywire_xyz2id(xyz, rawcoords = rawcoords, voxdims = voxdims,
-                     cloudvolume.url = fanc_cloudvolume_url(), method = 'cloudvolume')
+                     cloudvolume.url = fanc_cloudvolume_url(),
+                     root=root,
+                     method = 'cloudvolume')
   ids
 }
 
