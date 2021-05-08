@@ -125,9 +125,10 @@
 
     <pre class="usage"><span class='fu'>fanc4to3</span><span class='op'>(</span>
   <span class='va'>xyz</span>,
-  method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mapmany"</span>, <span class='st'>"map1"</span><span class='op'>)</span>,
-  chunksize <span class='op'>=</span> <span class='fl'>40000</span>,
+  rawcoords <span class='op'>=</span> <span class='cn'>FALSE</span>,
   swap <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  chunksize <span class='op'>=</span> <span class='fl'>40000</span>,
+  method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mapmany"</span>, <span class='st'>"map1"</span><span class='op'>)</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -139,8 +140,14 @@
       <td><p>An Nx3 matrix of coordinates</p></td>
     </tr>
     <tr>
-      <th>method</th>
-      <td><p>Whether to map many points at once (default) or just one</p></td>
+      <th>rawcoords</th>
+      <td><p>whether the input values are raw voxel indices or in nm</p></td>
+    </tr>
+    <tr>
+      <th>swap</th>
+      <td><p>When <code>TRUE</code> applies the deformation field in the opposite
+direction e.g. to give a coarse mapping of points FAFB-&gt;FlyWire. This is
+wrong but may be useful.</p></td>
     </tr>
     <tr>
       <th>chunksize</th>
@@ -148,10 +155,8 @@
 points at once.</p></td>
     </tr>
     <tr>
-      <th>swap</th>
-      <td><p>When <code>TRUE</code> applies the deformation field in the opposite
-direction e.g. to give a coarse mapping of points FAFB-&gt;FlyWire. This is
-wrong but may be useful.</p></td>
+      <th>method</th>
+      <td><p>Whether to map many points at once (default) or just one</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -170,7 +175,10 @@ transform services server.</p></td>
 <span class='va'>fanc4</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>45224</span>, <span class='fl'>109317</span>, <span class='fl'>2614</span><span class='op'>)</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4.3</span>,<span class='fl'>4.3</span>,<span class='fl'>45</span><span class='op'>)</span>
 <span class='fu'>fanc4to3</span><span class='op'>(</span><span class='va'>fanc4</span><span class='op'>)</span><span class='op'>-</span><span class='va'>fanc3</span>
 </div><div class='output co'>#&gt;          X    Y Z
-#&gt; [1,] 2.575 2.65 0</div><div class='input'>
+#&gt; [1,] 2.575 2.65 0</div><div class='input'><span class='co'># can also pass in raw coordinates e.g. from neuroglancer</span>
+<span class='fu'>fanc4to3</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>45224</span>, <span class='fl'>109317</span>, <span class='fl'>2614</span><span class='op'>)</span>, rawcoords <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;             X      Y      Z
+#&gt; [1,] 194571.8 470104 117630</div><div class='input'>
 <span class='co'># rather small error for the approx inverse in this case</span>
 <span class='fu'>fanc4to3</span><span class='op'>(</span><span class='va'>fanc3</span>, swap<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>-</span><span class='va'>fanc4</span>
 </div><div class='output co'>#&gt; <span class='warning'>Warning: Please note the FANC3-&gt;FANC4 transform is wrong but useful!</span></div><div class='output co'>#&gt;         X      Y Z
