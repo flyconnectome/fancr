@@ -6,8 +6,8 @@
 [![R-CMD-check](https://github.com/flyconnectome/fanc/workflows/R-CMD-check/badge.svg)](https://github.com/flyconnectome/fanc/actions)
 <!-- badges: end -->
 
-The goal of **fancr** is to support analysis of the Full Adult
-Female Nerve Cord dataset aka (FANC), especially autosegmentation data. Those 
+The goal of **fancr** is to support analysis of the Female Adult
+Nerve Cord dataset aka (FANC), especially autosegmentation data. Those 
 data are made available by the FANC project led by Wei-Chung Allen Lee (Harvard) and his collaborators including John Tuthill and Sebastian Seung/Zetta. 
 
 To access FANC resources, you must have permissions to access the [FANC

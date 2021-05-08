@@ -4,7 +4,7 @@
 \name{fancr-package}
 \alias{fancr}
 \alias{fancr-package}
-\title{fancr: Support Acccess to the Full Adult Nerve Cord (FANC) Dataset}
+\title{fancr: Support Acccess to the Female Adult Nerve Cord (FANC) Dataset}
 \description{
 Access to the FANC EM dataset, focussing on support for
     autosegmentation. Organised as a thin wrapper around the fabseg
