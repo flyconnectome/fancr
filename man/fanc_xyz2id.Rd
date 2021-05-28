@@ -2,12 +2,12 @@
 % Please edit documentation in R/ids.R
 \name{fanc_xyz2id}
 \alias{fanc_xyz2id}
-\title{Convert xyz location to a root or supervoxel id}
+\title{Convert xyz locations to root or supervoxel ids}
 \usage{
 fanc_xyz2id(
   xyz,
   rawcoords = FALSE,
-  voxdims = c(4.25, 4.25, 45),
+  voxdims = c(4.3, 4.3, 45),
   root = TRUE,
   ...
 )
@@ -31,10 +31,10 @@ multiple positions.}
 A character vector of segment ids, NA when lookup fails.
 }
 \description{
-Convert xyz location to a root or supervoxel id
+Convert xyz locations to root or supervoxel ids
 }
 \details{
-This is currently very slow because we do not have a supervoxel
+This used to be very slow because we do not have a supervoxel
 field on spine.
 
 I am somewhat puzzled by the voxel dimensions for FANC. Neuroglancer

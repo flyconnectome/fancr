@@ -19,7 +19,10 @@ Depends:
     nat.flybrains
 Imports: 
     nat,
-    nat.templatebrains
+    nat.templatebrains,
+    bit64,
+    httr,
+    jsonlite
 Suggests: 
     testthat (>= 3.0.0),
     reticulate,

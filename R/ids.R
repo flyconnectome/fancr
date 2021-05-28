@@ -70,8 +70,8 @@ fanc_xyz2id <- function(xyz, rawcoords=FALSE, voxdims=c(4.3, 4.3, 45),
   if(isTRUE(root)) fanc_rootid(svids) else svids
 }
 
-#' rawxyz=cbind(34496, 82782, 1954)
-#' nmxyz=cbind(34496, 82782, 1954)*c(4.3,4.3,45)
+# rawxyz=cbind(34496, 82782, 1954)
+# nmxyz=cbind(34496, 82782, 1954)*c(4.3,4.3,45)
 fanc_supervoxels <- function(x, voxdims=c(4.3,4.3,45)) {
   pts=scale(xyzmatrix(x), center = F, scale = voxdims)
   nas=rowSums(is.na(pts))>0
