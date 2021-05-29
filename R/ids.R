@@ -64,6 +64,8 @@ fanc_leaves <- function(x, integer64=TRUE, ...) {
 #' fanc_xyz2id(cbind(34495, 82783, 1954), rawcoords=TRUE)
 fanc_xyz2id <- function(xyz, rawcoords=FALSE, voxdims=c(4.3, 4.3, 45),
                         root=TRUE, ...){
+  if(is.numeric(xyz) && !is.matrix(xyz) && length(xyz)==3)
+    xyz=matrix(xyz, ncol=3)
   if(rawcoords)
     xyz=scale(xyzmatrix(xyz), center = F, scale = 1/voxdims)
   svids=fanc_supervoxels(xyz, voxdims=voxdims)
