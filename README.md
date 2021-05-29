@@ -48,10 +48,13 @@ fanc_set_token()
 # fanc_set_token("<my token>")
 ```
 
-To check that everything is working properly, try:
+To check that everything is set up properly, try:
 
 ```r
+dr_fanc()
+
 fanc_xyz2id(cbind(34495, 82783, 1954), rawcoords=TRUE)
 svids=fanc_leaves("648518346482929060")
 head(svids)
 ```
+
