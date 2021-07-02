@@ -2,6 +2,7 @@
 
 export(dr_fanc)
 export(fanc4to3)
+export(fanc_change_log)
 export(fanc_leaves)
 export(fanc_rootid)
 export(fanc_scene)
@@ -10,3 +11,4 @@ export(fanc_xyz2id)
 export(read_fanc_meshes)
 import(fafbseg)
 import(nat.flybrains)
+importFrom(pbapply,pbsapply)

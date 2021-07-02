@@ -22,7 +22,8 @@ Imports:
     nat.templatebrains,
     bit64,
     httr,
-    jsonlite
+    jsonlite,
+    pbapply
 Suggests: 
     testthat (>= 3.0.0),
     reticulate,
