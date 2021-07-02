@@ -7,6 +7,11 @@ fanc_cloudvolume_url <- function() {
   with_fanc(getOption("fafbseg.cloudvolume.url"))
 }
 
+fanc_api_url <- function(endpoint="") {
+  fafbseg:::flywire_api_url(endpoint=endpoint,
+                            cloudvolume.url = fanc_cloudvolume_url())
+}
+
 
 #' Set the token to be used to authenticate to FANC autosegmentation resources
 #'
