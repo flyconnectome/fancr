@@ -29,6 +29,9 @@ fanc_token <- function(cached=TRUE) {
   fafbseg::chunkedgraph_token(url='wclee.api.zetta.ai', cached = cached)
 }
 
+fanc_token_available <- function() {
+  !inherits(try(fanc_token(), silent = TRUE), 'try-error')
+}
 
 #' Print information about your FANC setup including tokens and python modules
 #'
