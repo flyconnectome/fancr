@@ -8,7 +8,9 @@
 #' @family fanc-ids
 #' @seealso \code{\link{flywire_rootid}}
 #' @examples
+#' \donttest{
 #' fanc_rootid("73186243730767724")
+#' }
 fanc_rootid <- function(x, integer64 = FALSE, ...) {
   rid = flywire_rootid(
     x = x,

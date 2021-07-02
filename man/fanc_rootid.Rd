@@ -22,7 +22,9 @@ A vector of root ids (by default character)
 Find the root identifier of a FANC neuron
 }
 \examples{
+\donttest{
 fanc_rootid("73186243730767724")
+}
 }
 \seealso{
 \code{\link{flywire_rootid}}
