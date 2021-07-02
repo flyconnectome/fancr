@@ -1,7 +1,7 @@
 Type: Package
 Package: fancr
-Title: Support Acccess to the Female Adult Nerve Cord (FANC) Dataset
-Version: 0.1.0
+Title: Support Access to the Female Adult Nerve Cord (FANC) Dataset
+Version: 0.2.0
 Authors@R: 
     person(given = "Gregory",
            family = "Jefferis",
