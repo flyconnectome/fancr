@@ -23,12 +23,15 @@ Imports:
     bit64,
     httr,
     jsonlite,
-    pbapply
+    pbapply,
+    dplyr
 Suggests: 
     testthat (>= 3.0.0),
     reticulate,
     readobj,
-    Rvcg
+    Rvcg,
+    usethis,
+    rmarkdown
 Remotes: 
     natverse/nat,
     natverse/fafbseg,

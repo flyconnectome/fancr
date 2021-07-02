@@ -58,7 +58,7 @@ fanc_leaves <- function(x, integer64=TRUE, ...) {
 #' @family fanc-ids
 #' @seealso \code{\link{flywire_xyz2id}}
 #' @export
-#'
+#' @importFrom nat xyzmatrix
 #' @examples
 #' # a point from neuroglancer, should map to 648518346479013777
 #' fanc_xyz2id(cbind(34495, 82783, 1954), rawcoords=TRUE)
