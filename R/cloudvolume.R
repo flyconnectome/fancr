@@ -52,7 +52,8 @@ zetta_report <- function() {
 
   token=try(fanc_token(cached = F), silent = FALSE)
   if(inherits(token, "try-error")) {
-    ui_todo(paste('No valid Zetta token found. Set your token by doing:\n',
+    FUN=if(requireNamespace('usethis', quietly = T)) usethis::ui_todo else message
+    FUN(paste('No valid Zetta token found. Set your token by doing:\n',
                   "{ui_code('fanc_set_token()')}"))
   } else{
     cat("Valid Zetta ChunkedGraph token is set!\n")
