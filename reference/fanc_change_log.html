@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert XYZ locations between FANC4 (autoseg) and FANC3 (CATMAID) — fanc4to3 • fancr</title>
+<title>Fetch change log information for one or more neurons — fanc_change_log • fancr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Convert XYZ locations between FANC4 (autoseg) and FANC3 (CATMAID) — fanc4to3" />
-<meta property="og:description" content="Convert XYZ locations between FANC4 (autoseg) and FANC3 (CATMAID)" />
+<meta property="og:title" content="Fetch change log information for one or more neurons — fanc_change_log" />
+<meta property="og:description" content="Fetch change log information for one or more neurons" />
 
 
 
@@ -117,78 +117,69 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert XYZ locations between FANC4 (autoseg) and FANC3 (CATMAID)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/flyconnectome/fancr/blob/master/R/xform.R'><code>R/xform.R</code></a></small>
-    <div class="hidden name"><code>fanc4to3.Rd</code></div>
+    <h1>Fetch change log information for one or more neurons</h1>
+    <small class="dont-index">Source: <a href='https://github.com/flyconnectome/fancr/blob/master/R/zetta-api.R'><code>R/zetta-api.R</code></a></small>
+    <div class="hidden name"><code>fanc_change_log.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Convert XYZ locations between FANC4 (autoseg) and FANC3 (CATMAID)</p>
+    <p>Fetch change log information for one or more neurons</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fanc4to3</span><span class='op'>(</span>
-  <span class='va'>xyz</span>,
-  rawcoords <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  swap <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  chunksize <span class='op'>=</span> <span class='fl'>40000</span>,
-  method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mapmany"</span>, <span class='st'>"map1"</span><span class='op'>)</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>fanc_change_log</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>xyz</th>
-      <td><p>An Nx3 matrix of coordinates</p></td>
-    </tr>
-    <tr>
-      <th>rawcoords</th>
-      <td><p>whether the input values are raw voxel indices or in nm</p></td>
-    </tr>
-    <tr>
-      <th>swap</th>
-      <td><p>When <code>TRUE</code> applies the deformation field in the opposite
-direction e.g. to give a coarse mapping of points FAFB-&gt;FlyWire. This is
-wrong but may be useful.</p></td>
-    </tr>
-    <tr>
-      <th>chunksize</th>
-      <td><p>The number of points to send to the server when mapping many
-points at once.</p></td>
-    </tr>
-    <tr>
-      <th>method</th>
-      <td><p>Whether to map many points at once (default) or just one</p></td>
+      <th>x</th>
+      <td><p>One or more fanc ids in any format understandable by
+<code><a href='https://rdrr.io/pkg/fafbseg/man/ngl_segments.html'>ngl_segments</a></code></p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments for <code><a href='https://rdrr.io/pkg/pbapply/man/pbapply.html'>pbapply::pblapply</a></code> (used to chunk
-requests for many points) and eventually the POST command against the
-transform services server.</p></td>
+      <td><p>Additional argument passed to <code>pbsapply</code> and then on
+to <code>flywire_fetch</code> (via the private <code>fanc_fetch</code>).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a Nx3 matrix of coordinates.</p>
+    <p>A list containing information on the changes applied to a given body</p>
+<ul>
+<li><p><code>n_splits</code>,<code>n_mergers</code> The number of splits/mergers applied
+to the neuron</p></li>
+<li><p><code>user_info</code> A data.frame containing user ids or emails and the
+number of splits/mergers</p></li>
+<li><p><code>operations_ids</code> An integer vector of operation ids</p></li>
+<li><p><code>past_ids</code> Previous ids associated with this body</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>fanc3</span><span class='op'>=</span><span class='fu'>xyzmatrix</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>194569.2</span>, <span class='fl'>470101.3</span>, <span class='fl'>117630</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>fanc4</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>45224</span>, <span class='fl'>109317</span>, <span class='fl'>2614</span><span class='op'>)</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4.3</span>,<span class='fl'>4.3</span>,<span class='fl'>45</span><span class='op'>)</span>
-<span class='fu'>fanc4to3</span><span class='op'>(</span><span class='va'>fanc4</span><span class='op'>)</span><span class='op'>-</span><span class='va'>fanc3</span>
-</div><div class='output co'>#&gt;          X    Y Z
-#&gt; [1,] 2.575 2.65 0</div><div class='input'><span class='co'># can also pass in raw coordinates e.g. from neuroglancer</span>
-<span class='fu'>fanc4to3</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>45224</span>, <span class='fl'>109317</span>, <span class='fl'>2614</span><span class='op'>)</span>, rawcoords <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;             X      Y      Z
-#&gt; [1,] 194571.8 470104 117630</div><div class='input'>
-<span class='co'># rather small error for the approx inverse in this case</span>
-<span class='fu'>fanc4to3</span><span class='op'>(</span><span class='va'>fanc3</span>, swap<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>-</span><span class='va'>fanc4</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Please note the FANC3-&gt;FANC4 transform is wrong but useful!</span></div><div class='output co'>#&gt;         X      Y Z
-#&gt; [1,] -5.8 -1.575 0</div><div class='input'><span class='co'># \donttest{</span>
-<span class='co'># ... so reverse mapping works in this case, but not always</span>
-<span class='fu'><a href='fanc_xyz2id.html'>fanc_xyz2id</a></span><span class='op'>(</span><span class='fu'>fanc4to3</span><span class='op'>(</span><span class='va'>fanc3</span>, swap <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "648518346473954669"</div><div class='input'><span class='co'># }</span>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'>fanc_change_log</span><span class='op'>(</span><span class='st'>"648518346473954669"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $n_splits
+#&gt; [1] 5
+#&gt; 
+#&gt; $n_mergers
+#&gt; [1] 3
+#&gt; 
+#&gt; $user_info
+#&gt;                             user n_splits n_mergers
+#&gt; 1                            121        1         0
+#&gt; 2 jtmaniatesselvin@g.harvard.edu        3         2
+#&gt; 3                             16        1         1
+#&gt; 
+#&gt; $operations_ids
+#&gt; [1] 24951  1549   868  1548   867   866   865   864
+#&gt; 
+#&gt; $past_ids
+#&gt;  [1] "648518346480772096" "648518346473954669" "648518346509284227"
+#&gt;  [4] "648518346517118762" "648518346480558813" "648518346489510873"
+#&gt;  [7] "648518346492263865" "648518346490778913" "648518346520326710"
+#&gt; [10] "648518346498254576" "648518346492120771" "648518346492883740"
+#&gt; </div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

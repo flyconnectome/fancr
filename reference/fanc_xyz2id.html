@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert xyz location to a root or supervoxel id — fanc_xyz2id • fancr</title>
+<title>Convert xyz locations to root or supervoxel ids — fanc_xyz2id • fancr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Convert xyz location to a root or supervoxel id — fanc_xyz2id" />
-<meta property="og:description" content="Convert xyz location to a root or supervoxel id" />
+<meta property="og:title" content="Convert xyz locations to root or supervoxel ids — fanc_xyz2id" />
+<meta property="og:description" content="Convert xyz locations to root or supervoxel ids" />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fancr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -86,6 +86,9 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
 <li>
   <a href="../SUPPORT.html">Help</a>
@@ -114,19 +117,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert xyz location to a root or supervoxel id</h1>
+    <h1>Convert xyz locations to root or supervoxel ids</h1>
     <small class="dont-index">Source: <a href='https://github.com/flyconnectome/fancr/blob/master/R/ids.R'><code>R/ids.R</code></a></small>
     <div class="hidden name"><code>fanc_xyz2id.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Convert xyz location to a root or supervoxel id</p>
+    <p>Convert xyz locations to root or supervoxel ids</p>
     </div>
 
     <pre class="usage"><span class='fu'>fanc_xyz2id</span><span class='op'>(</span>
   <span class='va'>xyz</span>,
   rawcoords <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  voxdims <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4.25</span>, <span class='fl'>4.25</span>, <span class='fl'>45</span><span class='op'>)</span>,
+  voxdims <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4.3</span>, <span class='fl'>4.3</span>, <span class='fl'>45</span><span class='op'>)</span>,
   root <span class='op'>=</span> <span class='cn'>TRUE</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
@@ -165,7 +168,7 @@ multiple positions.</p></td>
     <p>A character vector of segment ids, NA when lookup fails.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This is currently very slow because we do not have a supervoxel
+    <p>This used to be very slow because we do not have a supervoxel
 field on spine.</p>
 <p>I am somewhat puzzled by the voxel dimensions for FANC. Neuroglancer
 clearly shows voxel coordinates of 4.3x4.3x45. But in this function, the
