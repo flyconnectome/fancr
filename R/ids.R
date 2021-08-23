@@ -62,7 +62,7 @@ fanc_leaves <- function(x, integer64=TRUE, ...) {
 #' @export
 #' @importFrom nat xyzmatrix
 #' @examples
-#' # a point from neuroglancer, should map to 648518346479013777
+#' # a point from neuroglancer, should map to 648518346498932033
 #' fanc_xyz2id(cbind(34495, 82783, 1954), rawcoords=TRUE)
 fanc_xyz2id <- function(xyz, rawcoords=FALSE, voxdims=c(4.3, 4.3, 45),
                         root=TRUE, ...){
