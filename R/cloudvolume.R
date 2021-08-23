@@ -21,14 +21,16 @@ fanc_api_url <- function(endpoint="") {
 #' @return The path to the token file (invisibly)
 #' @export
 fanc_set_token <- function(token=NULL) {
-  path=fafbseg::flywire_set_token(token=token, domain='wclee.api.zetta.ai')
+  # path=fafbseg::flywire_set_token(token=token, domain='cave.fanc-fly.com')
+  path=fafbseg::flywire_set_token(token=token)
   # clear the token cache so the new one is immediately available
   fanc_token(cached=FALSE)
   invisible(path)
 }
 
 fanc_token <- function(cached=TRUE) {
-  fafbseg::chunkedgraph_token(url='wclee.api.zetta.ai', cached = cached)
+  # fafbseg::chunkedgraph_token(url='cave.fanc-fly.com', cached = cached)
+  fafbseg::chunkedgraph_token(cached = cached)
 }
 
 fanc_token_available <- function() {
