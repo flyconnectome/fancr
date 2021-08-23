@@ -46,7 +46,7 @@ fanc_token_available <- function() {
 #' dr_fanc()
 #' }
 dr_fanc <- function() {
-  zetta_report()
+  fanc_api_report()
   cat("\n\n")
   res = fafbseg:::py_report()
   cat("\n")
@@ -54,16 +54,16 @@ dr_fanc <- function() {
   invisible(res)
 }
 
-zetta_report <- function() {
-  message("Zetta Neuroglancer / API access\n----")
+fanc_api_report <- function() {
+  message("FANC Neuroglancer / CAVE API access\n----")
 
   token=try(fanc_token(cached = F), silent = FALSE)
   if(inherits(token, "try-error")) {
     FUN=if(requireNamespace('usethis', quietly = T)) usethis::ui_todo else message
-    FUN(paste('No valid Zetta token found. Set your token by doing:\n',
+    FUN(paste('No valid FANC API token found. Set your token by doing:\n',
                   "{ui_code('fanc_set_token()')}"))
   } else{
-    cat("Valid Zetta ChunkedGraph token is set!\n")
+    cat("Valid FANC API ChunkedGraph token is set!\n")
   }
   ff=dir(fafbseg:::cv_secretdir(), pattern = '-secret\\.json$')
   if(length(ff)){
