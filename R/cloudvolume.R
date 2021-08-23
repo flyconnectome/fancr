@@ -21,8 +21,10 @@ fanc_api_url <- function(endpoint="") {
 #' @return The path to the token file (invisibly)
 #' @export
 fanc_set_token <- function(token=NULL) {
-  # check we have the
-  fafbseg::flywire_set_token(token=token, domain='wclee.api.zetta.ai')
+  path=fafbseg::flywire_set_token(token=token, domain='wclee.api.zetta.ai')
+  # clear the token cache so the new one is immediately available
+  fanc_token(cached=FALSE)
+  invisible(path)
 }
 
 fanc_token <- function(cached=TRUE) {
