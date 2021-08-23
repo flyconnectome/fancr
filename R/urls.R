@@ -13,7 +13,7 @@
 #' browseURL(fanc_scene())
 #' }
 fanc_scene <- function(ids=NULL) {
-  url="https://neuromancer-seung-import.appspot.com/?json_url=https://api.zetta.ai/json/325890137970388411"
+  url="https://neuromancer-seung-import.appspot.com/?json_url=https://global.daf-apis.com/nglstate/api/v1/5969075557629952"
   url=sub("?json_url=", "?", url, fixed = T)
   parts=unlist(strsplit(url, "?", fixed = T))
   json=try(flywire_fetch(parts[2], token=fanc_token(), return = 'text', cache = TRUE))
