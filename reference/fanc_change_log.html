@@ -126,7 +126,7 @@
     <p>Fetch change log information for one or more neurons</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fanc_change_log</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>fanc_change_log</span><span class='op'>(</span><span class='va'>x</span>, tz <span class='op'>=</span> <span class='st'>"UTC"</span>, filtered <span class='op'>=</span> <span class='cn'>TRUE</span>, OmitFailures <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,49 +137,70 @@
 <code><a href='https://rdrr.io/pkg/fafbseg/man/ngl_segments.html'>ngl_segments</a></code></p></td>
     </tr>
     <tr>
+      <th>tz</th>
+      <td><p>Time zone for edit timestamps. Defaults to "UTC" i.e. Universal
+Time, Coordinated. Set to "" for your current timezone. See
+<code><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></code> for more details.</p></td>
+    </tr>
+    <tr>
+      <th>filtered</th>
+      <td><p>Whether to filter out edits unlikely to relate to the current
+state of the neuron (default <code>TRUE</code>, see details).</p></td>
+    </tr>
+    <tr>
+      <th>OmitFailures</th>
+      <td><p>Whether to omit neurons for which there is an API timeout
+or error. The default value (<code>TRUE</code>) will skip over errors, while
+<code>NA</code>) will result in a hard stop on error. See <code>nlapply</code>
+for more details.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>Additional argument passed to <code>pbsapply</code> and then on
-to <code>flywire_fetch</code> (via the private <code>fanc_fetch</code>).</p></td>
+      <td><p>Additional arguments passed to <code><a href='https://rdrr.io/pkg/fafbseg/man/flywire_fetch.html'>flywire_fetch</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list containing information on the changes applied to a given body</p>
-<ul>
-<li><p><code>n_splits</code>,<code>n_mergers</code> The number of splits/mergers applied
-to the neuron</p></li>
-<li><p><code>user_info</code> A data.frame containing user ids or emails and the
-number of splits/mergers</p></li>
-<li><p><code>operations_ids</code> An integer vector of operation ids</p></li>
-<li><p><code>past_ids</code> Previous ids associated with this body</p></li>
-</ul>
+    <p>a <code>data.frame</code> See <code>fabseg::flywire_change_log</code> for
+details</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>As of August 2021 this is a simple wrapper of
+<code>fabseg::flywire_change_log</code>. For now the old (and less
+convenient format) available from the zetta API can be obtained with the
+private <code>fancr:::fanc_change_log_zetta</code> function.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>fanc_change_log</span><span class='op'>(</span><span class='st'>"648518346473954669"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $n_splits
-#&gt; [1] 5
-#&gt; 
-#&gt; $n_mergers
-#&gt; [1] 3
-#&gt; 
-#&gt; $user_info
-#&gt;                             user n_splits n_mergers
-#&gt; 1                            121        1         0
-#&gt; 2 jtmaniatesselvin@g.harvard.edu        3         2
-#&gt; 3                             16        1         1
-#&gt; 
-#&gt; $operations_ids
-#&gt; [1] 24951  1549   868  1548   867   866   865   864
-#&gt; 
-#&gt; $past_ids
-#&gt;  [1] "648518346480772096" "648518346473954669" "648518346509284227"
-#&gt;  [4] "648518346517118762" "648518346480558813" "648518346489510873"
-#&gt;  [7] "648518346492263865" "648518346490778913" "648518346520326710"
-#&gt; [10] "648518346498254576" "648518346492120771" "648518346492883740"
-#&gt; </div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt;   operation_id           timestamp user_id
+#&gt; 0          864 2021-03-23 17:43:02      69
+#&gt; 1          865 2021-03-23 17:46:30      69
+#&gt; 2          866 2021-03-23 17:50:40      69
+#&gt; 3          867 2021-03-23 17:51:18      69
+#&gt; 4          868 2021-03-23 17:52:21      69
+#&gt; 5         1548 2021-04-15 01:40:21      69
+#&gt; 6         1549 2021-04-15 01:41:03      69
+#&gt; 7        24951 2021-07-01 06:05:28    1211
+#&gt;                         before_root_ids     after_root_ids is_merge
+#&gt; 0                    648518346492296936 648518346520326710    FALSE
+#&gt; 1                    648518346520326710 648518346490778913    FALSE
+#&gt; 2 648518346485415597 648518346490778913 648518346492883740     TRUE
+#&gt; 3 648518346492883740 648518346506053173 648518346492120771     TRUE
+#&gt; 4                    648518346492120771 648518346517118762    FALSE
+#&gt; 5                    648518346504349342 648518346489510873    FALSE
+#&gt; 6 648518346489510873 648518346517118762 648518346498254576     TRUE
+#&gt; 7                    648518346498254576 648518346473954669    FALSE
+#&gt;       user_name
+#&gt; 0 Jasper Phelps
+#&gt; 1 Jasper Phelps
+#&gt; 2 Jasper Phelps
+#&gt; 3 Jasper Phelps
+#&gt; 4 Jasper Phelps
+#&gt; 5 Jasper Phelps
+#&gt; 6 Jasper Phelps
+#&gt; 7    Arti Yadav</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
