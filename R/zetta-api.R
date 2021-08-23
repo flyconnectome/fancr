@@ -1,32 +1,28 @@
 #' Fetch change log information for one or more neurons
 #'
+#' @details As of August 2021 this is a simple wrapper of
+#'   \code{fabseg::\link{flywire_change_log}}. For now the old (and less
+#'   convenient format) available from the zetta API can be obtained with the
+#'   private \code{fancr:::fanc_change_log_zetta} function.
+#'
 #' @param x One or more fanc ids in any format understandable by
 #'   \code{\link[fafbseg]{ngl_segments}}
-#' @param ... Additional argument passed to \code{\link{pbsapply}} and then on
-#'   to \code{\link{flywire_fetch}} (via the private \code{fanc_fetch}).
-#'
-#' @return A list containing information on the changes applied to a given body
-#'
-#'   \itemize{
-#'
-#'   \item \code{n_splits},\code{n_mergers} The number of splits/mergers applied
-#'   to the neuron
-#'
-#'   \item \code{user_info} A data.frame containing user ids or emails and the
-#'   number of splits/mergers
-#'
-#'   \item \code{operations_ids} An integer vector of operation ids
-#'
-#'   \item \code{past_ids} Previous ids associated with this body
-#'
-#'   }
+#' @return a \code{data.frame} See \code{fabseg::\link{flywire_change_log}} for
+#'   details
 #' @export
 #' @importFrom pbapply pbsapply
+#' @inheritParams fafbseg::flywire_change_log
 #' @examples
 #' \donttest{
 #' fanc_change_log("648518346473954669")
 #' }
-fanc_change_log <- function(x, ...) {
+
+fanc_change_log <- function(x, tz="UTC", filtered=TRUE, OmitFailures=TRUE,
+                            ...) {
+  with_fanc(flywire_change_log(x=x, tz=tz, filtered = filtered, OmitFailures = OmitFailures, ...))
+}
+
+fanc_change_log_zetta <- function(x, ...) {
   baseurl=fanc_api_url(endpoint = "root/")
   x=fafbseg::ngl_segments(x, as_character = T)
   if(length(x)>1) {
