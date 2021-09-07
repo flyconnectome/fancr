@@ -39,11 +39,45 @@ fanc_scene <- function(ids=NULL) {
 }
 
 
+#' Choose or (temporarily) use the FANC autosegmentation
+#'
+#' @details \code{fancr} inherits a significant amount of infrastructure from
+#'   the \code{\link{fafbseg}} package. This has the concept of the
+#'   \emph{active} autosegmentation, which in turn defines one or more R options
+#'   containing URIs pointing to voxel-wise segmentation, mesh etc data. These
+#'   are normally contained within a single neuroglancer URL which points to
+#'   multiple data layers. For FANC this is the neuroglancer scene returned by
+#'   \code{\link{fanc_scene}}.
+#' @param set Whether or not to permanently set the FANC autosegmentation as the
+#'   default for \code{\link{fafbseg}} functions.
+
+#'
+#' @return If \code{set=TRUE} a list containing the previous values of the
+#'   relevant global options (in the style of \code{\link{options}}. If
+#'   \code{set=FALSE} a named list containing the option values.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' choose_fanc()
+#' options()[grep("^fafbseg.*url", names(options()))]
+#' }
 choose_fanc <- function(set=TRUE) {
   fafbseg::choose_segmentation(fanc_scene(), set=set)
 }
 
-
+#' @param expr An expression to evaluate while FANC is the default
+#'   autosegmentation
+#' @rdname choose_fanc
+#' @export
+#' @examples
+#' \donttest{
+#' with_fanc(fafbseg::flywire_islatest('648518346498254576'))
+#' }
+#' \dontrun{
+#' with_fanc(fafbseg::flywire_latestid('648518346498254576'))
+#' with_fanc(fafbseg::flywire_latestid('648518346494405175'))
+#' }
 with_fanc <- function(expr) {
   op <- choose_fanc(set = TRUE)
   on.exit(options(op))
