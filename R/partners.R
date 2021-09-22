@@ -1,14 +1,22 @@
 #' Summarise the connectivity of FANC neurons
 #'
+#' @details note that the rootids you pass in must be up to date. See example.
+#'
 #' @inheritParams fafbseg::flywire_partner_summary
 #' @param datastack_name An optional CAVE datastack_name. If unset a sensible
 #'   default is chosen.
 #'
 #' @return a data.frame
+#' @seealso \code{\link{flywire_partner_summary}}, \code{\link{fanc_latestid}}
 #' @export
 #'
 #' @examples
 #' head(fanc_partner_summary("648518346494405175"))
+#' head(fanc_partner_summary("648518346494405175", partners='inputs'))
+#' \dontrun{
+#' # get the latest id for an outdate
+#' fanc_partner_summary(fanc_latestid("648518346473954669"))
+#' }
 fanc_partner_summary <- function(rootid, partners = c("outputs", "inputs"),
                                  threshold = 0,
                                  remove_autapses = TRUE,
@@ -21,6 +29,7 @@ fanc_partner_summary <- function(rootid, partners = c("outputs", "inputs"),
     fafbseg::flywire_partner_summary(
       rootid,
       threshold = threshold,
+      partners=partners,
       method = "cave",
       datastack_name = "fanc_production_mar2021",
       remove_autapses = remove_autapses,

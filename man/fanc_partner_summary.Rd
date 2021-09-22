@@ -9,7 +9,9 @@ fanc_partner_summary(
   partners = c("outputs", "inputs"),
   threshold = 0,
   remove_autapses = TRUE,
-  cleft.threshold = 0
+  cleft.threshold = 0,
+  datastack_name = NULL,
+  ...
 )
 }
 \arguments{
@@ -28,6 +30,11 @@ autapses (defaults to TRUE)}
 
 \item{cleft.threshold}{A threshold for the cleft score calculated by Buhmann
 et al 2019 (default 0, we have used 30-100 to increase specificity)}
+
+\item{datastack_name}{An optional CAVE datastack_name. If unset a sensible
+default is chosen.}
+
+\item{...}{Additional arguments passed to \code{\link{pbsapply}}}
 }
 \value{
 a data.frame
@@ -35,6 +42,17 @@ a data.frame
 \description{
 Summarise the connectivity of FANC neurons
 }
+\details{
+note that the rootids you pass in must be up to date. See example.
+}
 \examples{
-
+head(fanc_partner_summary("648518346494405175"))
+head(fanc_partner_summary("648518346494405175", partners='inputs'))
+\dontrun{
+# get the latest id for an outdate
+fanc_partner_summary(fanc_latestid("648518346473954669"))
+}
+}
+\seealso{
+\code{\link{flywire_partner_summary}}, \code{\link{fanc_latestid}}
 }
