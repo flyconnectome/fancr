@@ -92,3 +92,34 @@ fanc_supervoxels <- function(x, voxdims=c(4.3,4.3,45)) {
   svids=unlist(jsonlite::fromJSON(j, simplifyVector = T), use.names = F)
   svids
 }
+
+
+
+#' Check if a FANC root id is up to date
+#'
+#' @inheritParams fafbseg::flywire_islatest
+#' @param ... Additional arguments passed to \code{\link{flywire_islatest}}
+#'
+#' @export
+#' @seealso \code{\link{fanc_latestid}}
+#' @examples
+#' fanc_islatest("648518346473954669")
+fanc_islatest <- function(x, timestamp=NULL, ...) {
+  with_fanc(flywire_islatest(x=x, timestamp = timestamp, ...))
+}
+
+
+#' Find the latest id for a FANC root id
+#'
+#' @inheritParams fafbseg::flywire_latestid
+#' @param ... Additional arguments passed to \code{\link{flywire_latestid}}
+#'
+#' @export
+#' @seealso \code{\link{fanc_islatest}}
+#' @examples
+#' \dontrun{
+#' fanc_latestid("648518346473954669")
+#' }
+fanc_latestid <- function(rootid, sample=1000L, cloudvolume.url=NULL, Verbose=FALSE, ...) {
+  with_fanc(flywire_latestid(rootid=rootid, sample = sample, Verbose=Verbose, ...))
+}
