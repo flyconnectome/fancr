@@ -54,7 +54,7 @@ fanc_datastack_name <- memoise::memoise(function() {
     stop("Could not identify a FANC production datastack amongst: ",
          paste(datastacks, collapse=','))
   if(length(seldatastack)>1)
-    warning("Multiple FANF datastacks available; ",
+    warning("Multiple FANC datastacks available; ",
             paste(seldatastack, collapse = ","),"\n",
             "choosing: ", seldatastack[1])
   seldatastack[1]

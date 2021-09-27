@@ -15,7 +15,7 @@ License: GPL-3
 URL: https://github.com/flyconnectome/fancr
 BugReports: https://github.com/flyconnectome/fancr/issues
 Depends: 
-    fafbseg (>= 0.9.3),
+    fafbseg (> 0.9.3),
     nat.flybrains
 Imports: 
     nat,

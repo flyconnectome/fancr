@@ -71,7 +71,8 @@ fanc_scene <- function(ids=NULL, open=FALSE) {
 #' options()[grep("^fafbseg.*url", names(options()))]
 #' }
 choose_fanc <- function(set=TRUE) {
-  fafbseg::choose_segmentation(fanc_scene(), set=set)
+  fafbseg::choose_segmentation(fanc_scene(), set=set,
+                               moreoptions=list(fafbseg.cave.datastack_name=fanc_datastack_name()))
 }
 
 #' @param expr An expression to evaluate while FANC is the default
