@@ -2,17 +2,22 @@
 #'
 #' @details See
 #'   \href{https://fanc-reconstruction.slack.com/archives/C01RZP5JH9C/p1616522511001900}{FANC
-#'   slack} for details.
+#'    slack} for details.
 #'
 #' @param ids A set of root ids to include in the scene.
-#' @return A character vector containing a single Neuroglancer URL.
+#' @param open Whether to open the URL in your browser (see
+#'   \code{\link{browseURL}})
+#' @return A character vector containing a single Neuroglancer URL (invisibly
+#'   when \code{open=TRUE}).
 #' @export
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' browseURL(fanc_scene())
+#' fanc_scene(open=T)
+#' fanc_scene("648518346498254576", open=T)
 #' }
-fanc_scene <- function(ids=NULL) {
+fanc_scene <- function(ids=NULL, open=FALSE) {
   url="https://neuromancer-seung-import.appspot.com/?json_url=https://global.daf-apis.com/nglstate/api/v1/5969075557629952"
   url=sub("?json_url=", "?", url, fixed = T)
   parts=unlist(strsplit(url, "?", fixed = T))
@@ -35,7 +40,10 @@ fanc_scene <- function(ids=NULL) {
   u=ngl_encode_url(json, baseurl = parts[1])
   if(length(ids)>0)
     fafbseg::ngl_segments(u) <- ids
-  u
+  if(open) {
+    browseURL(u)
+    invisible(u)
+  } else (u)
 }
 
 

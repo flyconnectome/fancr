@@ -4,13 +4,17 @@
 \alias{fanc_scene}
 \title{Return a sample Neuroglancer scene URL for FANC dataset}
 \usage{
-fanc_scene(ids = NULL)
+fanc_scene(ids = NULL, open = FALSE)
 }
 \arguments{
 \item{ids}{A set of root ids to include in the scene.}
+
+\item{open}{Whether to open the URL in your browser (see
+\code{\link{browseURL}})}
 }
 \value{
-A character vector containing a single Neuroglancer URL.
+A character vector containing a single Neuroglancer URL (invisibly
+when \code{open=TRUE}).
 }
 \description{
 Return a sample Neuroglancer scene URL for FANC dataset
@@ -21,7 +25,9 @@ See
 slack} for details.
 }
 \examples{
-\donttest{
+\dontrun{
 browseURL(fanc_scene())
+fanc_scene(open=T)
+fanc_scene("648518346498254576", open=T)
 }
 }
