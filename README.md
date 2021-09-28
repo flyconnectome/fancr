@@ -28,10 +28,11 @@ default paths etc.
 You can install the development version of fancr from github:
 
 ```r
-install.packages(natmanager)
-natmanager::install(pkgs="flyconnectome/fancr")
+if(!requireNamespace('natmanager'))
+  install.packages('natmanager')
+natmanager::install('natverse', pkgs = 'flyconnectome/fancr')
 
-# install required python packages esp cloudvolume
+# install required python packages esp cloudvolume/caveclient
 fafbseg::simple_python()
 ```
 
@@ -58,3 +59,13 @@ svids=fanc_leaves("648518346482929060")
 head(svids)
 ```
 
+### Updating
+
+You can just repeat the install instructions, but this ensures
+that all dependencies are updated:
+
+```r
+natverse::natverse_update(update = T)
+natmanager::install(pkgs = 'flyconnectome/fancr')
+fafbseg::simple_python()
+```
