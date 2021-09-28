@@ -54,9 +54,8 @@ fanc_partner_summary(fanc_latestid("648518346473954669"))
 
 ## open fanc/flywire scene containing top partners
 library(dplyr)
-fanc_partner_summary("648518346494405175", partners='inputs')
+fanc_partner_summary("648518346494405175", partners='inputs') \%>\%
   slice_max(weight, n = 20) \%>\%
-  purrr::pluck("post_id") \%>\%
   fanc_scene(open=TRUE)
 }
 }
