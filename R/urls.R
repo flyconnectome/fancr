@@ -10,7 +10,7 @@
 #' @return A character vector containing a single Neuroglancer URL (invisibly
 #'   when \code{open=TRUE}).
 #' @export
-#'
+#' @importFrom utils browseURL
 #' @examples
 #' \dontrun{
 #' browseURL(fanc_scene())
