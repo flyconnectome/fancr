@@ -90,10 +90,11 @@
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the development version of fancr from github:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">natmanager</span><span class="op">)</span>
-<span class="fu">natmanager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span>pkgs<span class="op">=</span><span class="st">"flyconnectome/fancr"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">'natmanager'</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'natmanager'</span><span class="op">)</span>
+<span class="fu">natmanager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="st">'natverse'</span>, pkgs <span class="op">=</span> <span class="st">'flyconnectome/fancr'</span><span class="op">)</span>
 
-<span class="co"># install required python packages esp cloudvolume</span>
+<span class="co"># install required python packages esp cloudvolume/caveclient</span>
 <span class="fu">fafbseg</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/fafbseg/man/simple_python.html">simple_python</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>To do anything useful with the fancr package, you need authorisation to access FANC resources. To prove your authorisation for programmatic access you must generate and store a token in your web browser after logging in to an approved Google account. This should be streamlined by running the following command in R (which will also set you up for Pythonic access via cloudvolume.)</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -108,6 +109,15 @@
 <span class="fu"><a href="reference/fanc_xyz2id.html">fanc_xyz2id</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fl">34495</span>, <span class="fl">82783</span>, <span class="fl">1954</span><span class="op">)</span>, rawcoords<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">svids</span><span class="op">=</span><span class="fu"><a href="reference/fanc_leaves.html">fanc_leaves</a></span><span class="op">(</span><span class="st">"648518346482929060"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">svids</span><span class="op">)</span></code></pre></div>
+<div id="updating" class="section level3">
+<h3 class="hasAnchor">
+<a href="#updating" class="anchor"></a>Updating</h3>
+<p>You can just repeat the install instructions, but this ensures that all dependencies are updated:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">natverse</span><span class="fu">::</span><span class="fu">natverse_update</span><span class="op">(</span>update <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
+<span class="fu">natmanager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span>pkgs <span class="op">=</span> <span class="st">'flyconnectome/fancr'</span><span class="op">)</span>
+<span class="fu">fafbseg</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/fafbseg/man/simple_python.html">simple_python</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+</div>
 </div>
 </div>
   </div>
