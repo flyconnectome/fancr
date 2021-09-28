@@ -7,7 +7,8 @@
 fanc_scene(ids = NULL, open = FALSE)
 }
 \arguments{
-\item{ids}{A set of root ids to include in the scene.}
+\item{ids}{A set of root ids to include in the scene. Can also be a
+data.frame.}
 
 \item{open}{Whether to open the URL in your browser (see
 \code{\link{browseURL}})}

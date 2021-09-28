@@ -123,3 +123,21 @@ fanc_islatest <- function(x, timestamp=NULL, ...) {
 fanc_latestid <- function(rootid, sample=1000L, cloudvolume.url=NULL, Verbose=FALSE, ...) {
   with_fanc(flywire_latestid(rootid=rootid, sample = sample, Verbose=Verbose, ...))
 }
+
+
+fanc_ids <- function(x) {
+  if(is.data.frame(x)) {
+    colstocheck=c("rootid", "id", "pre_id", "post_id")
+    for(col in colstocheck) {
+      if(col %in% colnames(x))
+        return(x[[col]])
+    }
+    i64=sapply(x, bit64::is.integer64)
+    if(sum(i64)==1)
+      return(x[[which(i64)]])
+    stop("Unable to find a column containing ids!")
+  }
+  if(!all(fafbseg:::valid_id(x)))
+    stop("Some ids are invalid!")
+  x
+}

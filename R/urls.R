@@ -4,7 +4,8 @@
 #'   \href{https://fanc-reconstruction.slack.com/archives/C01RZP5JH9C/p1616522511001900}{FANC
 #'    slack} for details.
 #'
-#' @param ids A set of root ids to include in the scene.
+#' @param ids A set of root ids to include in the scene. Can also be a
+#'   data.frame.
 #' @param open Whether to open the URL in your browser (see
 #'   \code{\link{browseURL}})
 #' @return A character vector containing a single Neuroglancer URL (invisibly
@@ -38,8 +39,10 @@ fanc_scene <- function(ids=NULL, open=FALSE) {
   }
 
   u=ngl_encode_url(json, baseurl = parts[1])
-  if(length(ids)>0)
-    fafbseg::ngl_segments(u) <- ids
+
+  if(!is.null(ids)){
+    fafbseg::ngl_segments(u) <- fanc_ids(ids)
+  }
   if(open) {
     browseURL(u)
     invisible(u)
