@@ -32,7 +32,8 @@ Suggests:
     Rvcg,
     usethis,
     rmarkdown,
-    spelling
+    spelling,
+    arrow
 Remotes: 
     natverse/nat,
     natverse/fafbseg,
