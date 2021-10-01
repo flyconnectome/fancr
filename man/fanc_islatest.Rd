@@ -22,5 +22,11 @@ Check if a FANC root id is up to date
 fanc_islatest("648518346473954669")
 }
 \seealso{
-\code{\link{fanc_latestid}}
+Other fanc-ids: 
+\code{\link{fanc_ids}()},
+\code{\link{fanc_latestid}()},
+\code{\link{fanc_leaves}()},
+\code{\link{fanc_rootid}()},
+\code{\link{fanc_xyz2id}()}
 }
+\concept{fanc-ids}

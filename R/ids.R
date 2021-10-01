@@ -101,7 +101,7 @@ fanc_supervoxels <- function(x, voxdims=c(4.3,4.3,45)) {
 #' @param ... Additional arguments passed to \code{\link{flywire_islatest}}
 #'
 #' @export
-#' @seealso \code{\link{fanc_latestid}}
+#' @family fanc-ids
 #' @examples
 #' fanc_islatest("648518346473954669")
 fanc_islatest <- function(x, timestamp=NULL, ...) {
@@ -116,6 +116,7 @@ fanc_islatest <- function(x, timestamp=NULL, ...) {
 #'
 #' @export
 #' @seealso \code{\link{fanc_islatest}}
+#' @family fanc-ids
 #' @examples
 #' \dontrun{
 #' fanc_latestid("648518346473954669")
@@ -125,6 +126,15 @@ fanc_latestid <- function(rootid, sample=1000L, cloudvolume.url=NULL, Verbose=FA
 }
 
 
+#' Return a vector of FANC root ids from diverse inputs
+#'
+#' @param x A data.frame, URL or vector of ids
+#'
+#' @return A vector of ids
+#' @export
+#' @family fanc-ids
+#' @examples
+#' fanc_ids(data.frame(rootid="648518346474360770"))
 fanc_ids <- function(x) {
   if(is.data.frame(x)) {
     colstocheck=c("rootid", "id", "pre_id", "post_id")

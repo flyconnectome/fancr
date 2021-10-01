@@ -38,4 +38,12 @@ fanc_latestid("648518346473954669")
 }
 \seealso{
 \code{\link{fanc_islatest}}
+
+Other fanc-ids: 
+\code{\link{fanc_ids}()},
+\code{\link{fanc_islatest}()},
+\code{\link{fanc_leaves}()},
+\code{\link{fanc_rootid}()},
+\code{\link{fanc_xyz2id}()}
 }
+\concept{fanc-ids}

@@ -49,6 +49,9 @@ fanc_xyz2id(cbind(34495, 82783, 1954), rawcoords=TRUE)
 \code{\link{flywire_xyz2id}}
 
 Other fanc-ids: 
+\code{\link{fanc_ids}()},
+\code{\link{fanc_islatest}()},
+\code{\link{fanc_latestid}()},
 \code{\link{fanc_leaves}()},
 \code{\link{fanc_rootid}()}
 }
