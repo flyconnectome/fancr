@@ -6,9 +6,7 @@
 \alias{fancr-package}
 \title{fancr: Support Access to the Female Adult Nerve Cord (FANC) Dataset}
 \description{
-Access to the FANC EM dataset, focussing on support for
-    autosegmentation. Organised as a thin wrapper around the fafbseg
-    package.
+Access to the FANC EM dataset, focussing on support for autosegmentation. Organised as a thin wrapper around the fafbseg package.
 }
 \seealso{
 Useful links:
