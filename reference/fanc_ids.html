@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Find the supervoxel identifiers of a FANC neuron — fanc_leaves • fancr</title>
+<title>Return a vector of FANC root ids from diverse inputs — fanc_ids • fancr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Find the supervoxel identifiers of a FANC neuron — fanc_leaves" />
-<meta property="og:description" content="Find the supervoxel identifiers of a FANC neuron" />
+<meta property="og:title" content="Return a vector of FANC root ids from diverse inputs — fanc_ids" />
+<meta property="og:description" content="Return a vector of FANC root ids from diverse inputs" />
 
 
 
@@ -117,54 +117,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Find the supervoxel identifiers of a FANC neuron</h1>
+    <h1>Return a vector of FANC root ids from diverse inputs</h1>
     <small class="dont-index">Source: <a href='https://github.com/flyconnectome/fancr/blob/master/R/ids.R'><code>R/ids.R</code></a></small>
-    <div class="hidden name"><code>fanc_leaves.Rd</code></div>
+    <div class="hidden name"><code>fanc_ids.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Find the supervoxel identifiers of a FANC neuron</p>
+    <p>Return a vector of FANC root ids from diverse inputs</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fanc_leaves</span><span class='op'>(</span><span class='va'>x</span>, integer64 <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>fanc_ids</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>One or more FlyWire segment ids</p></td>
-    </tr>
-    <tr>
-      <th>integer64</th>
-      <td><p>Whether to return ids as integer64 type (the default, more
-compact but a little fragile) rather than character (when <code>FALSE</code>).</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>additional arguments passed to <code>flywire_leaves</code></p></td>
+      <td><p>A data.frame, URL or vector of ids</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector of supervoxel ids</p>
+    <p>A vector of ids</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>flywire_leaves</code></p>
-<p>Other fanc-ids: 
-<code><a href='fanc_ids.html'>fanc_ids</a>()</code>,
+    <div class='dont-index'><p>Other fanc-ids: 
 <code><a href='fanc_islatest.html'>fanc_islatest</a>()</code>,
 <code><a href='fanc_latestid.html'>fanc_latestid</a>()</code>,
+<code><a href='fanc_leaves.html'>fanc_leaves</a>()</code>,
 <code><a href='fanc_rootid.html'>fanc_rootid</a>()</code>,
 <code><a href='fanc_xyz2id.html'>fanc_xyz2id</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>svids</span><span class='op'>=</span><span class='fu'>fanc_leaves</span><span class='op'>(</span><span class='st'>"648518346482929060"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>svids</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>fanc_ids</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>rootid<span class='op'>=</span><span class='st'>"648518346474360770"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "648518346474360770"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
