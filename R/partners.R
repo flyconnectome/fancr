@@ -51,7 +51,8 @@ fanc_datastack_name <- memoise::memoise(function() {
   seldatastack=grep("fanc.*production", datastacks, value = T)
   if(length(seldatastack)==0)
     stop("Could not identify a FANC production datastack amongst: ",
-         paste(datastacks, collapse=','))
+         paste(datastacks, collapse=','),
+         "\nHave you been granted access to FANC production?")
   if(length(seldatastack)>1)
     warning("Multiple FANC datastacks available; ",
             paste(seldatastack, collapse = ","),"\n",
