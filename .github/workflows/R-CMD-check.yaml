@@ -33,7 +33,7 @@ jobs:
           install.packages(c("remotes", "rcmdcheck"))
           remotes::install_deps(dependencies = TRUE, type = "binary")
           remotes::install_cran("covr")
-          remotes::install_cran("pkgdown")
+          remotes::install_cran("pkgdown", type = "binary")
         shell: Rscript {0}
 
       - name: Fix Conda permissions on macOS
