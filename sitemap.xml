@@ -4,6 +4,12 @@
     <loc>https://flyconnectome.github.io/fancr/index.html</loc>
   </url>
   <url>
+    <loc>https://flyconnectome.github.io/fancr/reference/FANC.surf.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fancr/reference/FANCsym.html</loc>
+  </url>
+  <url>
     <loc>https://flyconnectome.github.io/fancr/reference/choose_fanc.html</loc>
   </url>
   <url>
@@ -47,6 +53,9 @@
   </url>
   <url>
     <loc>https://flyconnectome.github.io/fancr/reference/fancr-package.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fancr/reference/mirror_fanc.html</loc>
   </url>
   <url>
     <loc>https://flyconnectome.github.io/fancr/reference/read_fanc_meshes.html</loc>

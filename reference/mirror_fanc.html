@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • fancr</title>
+<title>Mirror points or other 3D objects along the FANC midline — mirror_fanc • fancr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Mirror points or other 3D objects along the FANC midline — mirror_fanc" />
+<meta property="og:description" content="symmetric_fanc transforms neurons, surfaces and other
+point data onto a symmetrised version of the FANC template brain,
+optionally mirroring across the midline." />
 
 
 
@@ -58,7 +61,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -114,144 +117,63 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Mirror points or other 3D objects along the FANC midline</h1>
+    <small class="dont-index">Source: <a href='https://github.com/flyconnectome/fancr/blob/master/R/xform.R'><code>R/xform.R</code></a></small>
+    <div class="hidden name"><code>mirror_fanc.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p><code>symmetric_fanc</code> transforms neurons, surfaces and other
+point data onto a symmetrised version of the FANC template brain,
+optionally mirroring across the midline.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>mirror_fanc</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="FANC.surf.html">FANC.surf</a></code> </p>
-        </td>
-        <td><p>Simplified tissue surface of FANC</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="FANCsym.html">FANCsym</a></code> </p>
-        </td>
-        <td><p>FANC symmetric template</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="choose_fanc.html">choose_fanc()</a></code> <code><a href="choose_fanc.html">with_fanc()</a></code> </p>
-        </td>
-        <td><p>Choose or (temporarily) use the FANC autosegmentation</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dr_fanc.html">dr_fanc()</a></code> </p>
-        </td>
-        <td><p>Print information about your FANC setup including tokens and python modules</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fanc4to3.html">fanc4to3()</a></code> </p>
-        </td>
-        <td><p>Convert XYZ locations between FANC4 (autoseg) and FANC3 (CATMAID)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fanc_cave_query.html">fanc_cave_query()</a></code> </p>
-        </td>
-        <td><p>Query FANC tables in the CAVE annotation system</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fanc_change_log.html">fanc_change_log()</a></code> </p>
-        </td>
-        <td><p>Fetch change log information for one or more neurons</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fanc_ids.html">fanc_ids()</a></code> </p>
-        </td>
-        <td><p>Return a vector of FANC root ids from diverse inputs</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fanc_islatest.html">fanc_islatest()</a></code> </p>
-        </td>
-        <td><p>Check if a FANC root id is up to date</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fanc_latestid.html">fanc_latestid()</a></code> </p>
-        </td>
-        <td><p>Find the latest id for a FANC root id</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fanc_leaves.html">fanc_leaves()</a></code> </p>
-        </td>
-        <td><p>Find the supervoxel identifiers of a FANC neuron</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fanc_partner_summary.html">fanc_partner_summary()</a></code> </p>
-        </td>
-        <td><p>Summarise the connectivity of FANC neurons</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fanc_rootid.html">fanc_rootid()</a></code> </p>
-        </td>
-        <td><p>Find the root identifier of a FANC neuron</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fanc_scene.html">fanc_scene()</a></code> </p>
-        </td>
-        <td><p>Return a sample Neuroglancer scene URL for FANC dataset</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fanc_set_token.html">fanc_set_token()</a></code> </p>
-        </td>
-        <td><p>Set the token to be used to authenticate to FANC autosegmentation resources</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fanc_xyz2id.html">fanc_xyz2id()</a></code> </p>
-        </td>
-        <td><p>Convert xyz locations to root or supervoxel ids</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mirror_fanc.html">mirror_fanc()</a></code> <code><a href="mirror_fanc.html">symmetric_fanc()</a></code> </p>
-        </td>
-        <td><p>Mirror points or other 3D objects along the FANC midline</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_fanc_meshes.html">read_fanc_meshes()</a></code> </p>
-        </td>
-        <td><p>Read one or more FANC neuron meshes</p></td>
-      </tr>
-    </tbody>
+<span class='fu'>symmetric_fanc</span><span class='op'>(</span><span class='va'>x</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>3D vertices (or object containing them) in FANC space Could be
+<code><a href='https://rdrr.io/pkg/nat/man/neuron.html'>neuron</a></code>, <code><a href='https://rdrr.io/pkg/nat/man/neuronlist.html'>neuronlist</a></code>, <code><a href='https://rdrr.io/pkg/nat/man/read.hxsurf.html'>hxsurf</a></code> etc.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments passed to <code><a href='https://rdrr.io/pkg/nat/man/xform.html'>xform</a></code> and friends</p></td>
+    </tr>
+    <tr>
+      <th>mirror</th>
+      <td><p>Whether to mirror across the midline when using
+<code>symmetric_fanc</code></p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Transformed points/object</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>These registration functions depend on an installation of the CMTK
+registration toolkit. See <code><a href='https://rdrr.io/pkg/nat/man/cmtk.bindir.html'>cmtk.bindir</a></code> for details.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='co'># TODO</span>
+<span class='co'># }</span>
+
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>FANC.surf.symm</span> <span class='op'>&lt;-</span> <span class='fu'>symmetric_fanc</span><span class='op'>(</span><span class='va'>FANC.surf</span><span class='op'>)</span>
+<span class='co'># plot the two meshes: before and after</span>
+<span class='fu'><a href='https://rdrr.io/pkg/nat/man/wire3d.html'>wire3d</a></span><span class='op'>(</span><span class='va'>FANC.surf</span>, col<span class='op'>=</span><span class='st'>'grey'</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/nat/man/wire3d.html'>wire3d</a></span><span class='op'>(</span><span class='va'>FANC.surf.symm</span>, col<span class='op'>=</span><span class='st'>'red'</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
