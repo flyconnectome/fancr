@@ -47,3 +47,93 @@ register_fanc3to4 <- function() {
   nat.templatebrains::add_reglist(fanc3to4.reg, reference = 'FANC4',
                                   sample='FANC3')
 }
+
+# internal function to return a CMTK mirroring registration
+mirror_fanc_reglist <- function(direction=c("forward", "reverse")) {
+  direction=match.arg(direction)
+  pkg = utils::packageName()
+  mirror_landmarks <- system.file( "reg/FANC_mirror_landmarks.csv",
+                    package = pkg, mustWork = TRUE)
+
+  mirror_reg_f <- tpsreg(
+    mirror_landmarks[c("x_flip", "y_flip", "z_flip")],
+    mirror_landmarks[c("x_mirr", "y_mirr", "z_mirr")]
+  )
+  if(direction == 'forward') mirror_reg_f else invert_reglist(mirror_reg_f)
+}
+
+#' Mirror points or other 3D objects along the FANC midline
+#'
+#' @details These registration functions depend on an installation of the CMTK
+#'   registration toolkit. See \code{\link[nat]{cmtk.bindir}} for details.
+#' @param x 3D vertices (or object containing them) in FANC space Could be
+#'   \code{\link{neuron}}, \code{\link{neuronlist}}, \code{\link{hxsurf}} etc.
+#' @param ... additional arguments passed to \code{\link{xform}} and friends
+#'
+#' @return Transformed points/object
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' # TODO
+#' }
+#'
+#' @importFrom nat reglist xform invert_reglist
+#' @importFrom nat.templatebrains as.templatebrain mirror_brain
+mirror_fanc <- function(x, ...) {
+
+  mirror_reg_f <- mirror_fanc_reglist()
+  mirror_reg_r <- mirror_fanc_reglist("reverse")
+  xt <- xform(x, reg=mirror_reg_f, ... )
+  xtm <- mirror_brain(xt, brain = FANCsym, mirrorAxis = 'X', transform='flip', ...)
+  xtmt <- xform(xtm, reg=mirror_reg_r, ... )
+  xtmt
+}
+
+
+#' @rdname mirror_fanc
+#' @description \code{symmetric_fanc} transforms neurons, surfaces and other
+#'   point data onto a symmetrised version of the FANC template brain,
+#'   optionally mirroring across the midline.
+#' @param mirror Whether to mirror across the midline when using
+#'   \code{symmetric_fanc}
+#' @export
+#' @examples
+#' \dontrun{
+#' FANC.surf.symm <- symmetric_fanc(FANC.surf)
+#' # plot the two meshes: before and after
+#' wire3d(FANC.surf, col='grey')
+#' wire3d(FANC.surf.symm, col='red')
+#' }
+symmetric_fanc <- function(x, mirror=FALSE, ...) {
+
+  mirror_reg_f=mirror_fanc_reglist()
+  xt=xform(x, reg=mirror_reg_f, ... )
+  if(isTRUE(mirror))
+    xt=mirror_brain(xt, brain = FANCsym, mirrorAxis = 'X', transform='flip')
+  xt
+}
+
+#' FANC symmetric template
+#' @export
+FANCsym = structure(
+  list(
+    name = "FANC-symmetric",
+    regName = "FANCsym",
+    type = "Synthetic average brain from synaptic predictions based on FANC SEM data",
+    sex = "F",
+    dims = c(0, 0, 0), # TODO
+    voxdims = c(0, 0, 0), # TODO
+    origin = c(0, 0, 0),
+    BoundingBox = structure(
+      c(0,
+        343.552, 0, 424.448, 0, 654.848), # TODO
+      .Dim = 2:3,
+      class = "boundingbox"
+    ),
+    units = NULL,
+    description = NULL,
+    doi = NULL
+  ),
+  class = "templatebrain"
+)
