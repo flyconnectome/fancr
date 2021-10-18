@@ -81,7 +81,6 @@ mirror_fanc_reglist <- function() {
 #' @importFrom nat.templatebrains as.templatebrain mirror_brain
 mirror_fanc <- function(x, ...) {
   mirror_reg_f <- mirror_fanc_reglist()
-  mirror_reg_r <- mirror_fanc_reglist("reverse")
   xt <- xform(x, reg=mirror_reg_f, ... )
   xtm <- mirror_brain(xt, brain = FANCsym, mirrorAxis = 'X', transform='flip', ...)
   xtm
