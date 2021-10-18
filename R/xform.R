@@ -81,13 +81,11 @@ mirror_fanc_reglist <- function(direction=c("forward", "reverse")) {
 #' @importFrom nat reglist xform invert_reglist
 #' @importFrom nat.templatebrains as.templatebrain mirror_brain
 mirror_fanc <- function(x, ...) {
-
   mirror_reg_f <- mirror_fanc_reglist()
   mirror_reg_r <- mirror_fanc_reglist("reverse")
   xt <- xform(x, reg=mirror_reg_f, ... )
   xtm <- mirror_brain(xt, brain = FANCsym, mirrorAxis = 'X', transform='flip', ...)
-  xtmt <- xform(xtm, reg=mirror_reg_r, ... )
-  xtmt
+  xtm
 }
 
 
@@ -121,12 +119,13 @@ FANCsym = structure(
     regName = "FANCsym",
     type = "Synthetic average brain from synaptic predictions based on FANC SEM data",
     sex = "F",
-    dims = c(0, 0, 0), # TODO
-    voxdims = c(0, 0, 0), # TODO
+    dims = c(672L, 830L, 1280L),
+    voxdims = c(0.512,
+                0.512, 0.512),
     origin = c(0, 0, 0),
     BoundingBox = structure(
       c(0,
-        343.552, 0, 424.448, 0, 654.848), # TODO
+        343.552, 0, 424.448, 0, 654.848),
       .Dim = 2:3,
       class = "boundingbox"
     ),
