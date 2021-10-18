@@ -49,8 +49,7 @@ register_fanc3to4 <- function() {
 }
 
 # internal function to return a CMTK mirroring registration
-mirror_fanc_reglist <- function(direction=c("forward", "reverse")) {
-  direction=match.arg(direction)
+mirror_fanc_reglist <- function() {
   pkg = utils::packageName()
   mirror_landmarks_path <- system.file("reg/FANC_mirror_landmarks.csv",
                     package = pkg, mustWork = TRUE)
@@ -59,7 +58,7 @@ mirror_fanc_reglist <- function(direction=c("forward", "reverse")) {
     mirror_landmarks[c("x_flip", "y_flip", "z_flip")],
     mirror_landmarks[c("x_mirr", "y_mirr", "z_mirr")]
   )
-  if(direction == 'forward') mirror_reg_f else invert_reglist(mirror_reg_f)
+  mirror_reg_f
 }
 
 #' Mirror points or other 3D objects along the FANC midline
