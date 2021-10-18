@@ -3,8 +3,8 @@
 #' @details note that the rootids you pass in must be up to date. See example.
 #'
 #' @inheritParams fafbseg::flywire_partner_summary
-#' @param datastack_name An optional CAVE datastack_name. If unset a sensible
-#'   default is chosen.
+#' @param datastack_name An optional CAVE \code{datastack_name}. If unset a
+#'   sensible default is chosen.
 #'
 #' @return a data.frame
 #' @seealso \code{\link{flywire_partner_summary}}, \code{\link{fanc_latestid}}

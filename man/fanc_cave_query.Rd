@@ -9,8 +9,8 @@ fanc_cave_query(table, datastack_name = NULL, live = TRUE, ...)
 \arguments{
 \item{table}{The name of the table to query}
 
-\item{datastack_name}{An optional CAVE datastack_name. If unset a sensible
-default is chosen.}
+\item{datastack_name}{An optional CAVE \code{datastack_name}. If unset a
+sensible default is chosen.}
 
 \item{live}{Whether to use live query mode, which updates any root ids to
 their current value.}

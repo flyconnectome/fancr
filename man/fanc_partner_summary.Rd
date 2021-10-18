@@ -31,8 +31,8 @@ autapses (defaults to TRUE)}
 \item{cleft.threshold}{A threshold for the cleft score calculated by Buhmann
 et al 2019 (default 0, we have used 30-100 to increase specificity)}
 
-\item{datastack_name}{An optional CAVE datastack_name. If unset a sensible
-default is chosen.}
+\item{datastack_name}{An optional CAVE \code{datastack_name}. If unset a
+sensible default is chosen.}
 
 \item{...}{Additional arguments passed to \code{\link{pbsapply}}}
 }
