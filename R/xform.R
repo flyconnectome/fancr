@@ -52,9 +52,9 @@ register_fanc3to4 <- function() {
 mirror_fanc_reglist <- function(direction=c("forward", "reverse")) {
   direction=match.arg(direction)
   pkg = utils::packageName()
-  mirror_landmarks <- system.file( "reg/FANC_mirror_landmarks.csv",
+  mirror_landmarks_path <- system.file("reg/FANC_mirror_landmarks.csv",
                     package = pkg, mustWork = TRUE)
-
+  mirror_landmarks <- read.csv(mirror_landmarks_path)
   mirror_reg_f <- tpsreg(
     mirror_landmarks[c("x_flip", "y_flip", "z_flip")],
     mirror_landmarks[c("x_mirr", "y_mirr", "z_mirr")]
@@ -106,7 +106,6 @@ mirror_fanc <- function(x, ...) {
 #' wire3d(FANC.surf.symm, col='red')
 #' }
 symmetric_fanc <- function(x, mirror=FALSE, ...) {
-
   mirror_reg_f=mirror_fanc_reglist()
   xt=xform(x, reg=mirror_reg_f, ... )
   if(isTRUE(mirror))
