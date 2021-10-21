@@ -103,7 +103,7 @@ mirror_fanc <- function(x, ...) {
 #' }
 symmetric_fanc <- function(x, mirror=FALSE, ...) {
   mirror_reg_f=mirror_fanc_reglist()
-  xt=xform(x, reg=mirror_reg_f, ... )
+  xt=xform(x, reg=mirror_reg_f, swap=T,... )
   if(isTRUE(mirror))
     xt=mirror_brain(xt, brain = FANCsym, mirrorAxis = 'X', transform='flip')
   xt
