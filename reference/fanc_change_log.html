@@ -151,7 +151,7 @@ state of the neuron (default <code>TRUE</code>, see details).</p></td>
       <th>OmitFailures</th>
       <td><p>Whether to omit neurons for which there is an API timeout
 or error. The default value (<code>TRUE</code>) will skip over errors, while
-<code>NA</code>) will result in a hard stop on error. See <code><a href='https://rdrr.io/pkg/nat/man/nlapply.html'>nlapply</a></code>
+<code>NA</code>) will result in a hard stop on error. See <code>nlapply</code>
 for more details.</p></td>
     </tr>
     <tr>
@@ -172,36 +172,37 @@ convenient format) available from the zetta API can be obtained with the
 private <code>fancr:::fanc_change_log_zetta</code> function.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'>fanc_change_log</span><span class='op'>(</span><span class='st'>"648518346473954669"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   operation_id           timestamp user_id
-#&gt; 0          864 2021-03-23 17:43:02      69
-#&gt; 1          865 2021-03-23 17:46:30      69
-#&gt; 2          866 2021-03-23 17:50:40      69
-#&gt; 3          867 2021-03-23 17:51:18      69
-#&gt; 4          868 2021-03-23 17:52:21      69
-#&gt; 5         1548 2021-04-15 01:40:21      69
-#&gt; 6         1549 2021-04-15 01:41:03      69
-#&gt; 7        24951 2021-07-01 06:05:28    1211
-#&gt;                         before_root_ids     after_root_ids is_merge
-#&gt; 0                    648518346492296936 648518346520326710    FALSE
-#&gt; 1                    648518346520326710 648518346490778913    FALSE
-#&gt; 2 648518346485415597 648518346490778913 648518346492883740     TRUE
-#&gt; 3 648518346492883740 648518346506053173 648518346492120771     TRUE
-#&gt; 4                    648518346492120771 648518346517118762    FALSE
-#&gt; 5                    648518346504349342 648518346489510873    FALSE
-#&gt; 6 648518346489510873 648518346517118762 648518346498254576     TRUE
-#&gt; 7                    648518346498254576 648518346473954669    FALSE
-#&gt;       user_name
-#&gt; 0 Jasper Phelps
-#&gt; 1 Jasper Phelps
-#&gt; 2 Jasper Phelps
-#&gt; 3 Jasper Phelps
-#&gt; 4 Jasper Phelps
-#&gt; 5 Jasper Phelps
-#&gt; 6 Jasper Phelps
-#&gt; 7    Arti Yadav</div><div class='input'><span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='fu'>fanc_change_log</span><span class='op'>(</span><span class='st'>"648518346473954669"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   operation_id           timestamp user_id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 0          864 2021-03-23 17:43:02      69</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1          865 2021-03-23 17:46:30      69</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2          866 2021-03-23 17:50:40      69</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3          867 2021-03-23 17:51:18      69</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4          868 2021-03-23 17:52:21      69</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5         1548 2021-04-15 01:40:21      69</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6         1549 2021-04-15 01:41:03      69</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7        24951 2021-07-01 06:05:28    1211</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                         before_root_ids     after_root_ids is_merge</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 0                    648518346492296936 648518346520326710    FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1                    648518346520326710 648518346490778913    FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 648518346485415597 648518346490778913 648518346492883740     TRUE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 648518346492883740 648518346506053173 648518346492120771     TRUE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4                    648518346492120771 648518346517118762    FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5                    648518346504349342 648518346489510873    FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6 648518346489510873 648518346517118762 648518346498254576     TRUE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7                    648518346498254576 648518346473954669    FALSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       user_name</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 0 Jasper Phelps</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 Jasper Phelps</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 Jasper Phelps</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 Jasper Phelps</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 Jasper Phelps</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 Jasper Phelps</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6 Jasper Phelps</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7    Arti Yadav</span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

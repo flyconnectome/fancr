@@ -174,22 +174,27 @@ transform services server.</p></td>
     <p>a Nx3 matrix of coordinates.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>fanc3</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/pkg/nat/man/xyzmatrix.html'>xyzmatrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>194569.2</span>, <span class='fl'>470101.3</span>, <span class='fl'>117630</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>fanc4</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>45224</span>, <span class='fl'>109317</span>, <span class='fl'>2614</span><span class='op'>)</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4.3</span>,<span class='fl'>4.3</span>,<span class='fl'>45</span><span class='op'>)</span>
-<span class='fu'>fanc4to3</span><span class='op'>(</span><span class='va'>fanc4</span><span class='op'>)</span><span class='op'>-</span><span class='va'>fanc3</span>
-</div><div class='output co'>#&gt;          X    Y Z
-#&gt; [1,] 2.575 2.65 0</div><div class='input'><span class='co'># can also pass in raw coordinates e.g. from neuroglancer</span>
-<span class='fu'>fanc4to3</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>45224</span>, <span class='fl'>109317</span>, <span class='fl'>2614</span><span class='op'>)</span>, rawcoords <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;             X      Y      Z
-#&gt; [1,] 194571.8 470104 117630</div><div class='input'>
-<span class='co'># rather small error for the approx inverse in this case</span>
-<span class='fu'>fanc4to3</span><span class='op'>(</span><span class='va'>fanc3</span>, swap<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>-</span><span class='va'>fanc4</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Please note the FANC3-&gt;FANC4 transform is wrong but useful!</span></div><div class='output co'>#&gt;         X      Y Z
-#&gt; [1,] -5.8 -1.575 0</div><div class='input'><span class='co'># \donttest{</span>
-<span class='co'># ... so reverse mapping works in this case, but not always</span>
-<span class='fu'><a href='fanc_xyz2id.html'>fanc_xyz2id</a></span><span class='op'>(</span><span class='fu'>fanc4to3</span><span class='op'>(</span><span class='va'>fanc3</span>, swap <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "648518346494405175"</div><div class='input'><span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>fanc3</span><span class='op'>=</span><span class='fu'>xyzmatrix</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>194569.2</span>, <span class='fl'>470101.3</span>, <span class='fl'>117630</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>fanc4</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>45224</span>, <span class='fl'>109317</span>, <span class='fl'>2614</span><span class='op'>)</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4.3</span>,<span class='fl'>4.3</span>,<span class='fl'>45</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>fanc4to3</span><span class='op'>(</span><span class='va'>fanc4</span><span class='op'>)</span><span class='op'>-</span><span class='va'>fanc3</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          X    Y Z</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,] 2.575 2.65 0</span>
+<span class='r-in'><span class='co'># can also pass in raw coordinates e.g. from neuroglancer</span></span>
+<span class='r-in'><span class='fu'>fanc4to3</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>45224</span>, <span class='fl'>109317</span>, <span class='fl'>2614</span><span class='op'>)</span>, rawcoords <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>             X      Y      Z</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,] 194571.8 470104 117630</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># rather small error for the approx inverse in this case</span></span>
+<span class='r-in'><span class='fu'>fanc4to3</span><span class='op'>(</span><span class='va'>fanc3</span>, swap<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>-</span><span class='va'>fanc4</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Please note the FANC3-&gt;FANC4 transform is wrong but useful!</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         X      Y Z</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,] -5.8 -1.575 0</span>
+<span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='co'># ... so reverse mapping works in this case, but not always</span></span>
+<span class='r-in'><span class='fu'><a href='fanc_xyz2id.html'>fanc_xyz2id</a></span><span class='op'>(</span><span class='fu'>fanc4to3</span><span class='op'>(</span><span class='va'>fanc3</span>, swap <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "648518346494405175"</span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
