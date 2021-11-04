@@ -47,3 +47,33 @@ register_fanc3to4 <- function() {
   nat.templatebrains::add_reglist(fanc3to4.reg, reference = 'FANC4',
                                   sample='FANC3')
 }
+
+fanc_to_manc_reg <- function() {
+  pkg = utils::packageName()
+  landmarks_path <- system.file("reg/MANC_FANC_landmarks_nm.csv",
+                                package = pkg, mustWork = TRUE)
+  landmarks <- read.csv(landmarks_path)
+  tpsreg(
+    landmarks[c("x_fanc", "y_fanc", "z_fanc")],
+    landmarks[c("x_manc", "y_manc", "z_manc")]
+  )
+}
+
+#' Transform FANC to MANC
+#' @description transforms neurons, surfaces and other
+#'   point data onto from FANC to MANC space.
+#' @inverse boolean flag that says whether to swap the registration
+#' @export
+#' @examples
+#' \dontrun{
+#' library(nat)
+#' library(malevnc)
+#' FANC.in.manc <- transform_fanc2manc(FANC.surf)
+#' # plot MANC and FANC mesh for comparison
+#' wire3d(malevnc::MANC.surf, col='grey', add=T)
+#' wire3d(FANC.in.manc/1e3, col='blue',add=T)
+#' }
+transform_fanc2manc <- function(x, inverse = F, ...) {
+  reg = fanc_to_manc_reg()
+  xform(x, reg=reg, swap=inverse,... )
+}
