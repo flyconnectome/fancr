@@ -3,7 +3,7 @@
 #' @name FANC.surf
 #' @docType data
 #' @description This is unsymmetrical and not normalized version of the mesh.
-#' @export
+#'
 #' @examples
 #' \dontrun{
 #' # Depends on nat
