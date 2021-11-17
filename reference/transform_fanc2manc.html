@@ -40,8 +40,8 @@
 
 
 <meta property="og:title" content="Transform FANC to MANC — transform_fanc2manc" />
-<meta property="og:description" content="transforms neurons, surfaces and other
-point data onto from FANC to MANC space." />
+<meta property="og:description" content="transforms neurons, surfaces and other point data onto from FANC
+to MANC space." />
 
 
 
@@ -124,12 +124,28 @@ point data onto from FANC to MANC space." />
     </div>
 
     <div class="ref-description">
-    <p>transforms neurons, surfaces and other
-point data onto from FANC to MANC space.</p>
+    <p>transforms neurons, surfaces and other point data onto from FANC
+to MANC space.</p>
     </div>
 
     <pre class="usage"><span class='fu'>transform_fanc2manc</span><span class='op'>(</span><span class='va'>x</span>, inverse <span class='op'>=</span> <span class='cn'>F</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>an object to transform</p></td>
+    </tr>
+    <tr>
+      <th>inverse</th>
+      <td><p>boolean flag that says whether to swap the registration</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments passed to (passed on to <code><a href='https://rdrr.io/pkg/nat/man/xform.html'>xform</a></code>)</p></td>
+    </tr>
+    </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
