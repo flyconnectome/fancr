@@ -6,9 +6,16 @@
 \usage{
 transform_fanc2manc(x, inverse = F, ...)
 }
+\arguments{
+\item{x}{an object to transform}
+
+\item{inverse}{boolean flag that says whether to swap the registration}
+
+\item{...}{additional arguments passed to (passed on to \code{\link{xform}})}
+}
 \description{
-transforms neurons, surfaces and other
-point data onto from FANC to MANC space.
+transforms neurons, surfaces and other point data onto from FANC
+to MANC space.
 }
 \examples{
 \dontrun{
