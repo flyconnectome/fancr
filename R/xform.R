@@ -48,6 +48,8 @@ register_fanc3to4 <- function() {
                                   sample='FANC3')
 }
 
+#' @importFrom utils read.csv
+#' @importFrom nat tpsreg
 fanc_to_manc_reg <- function() {
   pkg = utils::packageName()
   landmarks_path <- system.file("reg/MANC_FANC_landmarks_nm.csv",
@@ -75,6 +77,7 @@ fanc_to_manc_reg <- function() {
 #' wire3d(malevnc::MANC.surf, col='grey', add=T)
 #' wire3d(FANC.in.manc/1e3, col='blue',add=T)
 #' }
+#' @importFrom nat xform
 transform_fanc2manc <- function(x, inverse = F, ...) {
   reg = fanc_to_manc_reg()
   xform(x, reg=reg, swap=inverse,... )
