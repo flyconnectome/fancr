@@ -16,7 +16,7 @@
 #' \donttest{
 #' fanc_change_log("648518346473954669")
 #' }
-fanc_change_log <- function(x, tz="UTC", filtered=TRUE, OmitFailures=TRUE) {
+fanc_change_log <- function(x, tz="UTC", filtered=TRUE, OmitFailures=TRUE, ...) {
   x=fanc_ids(x)
   with_fanc(flywire_change_log(
     x = x,
