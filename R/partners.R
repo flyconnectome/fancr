@@ -3,8 +3,8 @@
 #' @details note that the rootids you pass in must be up to date. See example.
 #'
 #' @inheritParams fafbseg::flywire_partner_summary
-#' @param datastack_name An optional CAVE datastack_name. If unset a sensible
-#'   default is chosen.
+#' @param datastack_name An optional CAVE \code{datastack_name}. If unset a
+#'   sensible default is chosen.
 #'
 #' @return a data.frame
 #' @seealso \code{\link{flywire_partner_summary}}, \code{\link{fanc_latestid}}
@@ -51,7 +51,8 @@ fanc_datastack_name <- memoise::memoise(function() {
   seldatastack=grep("fanc.*production", datastacks, value = T)
   if(length(seldatastack)==0)
     stop("Could not identify a FANC production datastack amongst: ",
-         paste(datastacks, collapse=','))
+         paste(datastacks, collapse=','),
+         "\nHave you been granted access to FANC production?")
   if(length(seldatastack)>1)
     warning("Multiple FANC datastacks available; ",
             paste(seldatastack, collapse = ","),"\n",
