@@ -15,10 +15,6 @@ fanc_partner_summary(
 )
 }
 \arguments{
-\item{rootid}{Character vector specifying one or more flywire rootids. As a
-convenience for \code{flywire_partner_summary} this argument is passed to
-\code{\link[fafbseg]{ngl_segments}} allowing you to pass in}
-
 \item{partners}{Whether to fetch input or output synapses or both.}
 
 \item{threshold}{For \code{flywire_partner_summary} only return partners with
