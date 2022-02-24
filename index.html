@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fancr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1</span>
       </span>
     </div>
 
@@ -57,10 +59,10 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://natverse.github.io">natverse</a>
+  <a href="https://natverse.github.io" class="external-link">natverse</a>
 </li>
 <li>
-  <a href="https://github.com/flyconnectome/fancr/">
+  <a href="https://github.com/flyconnectome/fancr/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -77,25 +79,25 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="fancr" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#fancr" class="anchor"></a>fancr</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="fancr">fancr<a class="anchor" aria-label="anchor" href="#fancr"></a>
+</h1></div>
 <!-- badges: start -->
 
 <p>The goal of <strong>fancr</strong> is to support analysis of the Female Adult Nerve Cord dataset aka (FANC), especially autosegmentation data. Those data are made available by the FANC project led by Wei-Chung Allen Lee (Harvard) and his collaborators including John Tuthill and Sebastian Seung/Zetta.</p>
-<p>To access FANC resources, you must have permissions to access the <a href="https://fanc-reconstruction.slack.com/archives/C01RZP5JH9C/p1616522511001900">FANC autosegmentation dataset</a> and have <a href="https://fanc-reconstruction.slack.com/archives/C01RZP5JH9C/p1617404290005300">confirmed your acceptance</a> of the FANC proofreading and data ownership guidelines. At this point you should have a linked Google account that will be authorised (see below) for access to FANC online resources.</p>
-<p>Broadly speaking the <strong>fancr</strong> package is a thin wrapper over the <a href="https://github.com/natverse/fafbseg">fafbseg</a> package setting up necessary default paths etc.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<p>To access FANC resources, you must have permissions to access the <a href="https://fanc-reconstruction.slack.com/archives/C01RZP5JH9C/p1616522511001900" class="external-link">FANC autosegmentation dataset</a> and have <a href="https://fanc-reconstruction.slack.com/archives/C01RZP5JH9C/p1617404290005300" class="external-link">confirmed your acceptance</a> of the FANC proofreading and data ownership guidelines. At this point you should have a linked Google account that will be authorised (see below) for access to FANC online resources.</p>
+<p>Broadly speaking the <strong>fancr</strong> package is a thin wrapper over the <a href="https://github.com/natverse/fafbseg" class="external-link">fafbseg</a> package setting up necessary default paths etc.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install the development version of fancr from github:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">'natmanager'</span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'natmanager'</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">'natmanager'</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'natmanager'</span><span class="op">)</span>
 <span class="fu">natmanager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="st">'natverse'</span>, pkgs <span class="op">=</span> <span class="st">'flyconnectome/fancr'</span><span class="op">)</span>
 
 <span class="co"># install required python packages esp cloudvolume/caveclient</span>
-<span class="fu">fafbseg</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/fafbseg/man/simple_python.html">simple_python</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="fu">fafbseg</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/fafbseg/man/simple_python.html" class="external-link">simple_python</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>To do anything useful with the fancr package, you need authorisation to access FANC resources. To prove your authorisation for programmatic access you must generate and store a token in your web browser after logging in to an approved Google account. This should be streamlined by running the following command in R (which will also set you up for Pythonic access via cloudvolume.)</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># set up token - will open your browser to generate a new token</span>
@@ -106,17 +108,17 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/dr_fanc.html">dr_fanc</a></span><span class="op">(</span><span class="op">)</span>
 
-<span class="fu"><a href="reference/fanc_xyz2id.html">fanc_xyz2id</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fl">34495</span>, <span class="fl">82783</span>, <span class="fl">1954</span><span class="op">)</span>, rawcoords<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="reference/fanc_xyz2id.html">fanc_xyz2id</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fl">34495</span>, <span class="fl">82783</span>, <span class="fl">1954</span><span class="op">)</span>, rawcoords<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">svids</span><span class="op">=</span><span class="fu"><a href="reference/fanc_leaves.html">fanc_leaves</a></span><span class="op">(</span><span class="st">"648518346482929060"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">svids</span><span class="op">)</span></code></pre></div>
-<div id="updating" class="section level3">
-<h3 class="hasAnchor">
-<a href="#updating" class="anchor"></a>Updating</h3>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">svids</span><span class="op">)</span></code></pre></div>
+<div class="section level3">
+<h3 id="updating">Updating<a class="anchor" aria-label="anchor" href="#updating"></a>
+</h3>
 <p>You can just repeat the install instructions, but this ensures that all dependencies are updated:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">natverse</span><span class="fu">::</span><span class="fu">natverse_update</span><span class="op">(</span>update <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
 <span class="fu">natmanager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span>pkgs <span class="op">=</span> <span class="st">'flyconnectome/fancr'</span><span class="op">)</span>
-<span class="fu">fafbseg</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/fafbseg/man/simple_python.html">simple_python</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="fu">fafbseg</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/fafbseg/man/simple_python.html" class="external-link">simple_python</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -124,46 +126,57 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/flyconnectome/fancr/">https://​github.com/​flyconnectome/​fancr/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/flyconnectome/fancr/issues">https://​github.com/​flyconnectome/​fancr/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></small></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Gregory Jefferis <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0587-9355" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="https://github.com/flyconnectome/fancr/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/flyconnectome/fancr/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://natverse.github.io"><img src="https://img.shields.io/badge/natverse-Part%20of%20the%20natverse-a241b6" alt="natverse"></a></li>
-<li><a href="https://flyconnectome.github.io/fancr/reference/"><img src="https://img.shields.io/badge/docs-100%25-brightgreen.svg" alt="Docs"></a></li>
-<li><a href="https://github.com/flyconnectome/fanc/actions"><img src="https://github.com/flyconnectome/fanc/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing fancr</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Gregory Jefferis <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0587-9355" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://natverse.github.io" class="external-link"><img src="https://img.shields.io/badge/natverse-Part%20of%20the%20natverse-a241b6" alt="natverse"></a></li>
+<li><a href="https://flyconnectome.github.io/fancr/reference/"><img src="https://img.shields.io/badge/docs-100%25-brightgreen.svg" alt="Docs"></a></li>
+<li><a href="https://github.com/flyconnectome/fanc/actions" class="external-link"><img src="https://github.com/flyconnectome/fanc/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Gregory Jefferis.</p>
+  <p></p>
+<p>Developed by Gregory Jefferis.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -171,6 +184,8 @@
 
   
 
+
+  
 
   </body>
 </html>

@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://flyconnectome.github.io/fancr/404.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fancr/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fancr/SUPPORT.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fancr/authors.html</loc>
+  </url>
+  <url>
     <loc>https://flyconnectome.github.io/fancr/index.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fancr/news/index.html</loc>
   </url>
   <url>
     <loc>https://flyconnectome.github.io/fancr/reference/FANC.surf.html</loc>
@@ -50,6 +65,9 @@
   </url>
   <url>
     <loc>https://flyconnectome.github.io/fancr/reference/fancr-package.html</loc>
+  </url>
+  <url>
+    <loc>https://flyconnectome.github.io/fancr/reference/index.html</loc>
   </url>
   <url>
     <loc>https://flyconnectome.github.io/fancr/reference/read_fanc_meshes.html</loc>
