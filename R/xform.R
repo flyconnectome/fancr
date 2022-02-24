@@ -34,7 +34,7 @@ fanc4to3 <- function(xyz, rawcoords=FALSE, swap=FALSE, chunksize=40e3,
   if(swap)
     fafbseg:::warn_hourly("Please note the FANC3->FANC4 transform is wrong but useful!")
 
-  baseurl <- "https://spine.janelia.org/app/transform-service/dataset/fanc_v4_to_v3"
+  baseurl <- "https://spine.itanna.io/app/transform-service/dataset/fanc_v4_to_v3"
   fafbseg:::mapwrapper(xyz, baseurl=baseurl, method=method, chunksize=chunksize, swap=swap, voxdims=c(4.3, 4.3, 45), ...)
 }
 
