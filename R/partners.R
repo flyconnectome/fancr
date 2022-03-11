@@ -26,7 +26,7 @@
 fanc_partner_summary <- function(rootid, partners = c("outputs", "inputs"),
                                  threshold = 0,
                                  remove_autapses = TRUE,
-                                 cleft.threshold = 0,
+                                 score.threshold = 0,
                                  datastack_name=NULL,
                                  ...) {
   if(is.null(datastack_name))
@@ -39,7 +39,7 @@ fanc_partner_summary <- function(rootid, partners = c("outputs", "inputs"),
       method = "cave",
       datastack_name = "fanc_production_mar2021",
       remove_autapses = remove_autapses,
-      cleft.threshold = cleft.threshold,
+      score.threshold = score.threshold,
       ...
     )
   )
