@@ -65,7 +65,7 @@ fanc_to_manc_reg <- function() {
 #' @description transforms neurons, surfaces and other point data onto from FANC
 #'   to MANC space.
 #' @param inverse boolean flag that says whether to swap the registration
-#' @param x an object to transform
+#' @param x an object to transform (calibrated in nm)
 #' @param ... additional arguments passed to (passed on to \code{\link{xform}})
 #' @export
 #' @examples

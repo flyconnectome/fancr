@@ -7,7 +7,7 @@
 transform_fanc2manc(x, inverse = F, ...)
 }
 \arguments{
-\item{x}{an object to transform}
+\item{x}{an object to transform (calibrated in nm)}
 
 \item{inverse}{boolean flag that says whether to swap the registration}
 
