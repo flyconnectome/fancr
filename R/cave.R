@@ -6,6 +6,8 @@
 #' @inheritParams fafbseg::flywire_cave_query
 #'
 #' @return A data.frame
+#'
+#' @family fanc-cave
 #' @export
 #' @seealso \code{\link[fafbseg]{flywire_cave_query}}
 #' @examples
@@ -22,3 +24,19 @@ fanc_cave_query <- function(table, datastack_name = NULL, live=TRUE, ...) {
   if(is.null(datastack_name)) datastack_name=fanc_datastack_name()
   fafbseg::flywire_cave_query(table = table, datastack_name = datastack_name, live=live, ...)
 }
+
+#' Low level access to FANC's CAVE annotation infrastructure
+#'
+#' @return A reticulate R object wrapping the python CAVEclient.
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' fcc=fanc_cave_client()
+#' tables=fcc$annotation$get_tables()
+#' fcc$
+#' }
+fanc_cave_client <- function() {
+  with_fanc(flywire_cave_client())
+}
+
