@@ -31,6 +31,14 @@ jobs:
           use-public-rspm: true
       - uses: r-lib/actions/setup-pandoc@v2
 
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          while read -r cmd
+          do
+            eval sudo $cmd
+          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
+
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck"))
