@@ -5,7 +5,7 @@
 \title{Summarise the connectivity of FANC neurons}
 \usage{
 fanc_partner_summary(
-  rootid,
+  rootids,
   partners = c("outputs", "inputs"),
   threshold = 0,
   remove_autapses = TRUE,
@@ -15,6 +15,10 @@ fanc_partner_summary(
 )
 }
 \arguments{
+\item{rootids}{Character vector specifying one or more flywire rootids. As a
+convenience this argument is passed to \code{\link{fanc_ids}} allowing you
+to pass in data.frames, flywire URLs or simple ids.}
+
 \item{partners}{Whether to fetch input or output synapses or both.}
 
 \item{threshold}{For \code{flywire_partner_summary} only return partners with
@@ -42,15 +46,17 @@ Summarise the connectivity of FANC neurons
 note that the rootids you pass in must be up to date. See example.
 }
 \examples{
-head(fanc_partner_summary("648518346494405175"))
-head(fanc_partner_summary("648518346494405175", partners='inputs'))
+# NB id must be up to date
+sample_id=fanc_latestid("648518346481082458")
+head(fanc_partner_summary(sample_id))
+head(fanc_partner_summary(sample_id, partners='inputs'))
 \dontrun{
 # get the latest id for an outdate
-fanc_partner_summary(fanc_latestid("648518346473954669"))
+fanc_partner_summary(("648518346473954669"))
 
 ## open fanc/flywire scene containing top partners
 library(dplyr)
-fanc_partner_summary("648518346494405175", partners='inputs') \%>\%
+fanc_partner_summary(fanc_latestid("648518346494405175"), partners='inputs') \%>\%
   slice_max(weight, n = 20) \%>\%
   fanc_scene(open=TRUE)
 }
