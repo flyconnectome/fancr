@@ -2,6 +2,7 @@
 % Please edit documentation in R/partners.R
 \name{fanc_partner_summary}
 \alias{fanc_partner_summary}
+\alias{fanc_partners}
 \title{Summarise the connectivity of FANC neurons}
 \usage{
 fanc_partner_summary(
@@ -13,6 +14,8 @@ fanc_partner_summary(
   datastack_name = NULL,
   ...
 )
+
+fanc_partners(rootids, partners = c("input", "output"), ...)
 }
 \arguments{
 \item{rootids}{Character vector specifying one or more flywire rootids. As a
@@ -40,7 +43,8 @@ sensible default is chosen.}
 a data.frame
 }
 \description{
-Summarise the connectivity of FANC neurons
+\code{fanc_partners} returns details of each unitary synaptic
+connection (including its xyz location).
 }
 \details{
 note that the rootids you pass in must be up to date. See example.
@@ -52,13 +56,17 @@ head(fanc_partner_summary(sample_id))
 head(fanc_partner_summary(sample_id, partners='inputs'))
 \dontrun{
 # get the latest id for an outdate
-fanc_partner_summary(("648518346473954669"))
+fanc_partner_summary(fanc_latestid("648518346473954669"))
 
 ## open fanc/flywire scene containing top partners
 library(dplyr)
 fanc_partner_summary(fanc_latestid("648518346494405175"), partners='inputs') \%>\%
   slice_max(weight, n = 20) \%>\%
   fanc_scene(open=TRUE)
+}
+\dontrun{
+fpi=fanc_partners(fanc_latestid("648518346481082458"), partners='in')
+
 }
 }
 \seealso{

@@ -5,9 +5,9 @@
 #' @param rootids Character vector specifying one or more flywire rootids. As a
 #'   convenience this argument is passed to \code{\link{fanc_ids}} allowing you
 #'   to pass in data.frames, flywire URLs or simple ids.
-#' @inheritParams fafbseg::flywire_partner_summary
 #' @param datastack_name An optional CAVE \code{datastack_name}. If unset a
 #'   sensible default is chosen.
+#' @inheritParams fafbseg::flywire_partner_summary
 #'
 #' @return a data.frame
 #' @seealso \code{\link{flywire_partner_summary}}, \code{\link{fanc_latestid}}
@@ -20,7 +20,7 @@
 #' head(fanc_partner_summary(sample_id, partners='inputs'))
 #' \dontrun{
 #' # get the latest id for an outdate
-#' fanc_partner_summary(("648518346473954669"))
+#' fanc_partner_summary(fanc_latestid("648518346473954669"))
 #'
 #' ## open fanc/flywire scene containing top partners
 #' library(dplyr)
@@ -64,3 +64,28 @@ fanc_datastack_name <- memoise::memoise(function() {
             "choosing: ", seldatastack[1])
   seldatastack[1]
 })
+
+
+#' @description \code{fanc_partners} returns details of each unitary synaptic
+#' connection (including its xyz location).
+#'
+#' @export
+#'
+#' @rdname fanc_partner_summary
+#' @examples
+#' \dontrun{
+#' fpi=fanc_partners(fanc_latestid("648518346481082458"), partners='in')
+#'
+#' }
+fanc_partners <- function(rootids, partners=c("input", "output"), ...) {
+  partners=match.arg(partners)
+  rootids=fanc_ids(rootids)
+  fcc=fanc_cave_client()
+  pyids=fafbseg:::rids2pyint(rootids)
+  res=if(partners=='input') {
+    reticulate::py_call(fcc$materialize$synapse_query, post_ids=pyids, ...)
+  } else {
+    reticulate::py_call(fcc$materialize$synapse_query, pre_ids=pyids, ...)
+  }
+  fafbseg:::pandas2df(res)
+}
