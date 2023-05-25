@@ -31,8 +31,16 @@ fanc_change_log_zetta <- function(x, ...) {
   baseurl=fanc_api_url(endpoint = "root/")
   x=fafbseg::ngl_segments(x, as_character = T)
   if(length(x)>1) {
-    res=pbapply::pbsapply(x, fanc_change_log, ...)
-    return(dplyr::bind_rows(res))
+    res=pbapply::pbsapply(x, fanc_change_log_zetta, ..., simplify = FALSE)
+    user_info=dplyr::bind_rows(sapply(res, "[[", "user_info", simplify = F),
+                               .id = 'root_id')
+    res2=sapply(res, function(x) x[setdiff(names(x), 'user_info')], simplify = F)
+    res2df=do.call(rbind,res2)
+    res2df=cbind(data.frame(root_id=rownames(res2df)), res2df)
+    attr(user_info, 'summary')=res2df[1:2]
+    attr(user_info, 'operations')=res2df[[3]]
+    attr(user_info, 'past_ids')=res2df[[4]]
+    return(user_info=user_info)
   }
   url=paste0(baseurl, x, "/change_log")
   res=fanc_fetch(url, ...)
