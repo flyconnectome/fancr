@@ -65,8 +65,12 @@ fanc_partner_summary(fanc_latestid("648518346494405175"), partners='inputs') \%>
   fanc_scene(open=TRUE)
 }
 \dontrun{
+# plot input and output synapses of a neuron
+nclear3d()
 fpi=fanc_partners(fanc_latestid("648518346481082458"), partners='in')
-
+points3d(fanc_raw2nm(fpi$post_pt_position), col='cyan')
+fpo=fanc_partners(fanc_latestid("648518346481082458"), partners='out')
+points3d(fanc_raw2nm(fpo$pre_pt_position), col='red')
 }
 }
 \seealso{

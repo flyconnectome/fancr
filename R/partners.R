@@ -74,8 +74,12 @@ fanc_datastack_name <- memoise::memoise(function() {
 #' @rdname fanc_partner_summary
 #' @examples
 #' \dontrun{
+#' # plot input and output synapses of a neuron
+#' nclear3d()
 #' fpi=fanc_partners(fanc_latestid("648518346481082458"), partners='in')
-#'
+#' points3d(fanc_raw2nm(fpi$post_pt_position), col='cyan')
+#' fpo=fanc_partners(fanc_latestid("648518346481082458"), partners='out')
+#' points3d(fanc_raw2nm(fpo$pre_pt_position), col='red')
 #' }
 fanc_partners <- function(rootids, partners=c("input", "output"), ...) {
   partners=match.arg(partners)
