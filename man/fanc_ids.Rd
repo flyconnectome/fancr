@@ -4,10 +4,13 @@
 \alias{fanc_ids}
 \title{Return a vector of FANC root ids from diverse inputs}
 \usage{
-fanc_ids(x)
+fanc_ids(x, integer64 = NA)
 }
 \arguments{
 \item{x}{A data.frame, URL or vector of ids}
+
+\item{integer64}{Whether to return ids as \code{bit64::integer64} or
+character vectors. Default value of NA leaves the ids unmodified.}
 }
 \value{
 A vector of ids

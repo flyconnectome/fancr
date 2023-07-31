@@ -129,13 +129,15 @@ fanc_latestid <- function(rootid, sample=1000L, cloudvolume.url=NULL, Verbose=FA
 #' Return a vector of FANC root ids from diverse inputs
 #'
 #' @param x A data.frame, URL or vector of ids
+#' @param integer64 Whether to return ids as \code{bit64::integer64} or
+#'   character vectors. Default value of NA leaves the ids unmodified.
 #'
 #' @return A vector of ids
 #' @export
 #' @family fanc-ids
 #' @examples
 #' fanc_ids(data.frame(rootid="648518346474360770"))
-fanc_ids <- function(x) {
+fanc_ids <- function(x, integer64=NA) {
   if(is.data.frame(x)) {
     colstocheck=c("rootid", "id", "pre_id", "post_id")
     for(col in colstocheck) {
@@ -149,5 +151,8 @@ fanc_ids <- function(x) {
   }
   if(!all(fafbseg:::valid_id(x)))
     stop("Some ids are invalid!")
-  x
+  if(isTRUE(integer64)) bit64::as.integer64(x)
+  else if(isFALSE(integer64)) as.character(x)
+  else x
+}
 }
