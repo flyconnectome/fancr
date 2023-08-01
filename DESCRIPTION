@@ -25,7 +25,8 @@ Imports:
     httr,
     jsonlite,
     pbapply,
-    dplyr
+    dplyr,
+    checkmate
 Suggests: 
     testthat (>= 3.0.0),
     reticulate,
