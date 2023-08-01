@@ -23,6 +23,7 @@ fanc_islatest("648518346473954669")
 }
 \seealso{
 Other fanc-ids: 
+\code{\link{fanc_cellid_from_segid}()},
 \code{\link{fanc_ids}()},
 \code{\link{fanc_latestid}()},
 \code{\link{fanc_leaves}()},

@@ -14,3 +14,12 @@ test_that("fanc_islatest works", {
     fanc_latestid("648518346473954669"), "648518346473954669")))
 })
 
+
+test_that("fanc_cellid_from_segid", {
+  rid=fanc_latestid("648518346486614449")
+  expect_equal(fanc_cellid_from_segid(rid),12967L)
+
+  expect_equal(
+    fanc_cellid_from_segid("648518346486614449", "2023-07-29 06:04:28 UTC"),
+    12967L)
+})

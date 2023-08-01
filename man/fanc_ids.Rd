@@ -23,6 +23,7 @@ fanc_ids(data.frame(rootid="648518346474360770"))
 }
 \seealso{
 Other fanc-ids: 
+\code{\link{fanc_cellid_from_segid}()},
 \code{\link{fanc_islatest}()},
 \code{\link{fanc_latestid}()},
 \code{\link{fanc_leaves}()},

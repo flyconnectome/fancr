@@ -40,6 +40,7 @@ fanc_latestid("648518346473954669")
 \code{\link{fanc_islatest}}
 
 Other fanc-ids: 
+\code{\link{fanc_cellid_from_segid}()},
 \code{\link{fanc_ids}()},
 \code{\link{fanc_islatest}()},
 \code{\link{fanc_leaves}()},

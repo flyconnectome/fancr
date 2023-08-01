@@ -155,4 +155,102 @@ fanc_ids <- function(x, integer64=NA) {
   else if(isFALSE(integer64)) as.character(x)
   else x
 }
+
+#' Convert between FANC cell ids and root ids
+#'
+#' @details CAVE/PyChunkedGraph assigns a 64 bit integer root id to all bodies
+#'   in the segmentation. These root ids are persistent in a computer science
+#'   sense, which is often the exact opposite of what neuroscientists might
+#'   imagine. Specifically, a given root id is matched to a single edit state of
+#'   a neuron. If the neuron is edited, then root id changes. In contrast, cell
+#'   ids do not change even in the face of edits. However, it is important to
+#'   understand that they correspond to a specific point on a neuron, commonly
+#'   the nucleus. If the nucleus is edited away from a the rest of a neuron to
+#'   which it previously belonged, then the cell id and any associated edits
+#'   will effectively with move it.
+#'
+#'   For further details see
+#'   \href{https://fanc-reconstruction.slack.com/archives/CLDH21J4U/p1690755500802509}{FANC
+#'   slack} and
+#'   \href{https://github.com/htem/FANC_auto_recon/wiki/Neuron-annotations#neuron_information}{FANC
+#'   wiki}.
+#'
+#' @param rootids FANC root ids in any form understood by
+#'   \code{\link{fanc_ids}}. The default value of NULL will return all cell ids.
+#' @param cellids Integer cell ids between between 1 and around 20000 that
+#'   \emph{should} uniquely identify each cell in the dataset.
+#' @param timestamp An optional time stamp. You should give only one of
+#'   \code{version} or \code{timestamp}. When both are missing, ids should match
+#'   the live materialisation version including up to the second edits.
+#' @param version An optional integer CAVE materialisation version. You should
+#'   give only one of \code{version} or \code{timestamp}. When both are missing,
+#'   ids should match the live materialisation version including up to the
+#'   second edits.
+#' @param rval Whether to return the cell ids or the whole of the CAVE table
+#'   with additional columns.
+#' @param cellid_table Optional name of cell id table (the default value should
+#'   be correct).
+#' @return Either a vector of ids or a data.frame depending on \code{rval}. For
+#'   cell ids the vector will be an integer for root ids (segment ids), a
+#'   character vector or an \code{bit64::integer64} vector depending on the
+#'   \code{integer64} argument.
+#' @inheritParams fanc_ids
+#' @family fanc-ids
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' fanc_cellid_from_segid(fanc_latestid("648518346486614449"))
+#' }
+fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, cellid_table = 'cell_ids', rval=c("ids", 'data.frame')) {
+  rval=match.arg(rval)
+  if(!is.null(rootids)) {
+    rootids=fanc_ids(rootids, integer64=F)
+  idlist=list(pt_root_id=rootids)
+  } else idlist=NULL
+  live=is.null(timestamp) && is.null(version)
+  res=fanc_cave_query(table = cellid_table, timestamp=timestamp,
+                      version=version, filter_in_dict=idlist, live=live)
+  if(is.null(rootids)) {
+    if(rval=='ids') {
+      fanc_ids(res[['id']], integer64 = F)
+    } else res
+  }
+  ids64=fanc_ids(rootids, integer64=T)
+  if(!all(found <- ids64 %in% res$pt_root_id)) {
+    warning(sum(!found), "/", length(rootids), " could not be found!")
+  }
+  if(rval=='ids') {
+    res[['id']][match(rootids, res[['pt_root_id']])]
+  } else res
+}
+
+
+#' @rdname fanc_cellid_from_segid
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' fanc_cellid_from_segid(fanc_latestid("648518346486614449"))
+#' }
+fanc_segid_from_cellid <- function(cellids=NULL, timestamp=NULL, version=NULL, rval=c("ids", 'data.frame'), integer64=FALSE, cellid_table = 'cell_ids') {
+  rval=match.arg(rval)
+  if(!is.null(cellids)) {
+    cellids <- checkmate::assert_integerish(cellids, coerce = T)
+    idlist=list(id=cellids)
+  } else idlist=NULL
+  live=is.null(timestamp) && is.null(version)
+  res=fanc_cave_query(table = cellid_table, timestamp=timestamp,
+                      version=version, filter_in_dict=idlist, live=live)
+  if(is.null(cellids)) {
+    if(rval=='ids') {
+      fanc_ids(res[['pt_root_id']], integer64 = F)
+    } else res
+  }
+  if(!all(found <- cellids %in% res[['id']])) {
+    warning(sum(!found), "/", length(cellids), " could not be found!")
+  }
+  if(rval=='ids') {
+    fanc_ids(res[['pt_root_id']][match(cellids, res[['id']])], integer64 = integer64)
+  } else res
 }

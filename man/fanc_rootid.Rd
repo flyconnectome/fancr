@@ -30,6 +30,7 @@ fanc_rootid("73186243730767724")
 \code{\link{flywire_rootid}}
 
 Other fanc-ids: 
+\code{\link{fanc_cellid_from_segid}()},
 \code{\link{fanc_ids}()},
 \code{\link{fanc_islatest}()},
 \code{\link{fanc_latestid}()},
