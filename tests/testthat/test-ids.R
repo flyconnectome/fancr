@@ -1,6 +1,6 @@
 test_that("fanc_xyz2id works", {
   expect_equal(fanc_xyz2id(cbind(34495, 82783, 1954), rawcoords=TRUE),
-               "648518346498932033")
+               "648518346499897667")
 
   expect_equal(
     fanc_xyz2id(cbind(34495, 82783, 1954), rawcoords=TRUE, root=F),
