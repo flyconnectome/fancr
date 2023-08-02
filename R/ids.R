@@ -142,11 +142,11 @@ fanc_ids <- function(x, integer64=NA) {
     colstocheck=c("rootid", "id", "pre_id", "post_id")
     for(col in colstocheck) {
       if(col %in% colnames(x))
-        return(x[[col]])
+        return(fanc_ids(x[[col]], integer64 = integer64))
     }
     i64=sapply(x, bit64::is.integer64)
     if(sum(i64)==1)
-      return(x[[which(i64)]])
+      return(fanc_ids(x[[which(i64)]], integer64 = integer64))
     stop("Unable to find a column containing ids!")
   }
   if(!all(fafbseg:::valid_id(x)))

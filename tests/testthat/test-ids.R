@@ -15,6 +15,19 @@ test_that("fanc_islatest works", {
 })
 
 
+test_that("fanc_ids works", {
+  expect_equal(fanc_ids("648518346473954669"), "648518346473954669")
+  expect_equal(fanc_ids("648518346473954669", integer64 = T), bit64::as.integer64("648518346473954669"))
+
+  df1=data.frame(pt_root_id=bit64::as.integer64("648518346473954669"))
+  df2=data.frame(id=bit64::as.integer64("648518346473954669"))
+
+  expect_equal(fanc_ids(df1, integer64 = F), "648518346473954669")
+  expect_equal(fanc_ids(df1), df1$pt_root_id)
+  expect_equal(fanc_ids(df2, integer64 = F), "648518346473954669")
+})
+
+
 test_that("fanc_cellid_from_segid", {
   rid=fanc_latestid("648518346486614449")
   expect_equal(fanc_cellid_from_segid(rid),12967L)
