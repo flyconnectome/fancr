@@ -16,7 +16,7 @@ fanc_read_l2skel(id, OmitFailures = TRUE, dataset = NULL, ...)
 the results (rather than erroring out). Default \code{TRUE}.}
 
 \item{dataset}{An optional CAVE dataset name (expert use only, by default
-will choose the standard FANC dataset).}
+will choose the standard FANC dataset). See details.}
 
 \item{...}{Additional arguments passed to the
 \code{fafbseg.flywire.l2_skeleton} or
@@ -41,7 +41,11 @@ leverages the python navis / fafbseg-py packages and you will need to
 install these, typically using the \code{\link[fafbseg]{simple_python}}
 function.
 
-See \code{\link[fafbseg]{read_l2skel}} for additional details.
+\code{fanc_read_l2skel} treats the dataset argument a little differently
+than \code{fanc_read_l2dp} because it actually needs to identify two data sources
+a CAVE data
+
+See \code{\link[fafbseg]{read_l2skel}} for additional details of
 }
 \examples{
 

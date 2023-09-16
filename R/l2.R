@@ -5,8 +5,9 @@
 #'
 #' @description \code{fanc_read_l2dp} reads one or more neurons as simplified
 #'   dotprops format. See \code{\link[fafbseg]{read_l2skel}}.
+#'
 #' @param dataset An optional CAVE dataset name (expert use only, by default
-#'   will choose the standard FANC dataset).
+#'   will choose the standard FANC dataset). See details.
 #' @inheritParams fafbseg::read_l2skel
 #'
 #' @details \code{fanc_read_l2dp} uses a special data structure for rapid
@@ -15,7 +16,11 @@
 #'   install these, typically using the \code{\link[fafbseg]{simple_python}}
 #'   function.
 #'
-#'   See \code{\link[fafbseg]{read_l2skel}} for additional details.
+#'   \code{fanc_read_l2skel} treats the dataset argument a little differently
+#'   than \code{fanc_read_l2dp} because it actually needs to identify two data sources
+#'   a CAVE data
+#'
+#'   See \code{\link[fafbseg]{read_l2skel}} for additional details of
 #'
 #' @return a \code{\link{neuronlist}} containing one or more
 #'   \code{\link{neuron}} or \code{\link{dotprops}} objects. Note that neurons
@@ -55,8 +60,16 @@ fanc_read_l2dp <- function(id, OmitFailures=TRUE, dataset=NULL, ...) {
 #' @rdname fanc_read_l2dp
 fanc_read_l2skel <- function(id, OmitFailures=TRUE, dataset=NULL, ...) {
   id=fanc_ids(id)
-  if(is.null(dataset))
-    dataset=with_fanc(getOption("fafbseg.cave.datastack_name"))
-  fafbseg::read_l2skel(id, dataset=dataset, OmitFailures=OmitFailures, ...)
+  # partial duplication of fafbseg::read_l2skel
+  fp=fafbseg:::check_fafbsegpy()
+  # manually set the cloudvolume url / cave datastack name
+  # see https://flyconnectome.slack.com/archives/C342Q3H4Y/p1694682637820519
+  if(is.null(dataset)) {
+    ops=choose_fanc(set=F)
+    fp$flywire$utils$FLYWIRE_URLS$FANC = ops$fafbseg.cloudvolume.url
+    fp$flywire$utils$CAVE_DATASETS$FANC = ops$fafbseg.cave.datastack_name
+    dataset="FANC"
+  }
+  sk=fp$flywire$l2_skeleton(id, omit_failures = OmitFailures, dataset=dataset, ...)
+  fafbseg:::navis2nat_neuronlist(sk)
 }
-
