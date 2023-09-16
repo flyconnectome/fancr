@@ -13,9 +13,9 @@
 #' @examples
 #' \donttest{
 #' nuclei_aug2021ver2=fanc_cave_query(table = "nuclei_aug2021ver2")
-#' head(nuclei_aug2021ver2)
-#' hist(nuclei_aug2021ver2$volume)
-#' hist(nuclei_aug2021ver2$volume^(1/3))
+#' head(neuron_somas_dec2022)
+#' hist(neuron_somas_dec2022$volume)
+#' hist(neuron_somas_dec2022$volume^(1/3))
 #' }
 #' \dontrun{
 #' points3d(xyzmatrix(nuclei_aug2021ver2$pt_position))
