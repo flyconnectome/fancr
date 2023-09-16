@@ -16,6 +16,6 @@ Low level access to FANC's CAVE annotation infrastructure
 \donttest{
 fcc=fanc_cave_client()
 tables=fcc$annotation$get_tables()
-fcc$
+fcc$materialize$get_table_metadata(tables[1])
 }
 }
