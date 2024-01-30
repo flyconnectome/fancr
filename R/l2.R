@@ -60,8 +60,14 @@ fanc_read_l2dp <- function(id, OmitFailures=TRUE, dataset=NULL, ...) {
 #' @rdname fanc_read_l2dp
 fanc_read_l2skel <- function(id, OmitFailures=TRUE, dataset=NULL, ...) {
   id=fanc_ids(id)
-  # partial duplication of fafbseg::read_l2skel
+  # partial duplication of fafbseg::read_l2skel for older versions of fafbseg-py
   fp=fafbseg:::check_fafbsegpy()
+
+  if("set_default_dataset" %in% names(fp$flywire)) {
+    # new fafbseg-py, everything is simpler
+    return(with_fanc(fafbseg::read_l2skel(id)))
+  }
+  # this used to work with FANC and older fafbseg-py, but not sure if it still works ...
   # manually set the cloudvolume url / cave datastack name
   # see https://flyconnectome.slack.com/archives/C342Q3H4Y/p1694682637820519
   if(is.null(dataset)) {
