@@ -19,7 +19,7 @@ fanc_segid_from_cellid(
   version = NULL,
   rval = c("ids", "data.frame"),
   integer64 = FALSE,
-  cellid_table = "cell_ids"
+  cellid_table = NULL
 )
 }
 \arguments{
@@ -35,8 +35,8 @@ give only one of \code{version} or \code{timestamp}. When both are missing,
 ids should match the live materialisation version including up to the
 second edits.}
 
-\item{cellid_table}{Optional name of cell id table (the default value should
-be correct).}
+\item{cellid_table}{Optional name of cell id table (the default value of
+\code{NULL} should find the correct table).}
 
 \item{rval}{Whether to return the cell ids or the whole of the CAVE table
 with additional columns.}
