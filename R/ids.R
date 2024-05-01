@@ -158,6 +158,9 @@ fanc_ids <- function(x, integer64=NA) {
 
 #' Convert between FANC cell ids and root ids
 #'
+#' @description Converts between FANC cell ids (should survive most edits) and
+#'   root ids (guaranteed to match just one edit state). See details.
+#'
 #' @details CAVE/PyChunkedGraph assigns a 64 bit integer root id to all bodies
 #'   in the segmentation. These root ids are persistent in a computer science
 #'   sense, which is often the exact opposite of what neuroscientists might
@@ -202,8 +205,10 @@ fanc_ids <- function(x, integer64=NA) {
 #' \donttest{
 #' fanc_cellid_from_segid(fanc_latestid("648518346486614449"))
 #' }
-fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, cellid_table = 'cell_ids', rval=c("ids", 'data.frame')) {
+fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, cellid_table = NULL, rval=c("ids", 'data.frame')) {
   rval=match.arg(rval)
+  if(is.null(cellid_table))
+    cellid_table=fanc_cellid_table()
   if(!is.null(rootids)) {
     rootids=fanc_ids(rootids, integer64=F)
   idlist=list(pt_root_id=rootids)

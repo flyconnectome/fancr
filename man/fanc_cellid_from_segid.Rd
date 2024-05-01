@@ -9,7 +9,7 @@ fanc_cellid_from_segid(
   rootids = NULL,
   timestamp = NULL,
   version = NULL,
-  cellid_table = "cell_ids",
+  cellid_table = NULL,
   rval = c("ids", "data.frame")
 )
 
@@ -54,7 +54,8 @@ character vector or an \code{bit64::integer64} vector depending on the
 \code{integer64} argument.
 }
 \description{
-Convert between FANC cell ids and root ids
+Converts between FANC cell ids (should survive most edits) and
+root ids (guaranteed to match just one edit state). See details.
 }
 \details{
 CAVE/PyChunkedGraph assigns a 64 bit integer root id to all bodies
