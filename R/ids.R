@@ -158,6 +158,9 @@ fanc_ids <- function(x, integer64=NA) {
 
 #' Convert between FANC cell ids and root ids
 #'
+#' @description Converts between FANC cell ids (should survive most edits) and
+#'   root ids (guaranteed to match just one edit state). See details.
+#'
 #' @details CAVE/PyChunkedGraph assigns a 64 bit integer root id to all bodies
 #'   in the segmentation. These root ids are persistent in a computer science
 #'   sense, which is often the exact opposite of what neuroscientists might
@@ -188,8 +191,8 @@ fanc_ids <- function(x, integer64=NA) {
 #'   second edits.
 #' @param rval Whether to return the cell ids or the whole of the CAVE table
 #'   with additional columns.
-#' @param cellid_table Optional name of cell id table (the default value should
-#'   be correct).
+#' @param cellid_table Optional name of cell id table (the default value of
+#'   \code{NULL} should find the correct table).
 #' @return Either a vector of ids or a data.frame depending on \code{rval}. For
 #'   cell ids the vector will be an integer for root ids (segment ids), a
 #'   character vector or an \code{bit64::integer64} vector depending on the
@@ -202,8 +205,10 @@ fanc_ids <- function(x, integer64=NA) {
 #' \donttest{
 #' fanc_cellid_from_segid(fanc_latestid("648518346486614449"))
 #' }
-fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, cellid_table = 'cell_ids', rval=c("ids", 'data.frame')) {
+fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, cellid_table = NULL, rval=c("ids", 'data.frame')) {
   rval=match.arg(rval)
+  if(is.null(cellid_table))
+    cellid_table=fanc_cellid_table()
   if(!is.null(rootids)) {
     rootids=fanc_ids(rootids, integer64=F)
   idlist=list(pt_root_id=rootids)
@@ -233,8 +238,10 @@ fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, c
 #' \donttest{
 #' fanc_cellid_from_segid(fanc_latestid("648518346486614449"))
 #' }
-fanc_segid_from_cellid <- function(cellids=NULL, timestamp=NULL, version=NULL, rval=c("ids", 'data.frame'), integer64=FALSE, cellid_table = 'cell_ids') {
+fanc_segid_from_cellid <- function(cellids=NULL, timestamp=NULL, version=NULL, rval=c("ids", 'data.frame'), integer64=FALSE, cellid_table = NULL) {
   rval=match.arg(rval)
+  if(is.null(cellid_table))
+    cellid_table=fanc_cellid_table()
   if(!is.null(cellids)) {
     cellids <- checkmate::assert_integerish(cellids, coerce = T)
     idlist=list(id=cellids)
@@ -254,3 +261,12 @@ fanc_segid_from_cellid <- function(cellids=NULL, timestamp=NULL, version=NULL, r
     fanc_ids(res[['pt_root_id']][match(cellids, res[['id']])], integer64 = integer64)
   } else res
 }
+
+# private function to return the latest cellids table
+# this is a configurable option in the python package
+fanc_cellid_table <- memoise::memoise(function(fac=fanc_cave_client()) {
+  tables=fac$materialize$tables
+  tablenames=names(tables)
+  seltable=rev(sort(grep("cell_ids", tablenames, value = T)))[1]
+  return(seltable)
+})

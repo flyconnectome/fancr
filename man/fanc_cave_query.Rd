@@ -7,7 +7,7 @@
 fanc_cave_query(table, datastack_name = NULL, live = TRUE, ...)
 }
 \arguments{
-\item{table}{The name of the table to query}
+\item{table}{The name of the table (or view, see views section) to query}
 
 \item{datastack_name}{An optional CAVE \code{datastack_name}. If unset a
 sensible default is chosen.}
