@@ -82,6 +82,7 @@ banc_datastack_name <- function() 'brain_and_nerve_cord'
 banc_scene <- function() "https://spelunker.cave-explorer.org/#!middleauth+https://global.daf-apis.com/nglstate/api/v1/5952656075915264"
 
 #' @rdname choose_fanc
+#' @export
 choose_banc <- function(set=TRUE) {
   fafbseg::choose_segmentation(banc_scene(),
                                set=set,
@@ -127,7 +128,7 @@ fanc_fetch <- function(url, token=fanc_token(), ...) {
 #'   there is no XYZ location / supervoxel id service yet available as yet.
 #'
 #' @rdname choose_fanc
-#'
+#' @export
 #' @examples
 #' \dontrun{
 #' # supervoxel id to root id

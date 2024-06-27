@@ -41,11 +41,13 @@ fanc_cave_client <- function() {
 }
 
 #' @rdname fanc_cave_client
+#' @export
 banc_cave_client <- function() {
   with_banc(flywire_cave_client())
 }
 
 #' @rdname fanc_cave_query
+#' @export
 #' @examples
 #' \dontrun{
 #' library(dplyr)
