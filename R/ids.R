@@ -207,8 +207,13 @@ fanc_ids <- function(x, integer64=NA) {
 #' }
 fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, cellid_table = NULL, rval=c("ids", 'data.frame')) {
   rval=match.arg(rval)
-  if(is.null(cellid_table))
-    cellid_table=fanc_cellid_table()
+  use_banc <- getOption("fancr.use_banc", default = FALSE)
+
+  if(is.null(cellid_table)) {
+    cellid_table=if(use_banc) fanc_cellid_table(fac = banc_cave_client())
+    else fanc_cellid_table()
+  }
+
   if(!is.null(rootids)) {
     rootids=fanc_ids(rootids, integer64=F)
   idlist=list(pt_root_id=rootids)
@@ -240,8 +245,13 @@ fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, c
 #' }
 fanc_segid_from_cellid <- function(cellids=NULL, timestamp=NULL, version=NULL, rval=c("ids", 'data.frame'), integer64=FALSE, cellid_table = NULL) {
   rval=match.arg(rval)
-  if(is.null(cellid_table))
-    cellid_table=fanc_cellid_table()
+  use_banc <- getOption("fancr.use_banc", default = FALSE)
+
+  if(is.null(cellid_table)) {
+    cellid_table=if(use_banc) fanc_cellid_table(fac = banc_cave_client())
+    else fanc_cellid_table()
+  }
+
   if(!is.null(cellids)) {
     cellids <- checkmate::assert_integerish(cellids, coerce = T)
     idlist=list(id=cellids)
