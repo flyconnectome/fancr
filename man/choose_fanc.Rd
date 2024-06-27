@@ -30,7 +30,8 @@ relevant global options (in the style of \code{\link{options}}. If
 \description{
 \code{with_banc} provides a simple way to access the
 \href{https://github.com/jasper-tms/the-BANC-fly-connectome/wiki}{BANC}
-dataset. Just wrap flywire functions with this to target them at the BANC.
+dataset. Just wrap \code{flywire_.*} or \code{fanc_.*} functions with this
+to target them at the BANC.
 }
 \details{
 \code{fancr} inherits a significant amount of infrastructure from
@@ -40,6 +41,9 @@ containing URIs pointing to voxel-wise segmentation, mesh etc data. These
 are normally contained within a single neuroglancer URL which points to
 multiple data layers. For FANC this is the neuroglancer scene returned by
 \code{\link{fanc_scene}}.
+
+note that \code{with_banc(fanc_xyz2id)} is not yet functional as
+there is no XYZ location / supervoxel id service yet available as yet.
 }
 \examples{
 \dontrun{
@@ -56,11 +60,10 @@ with_fanc(fafbseg::flywire_latestid('648518346494405175'))
 \dontrun{
 # supervoxel id to root id
 with_banc(fafbseg::flywire_rootid('76071705504180616'))
-#
+# is this id up to date?
 with_banc(fafbseg::flywire_islatest('720575941472355131'))
-#
+# find up to date root id
 with_banc(fafbseg::flywire_latestid('720575941472355131'))
-
 }
 
 }

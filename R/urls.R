@@ -79,12 +79,16 @@ choose_fanc <- function(set=TRUE) {
 }
 
 banc_datastack_name <- function() 'brain_and_nerve_cord'
+banc_scene <- function() "https://spelunker.cave-explorer.org/#!middleauth+https://global.daf-apis.com/nglstate/api/v1/5952656075915264"
 
 #' @rdname choose_fanc
 choose_banc <- function(set=TRUE) {
-  fafbseg::choose_segmentation("https://spelunker.cave-explorer.org/#!middleauth+https://global.daf-apis.com/nglstate/api/v1/5952656075915264",
+  fafbseg::choose_segmentation(banc_scene(),
                                set=set,
-                               moreoptions=list(fafbseg.cave.datastack_name=banc_datastack_name()))
+                               moreoptions=list(
+                                 fafbseg.cave.datastack_name=banc_datastack_name(),
+                                 fancr.use_banc=TRUE
+                                 ))
 }
 
 
@@ -101,8 +105,11 @@ choose_banc <- function(set=TRUE) {
 #' with_fanc(fafbseg::flywire_latestid('648518346494405175'))
 #' }
 with_fanc <- function(expr) {
-  op <- choose_fanc(set = TRUE)
-  on.exit(options(op))
+  use_banc <- getOption("fancr.use_banc", default = FALSE)
+  if(!use_banc) {
+    op <- choose_fanc(set = TRUE)
+    on.exit(options(op))
+  }
   force(expr)
 }
 
@@ -113,7 +120,11 @@ fanc_fetch <- function(url, token=fanc_token(), ...) {
 
 #' @description \code{with_banc} provides a simple way to access the
 #'   \href{https://github.com/jasper-tms/the-BANC-fly-connectome/wiki}{BANC}
-#'   dataset. Just wrap flywire functions with this to target them at the BANC.
+#'   dataset. Just wrap \code{flywire_.*} or \code{fanc_.*} functions with this
+#'   to target them at the BANC.
+#'
+#' @details note that \code{with_banc(fanc_xyz2id)} is not yet functional as
+#'   there is no XYZ location / supervoxel id service yet available as yet.
 #'
 #' @rdname choose_fanc
 #'
@@ -121,11 +132,10 @@ fanc_fetch <- function(url, token=fanc_token(), ...) {
 #' \dontrun{
 #' # supervoxel id to root id
 #' with_banc(fafbseg::flywire_rootid('76071705504180616'))
-#' #
+#' # is this id up to date?
 #' with_banc(fafbseg::flywire_islatest('720575941472355131'))
-#' #
+#' # find up to date root id
 #' with_banc(fafbseg::flywire_latestid('720575941472355131'))
-#'
 #' }
 #'
 with_banc <- function(expr) {
