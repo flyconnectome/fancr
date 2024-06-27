@@ -2,12 +2,18 @@
 % Please edit documentation in R/urls.R
 \name{choose_fanc}
 \alias{choose_fanc}
+\alias{choose_banc}
 \alias{with_fanc}
+\alias{with_banc}
 \title{Choose or (temporarily) use the FANC autosegmentation}
 \usage{
 choose_fanc(set = TRUE)
 
+choose_banc(set = TRUE)
+
 with_fanc(expr)
+
+with_banc(expr)
 }
 \arguments{
 \item{set}{Whether or not to permanently set the FANC autosegmentation as the
@@ -22,7 +28,9 @@ relevant global options (in the style of \code{\link{options}}. If
 \code{set=FALSE} a named list containing the option values.
 }
 \description{
-Choose or (temporarily) use the FANC autosegmentation
+\code{with_banc} provides a simple way to access the
+\href{https://github.com/jasper-tms/the-BANC-fly-connectome/wiki}{BANC}
+dataset. Just wrap flywire functions with this to target them at the BANC.
 }
 \details{
 \code{fancr} inherits a significant amount of infrastructure from
@@ -45,4 +53,14 @@ with_fanc(fafbseg::flywire_islatest('648518346498254576'))
 with_fanc(fafbseg::flywire_latestid('648518346498254576'))
 with_fanc(fafbseg::flywire_latestid('648518346494405175'))
 }
+\dontrun{
+# supervoxel id to root id
+with_banc(fafbseg::flywire_rootid('76071705504180616'))
+#
+with_banc(fafbseg::flywire_islatest('720575941472355131'))
+#
+with_banc(fafbseg::flywire_latestid('720575941472355131'))
+
+}
+
 }

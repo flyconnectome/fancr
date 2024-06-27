@@ -78,6 +78,16 @@ choose_fanc <- function(set=TRUE) {
                                moreoptions=list(fafbseg.cave.datastack_name=fanc_datastack_name()))
 }
 
+banc_datastack_name <- function() 'brain_and_nerve_cord'
+
+#' @rdname choose_fanc
+choose_banc <- function(set=TRUE) {
+  fafbseg::choose_segmentation("https://spelunker.cave-explorer.org/#!middleauth+https://global.daf-apis.com/nglstate/api/v1/5952656075915264",
+                               set=set,
+                               moreoptions=list(fafbseg.cave.datastack_name=banc_datastack_name()))
+}
+
+
 #' @param expr An expression to evaluate while FANC is the default
 #'   autosegmentation
 #' @rdname choose_fanc
@@ -98,4 +108,28 @@ with_fanc <- function(expr) {
 
 fanc_fetch <- function(url, token=fanc_token(), ...) {
   flywire_fetch(url, token=token, ...)
+}
+
+
+#' @description \code{with_banc} provides a simple way to access the
+#'   \href{https://github.com/jasper-tms/the-BANC-fly-connectome/wiki}{BANC}
+#'   dataset. Just wrap flywire functions with this to target them at the BANC.
+#'
+#' @rdname choose_fanc
+#'
+#' @examples
+#' \dontrun{
+#' # supervoxel id to root id
+#' with_banc(fafbseg::flywire_rootid('76071705504180616'))
+#' #
+#' with_banc(fafbseg::flywire_islatest('720575941472355131'))
+#' #
+#' with_banc(fafbseg::flywire_latestid('720575941472355131'))
+#'
+#' }
+#'
+with_banc <- function(expr) {
+  op <- choose_banc(set = TRUE)
+  on.exit(options(op))
+  force(expr)
 }

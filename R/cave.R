@@ -40,3 +40,22 @@ fanc_cave_client <- function() {
   with_fanc(flywire_cave_client())
 }
 
+#' @rdname fanc_cave_client
+banc_cave_client <- function() {
+  with_banc(flywire_cave_client())
+}
+
+#' @rdname fanc_cave_query
+#' @examples
+#' \dontrun{
+#' library(dplyr)
+#' cell_info=banc_cave_query('cell_info')
+#' cell_info %>%
+#'   filter(tag2=='anterior-posterior projection pattern') %>%
+#'   count(tag)
+#' }
+banc_cave_query <- function(table, datastack_name = NULL, live=TRUE, ...) {
+  if(is.null(datastack_name)) datastack_name=banc_datastack_name()
+  fafbseg::flywire_cave_query(table = table, datastack_name = datastack_name, live=live, ...)
+}
+

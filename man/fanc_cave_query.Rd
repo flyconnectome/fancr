@@ -2,9 +2,12 @@
 % Please edit documentation in R/cave.R
 \name{fanc_cave_query}
 \alias{fanc_cave_query}
+\alias{banc_cave_query}
 \title{Query FANC tables in the CAVE annotation system}
 \usage{
 fanc_cave_query(table, datastack_name = NULL, live = TRUE, ...)
+
+banc_cave_query(table, datastack_name = NULL, live = TRUE, ...)
 }
 \arguments{
 \item{table}{The name of the table (or view, see views section) to query}
@@ -33,6 +36,13 @@ hist(neuron_somas_dec2022$volume^(1/3))
 }
 \dontrun{
 points3d(xyzmatrix(nuclei_aug2021ver2$pt_position))
+}
+\dontrun{
+library(dplyr)
+cell_info=banc_cave_query('cell_info')
+cell_info \%>\%
+  filter(tag2=='anterior-posterior projection pattern') \%>\%
+  count(tag)
 }
 }
 \seealso{
