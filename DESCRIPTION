@@ -35,15 +35,20 @@ Suggests:
     usethis,
     rmarkdown,
     spelling,
-    arrow
+    arrow,
 Remotes: 
     natverse/nat,
+    natverse/nat.nblast,
     natverse/fafbseg,
     natverse/nat.flybrains,
     natverse/nat.templatebrains
 Config/testthat/edition: 3
+Config/Needs/website: 
+    knitr,
+    nat.nblast
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
+VignetteBuilder: knitr
