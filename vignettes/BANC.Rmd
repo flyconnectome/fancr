@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-have_fafbsegpy=fafbseg:::check_fafbsegpy()
+have_fafbsegpy=!inherits(try(fafbseg:::check_fafbsegpy(), silent = TRUE), 'try-error')
 ```
 
 ```{r setup, message=FALSE}
