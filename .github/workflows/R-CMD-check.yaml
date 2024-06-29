@@ -39,7 +39,7 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck, any::pkgdown, catmaid=natverse/rcatmaid
-          needs: check
+          needs: check, website
 
       - name: Fix Conda permissions on macOS
         if: runner.os == 'macOS'
