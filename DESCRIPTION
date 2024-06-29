@@ -36,7 +36,8 @@ Suggests:
     rmarkdown,
     spelling,
     arrow,
-    knitr
+    knitr,
+    nat.nblast
 Remotes: 
     natverse/nat,
     natverse/nat.nblast,
