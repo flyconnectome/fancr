@@ -31,6 +31,14 @@ relevant global options (in the style of \code{\link{options}}. If
 \code{set=FALSE} a named list containing the option values.
 }
 \description{
+\code{choose_fanc} with \code{set=T} (the default) permanently
+sets FANC to be the default dataset for \code{flywire_.*} functions,
+whereas \code{with_fanc(expr)} runs \code{expr} with FANC as the temporary
+target dataset.
+
+\code{choose_banc} will permanently change the default dataset
+to BANC. Remember to switch back with \code{choose_fanc} if needed.
+
 \code{with_banc} provides a simple way to access the
 \href{https://github.com/jasper-tms/the-BANC-fly-connectome/wiki}{BANC}
 dataset. Just wrap \code{flywire_.*} or \code{fanc_.*} functions with this
@@ -44,6 +52,9 @@ containing URIs pointing to voxel-wise segmentation, mesh etc data. These
 are normally contained within a single neuroglancer URL which points to
 multiple data layers. For FANC this is the neuroglancer scene returned by
 \code{\link{fanc_scene}}.
+
+In general we would recommend using \code{fanc_.*} functions or
+\code{with_fanc} if you expect to interact with multiple datasets.
 
 note that \code{with_banc(fanc_xyz2id)} is not yet functional as
 there is no XYZ location / supervoxel id service yet available as yet.

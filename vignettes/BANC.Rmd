@@ -25,7 +25,7 @@ library(dplyr)
 
 The BANC is a female brain and nerve cord dataset imaged by Wei Lee's lab (Minsu Kim and Jasper Phelps). See its [wiki](https://github.com/jasper-tms/the-BANC-fly-connectome/wiki). 
 Since the BANC infrastructure is most similar to FANC (the female adult nerve cord),
-we have decided to use the fancr package to provide some basic functionality to
+we have decided to use the *fancr* package to provide some basic functionality to
 interact with the BANC dataset.
 
 ### with_banc and choose_banc
@@ -100,5 +100,31 @@ library(nat.nblast)
 aba=nblast_allbyall(dps)
 hc=nhclust(scoremat = aba)
 plot(hc)
+```
+
+## Using multiple datasets
+
+If you use `choose_banc()` to set BANC as the default dataset, then don't forget
+to use `choose_fanc()` or `fafbseg::choose_segmentation()` to switch to a different
+active segmentation.
+
+If you expect to switch between multiple datasets in a session, we recommend
+avoiding the `choose_banc()` function since this will cause all `fanc_.*` functions
+to target BANC. Instead you can use `with_banc()`
+
+```{r, eval=FALSE}
+with_banc(fanc_rootid(c("76070056370827492", "76142074315307608", "76142074315367069")))
+```
+This does mean a bit more typing but it will probably avoid problems.
+
+Note that you do opti to use `choose_banc()`, then you can use `with_fanc` to ensure
+that any fanc function indeed targets FANC.
+
+```{r}
+choose_banc()
+# a banc supervoxel id
+fanc_rootid("76070056370827492")
+# a fanc supervoxel id
+with_fanc(fanc_rootid("73186243730767724"))
 ```
 

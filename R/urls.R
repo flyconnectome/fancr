@@ -52,6 +52,11 @@ fanc_scene <- function(ids=NULL, open=FALSE) {
 
 #' Choose or (temporarily) use the FANC autosegmentation
 #'
+#' @description \code{choose_fanc} with \code{set=T} (the default) permanently
+#'   sets FANC to be the default dataset for \code{flywire_.*} functions,
+#'   whereas \code{with_fanc(expr)} runs \code{expr} with FANC as the temporary
+#'   target dataset.
+#'
 #' @details \code{fancr} inherits a significant amount of infrastructure from
 #'   the \code{\link{fafbseg}} package. This has the concept of the
 #'   \emph{active} autosegmentation, which in turn defines one or more R options
@@ -59,6 +64,10 @@ fanc_scene <- function(ids=NULL, open=FALSE) {
 #'   are normally contained within a single neuroglancer URL which points to
 #'   multiple data layers. For FANC this is the neuroglancer scene returned by
 #'   \code{\link{fanc_scene}}.
+#'
+#'   In general we would recommend using \code{fanc_.*} functions or
+#'   \code{with_fanc} if you expect to interact with multiple datasets.
+#'
 #' @param set Whether or not to permanently set the FANC autosegmentation as the
 #'   default for \code{\link{fafbseg}} functions.
 
@@ -75,12 +84,16 @@ fanc_scene <- function(ids=NULL, open=FALSE) {
 #' }
 choose_fanc <- function(set=TRUE) {
   fafbseg::choose_segmentation(fanc_scene(), set=set,
-                               moreoptions=list(fafbseg.cave.datastack_name=fanc_datastack_name()))
+                               moreoptions=list(fafbseg.cave.datastack_name=fanc_datastack_name(),
+                                                fancr.use_banc=FALSE))
 }
 
 banc_datastack_name <- function() 'brain_and_nerve_cord'
 banc_scene <- function() "https://spelunker.cave-explorer.org/#!middleauth+https://global.daf-apis.com/nglstate/api/v1/5952656075915264"
 
+#' @description \code{choose_banc} will permanently change the default dataset
+#'   to BANC. Remember to switch back with \code{choose_fanc} if needed.
+#'
 #' @rdname choose_fanc
 #' @export
 choose_banc <- function(set=TRUE) {
