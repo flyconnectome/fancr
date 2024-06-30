@@ -95,6 +95,8 @@ choose_banc <- function(set=TRUE) {
 
 #' @param expr An expression to evaluate while FANC is the default
 #'   autosegmentation
+#' @param force Whether to insist on using FANC even if BANC is the active
+#'   dataset. This option defaults to TRUE for the convenience of end users.
 #' @rdname choose_fanc
 #' @export
 #' @examples
@@ -105,8 +107,8 @@ choose_banc <- function(set=TRUE) {
 #' with_fanc(fafbseg::flywire_latestid('648518346498254576'))
 #' with_fanc(fafbseg::flywire_latestid('648518346494405175'))
 #' }
-with_fanc <- function(expr) {
-  use_banc <- getOption("fancr.use_banc", default = FALSE)
+with_fanc <- function(expr, force=TRUE) {
+  use_banc <- !force && getOption("fancr.use_banc", default = FALSE)
   if(!use_banc) {
     op <- choose_fanc(set = TRUE)
     on.exit(options(op))

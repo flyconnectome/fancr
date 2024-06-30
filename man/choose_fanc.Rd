@@ -11,7 +11,7 @@ choose_fanc(set = TRUE)
 
 choose_banc(set = TRUE)
 
-with_fanc(expr)
+with_fanc(expr, force = TRUE)
 
 with_banc(expr)
 }
@@ -21,6 +21,9 @@ default for \code{\link{fafbseg}} functions.}
 
 \item{expr}{An expression to evaluate while FANC is the default
 autosegmentation}
+
+\item{force}{Whether to insist on using FANC even if BANC is the active
+dataset. This option defaults to TRUE for the convenience of end users.}
 }
 \value{
 If \code{set=TRUE} a list containing the previous values of the

@@ -4,7 +4,7 @@ fanc_cloudvolume <- function(...) {
 }
 
 fanc_cloudvolume_url <- function() {
-  rr=with_fanc(getOption("fafbseg.cloudvolume.url"))
+  rr=with_fanc(getOption("fafbseg.cloudvolume.url"), force = FALSE)
   sub("graphene://middleauth+", "graphene://", rr, fixed = TRUE)
 }
 
@@ -73,6 +73,6 @@ fanc_api_report <- function() {
     print(ff)
   }
 
-  u=with_fanc(fafbseg:::check_cloudvolume_url(set = F))
+  u=with_fanc(fafbseg:::check_cloudvolume_url(set = F), force = FALSE)
   cat("\nZetta cloudvolume URL:", u)
 }

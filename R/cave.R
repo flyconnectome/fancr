@@ -37,7 +37,7 @@ fanc_cave_query <- function(table, datastack_name = NULL, live=TRUE, ...) {
 #' fcc$materialize$get_table_metadata(tables[1])
 #' }
 fanc_cave_client <- function() {
-  with_fanc(flywire_cave_client())
+  with_fanc(flywire_cave_client(), force = FALSE)
 }
 
 #' @rdname fanc_cave_client

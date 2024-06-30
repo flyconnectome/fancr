@@ -105,7 +105,7 @@ fanc_supervoxels <- function(x, voxdims=c(4.3,4.3,45)) {
 #' @examples
 #' fanc_islatest("648518346473954669")
 fanc_islatest <- function(x, timestamp=NULL, ...) {
-  with_fanc(flywire_islatest(x=x, timestamp = timestamp, ...))
+  with_fanc(flywire_islatest(x=x, timestamp = timestamp, ...), force = FALSE)
 }
 
 
@@ -122,7 +122,7 @@ fanc_islatest <- function(x, timestamp=NULL, ...) {
 #' fanc_latestid("648518346473954669")
 #' }
 fanc_latestid <- function(rootid, sample=1000L, cloudvolume.url=NULL, Verbose=FALSE, ...) {
-  with_fanc(flywire_latestid(rootid=rootid, sample = sample, Verbose=Verbose, ...))
+  with_fanc(flywire_latestid(rootid=rootid, sample = sample, Verbose=Verbose, ...), force = FALSE)
 }
 
 
