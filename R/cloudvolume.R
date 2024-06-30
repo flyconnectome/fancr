@@ -4,7 +4,8 @@ fanc_cloudvolume <- function(...) {
 }
 
 fanc_cloudvolume_url <- function() {
-  with_fanc(getOption("fafbseg.cloudvolume.url"))
+  rr=with_fanc(getOption("fafbseg.cloudvolume.url"))
+  sub("graphene://middleauth+", "graphene://", rr, fixed = TRUE)
 }
 
 fanc_api_url <- function(endpoint="") {
