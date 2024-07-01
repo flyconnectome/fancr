@@ -45,3 +45,15 @@
 #' boundingbox(BANC)
 "BANC"
 
+#' Provisional mirroring registration for BANC (lanmarks+thin plate splines)
+#'
+#' @name mirror_banc_lm
+#' @docType data
+#' @description This is calibrated in nm. See \code{data-raw/mirror_banc.R} for
+#'   details of how it was generated. It is still provisional pending synpase
+#'   cloud-based registrations.
+#'
+#' @examples
+#' utils::str(mirror_banc_lm)
+"mirror_banc_lm"
+

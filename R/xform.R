@@ -82,3 +82,53 @@ transform_fanc2manc <- function(x, inverse = F, ...) {
   reg = fanc_to_manc_reg()
   xform(x, reg=reg, swap=inverse,... )
 }
+
+
+#' Mirror points, neurons in BANC space
+#'
+#' @param x Points, neurons or other objects compatible with \code{xyzmatrix}
+#' @param units Units for both input \emph{and} output data.
+#' @param subset Optional argument to transform only a subset of a neuron list.
+#'
+#' @return Trge transformed object (calibrated according to the units argument)
+#' @export
+#'
+#' @examples
+#' BANC.surf.m <- mirror_banc(BANC.surf)
+#' \dontrun{
+#' library(nat)
+#' wire3d(BANC.surf)
+#' # clearly not great in some places, especially optic lobe, but still useful
+#' wire3d(BANC.surf.m, col='red')
+#' }
+mirror_banc <- function(x, units=c("nm", "microns", "raw"), subset=NULL) {
+  units=match.arg(units)
+
+  if(!is.null(subset)) {
+    xs=x[subset]
+    xst=mirror_banc(xs, units = units, mirror_reg = fancr::mirror_banc_lm)
+    x[subset]=xst
+    return(x)
+  }
+  BANCmesh=templatebrain("BANC",
+                     BoundingBox = structure(c(79392.9, 966179.9, 35524.5, 1131169.6, -62.8, 315466.7
+                     ), dim = 2:3, class = "boundingbox"))
+  # convert to nm if necessary
+  xyz=xyzmatrix(x)
+  if(units=='microns')
+    xyz=xyz*1e3
+  else if(units=='raw')
+    xyz=banc_raw2nm(xyz)
+
+  xyzf=mirror_brain(x, brain = BANCmesh, mirrorAxis = 'X', transform = 'flip')
+  xyzf2=xform(xyzf, reg = fancr::mirror_banc_lm)
+
+  # convert from nm to original units if necessary
+  if(units=='microns')
+    xyzf2=xyzf2/1e3
+  else if(units=='raw')
+    xyzf2=banc_nm2raw(xyzf2)
+
+  xyzmatrix(x)=xyzf2
+  x
+}
