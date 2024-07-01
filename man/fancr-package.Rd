@@ -12,6 +12,7 @@ Access to the FANC EM dataset, focussing on support for autosegmentation. Organi
 Useful links:
 \itemize{
   \item \url{https://github.com/flyconnectome/fancr}
+  \item \url{https://flyconnectome.github.io/fancr/}
   \item Report bugs at \url{https://github.com/flyconnectome/fancr/issues}
 }
 
