@@ -29,13 +29,14 @@ Query FANC tables in the CAVE annotation system
 }
 \examples{
 \donttest{
-nuclei_aug2021ver2=fanc_cave_query(table = "nuclei_aug2021ver2")
+#nucleus_mar2022=fanc_cave_query(table = "nucleus_mar2022")
+neuron_somas_dec2022=fanc_cave_query(table = "neuron_somas_dec2022")
 head(neuron_somas_dec2022)
 hist(neuron_somas_dec2022$volume)
 hist(neuron_somas_dec2022$volume^(1/3))
 }
 \dontrun{
-points3d(xyzmatrix(nuclei_aug2021ver2$pt_position))
+points3d(fanc_raw2nm(neuron_somas_dec2022$pt_position), col='red')
 }
 \dontrun{
 library(dplyr)

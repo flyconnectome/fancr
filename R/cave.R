@@ -12,13 +12,14 @@
 #' @seealso \code{\link[fafbseg]{flywire_cave_query}}
 #' @examples
 #' \donttest{
-#' nuclei_aug2021ver2=fanc_cave_query(table = "nuclei_aug2021ver2")
+#' #nucleus_mar2022=fanc_cave_query(table = "nucleus_mar2022")
+#' neuron_somas_dec2022=fanc_cave_query(table = "neuron_somas_dec2022")
 #' head(neuron_somas_dec2022)
 #' hist(neuron_somas_dec2022$volume)
 #' hist(neuron_somas_dec2022$volume^(1/3))
 #' }
 #' \dontrun{
-#' points3d(xyzmatrix(nuclei_aug2021ver2$pt_position))
+#' points3d(fanc_raw2nm(neuron_somas_dec2022$pt_position), col='red')
 #' }
 fanc_cave_query <- function(table, datastack_name = NULL, live=TRUE, ...) {
   if(is.null(datastack_name)) datastack_name=fanc_datastack_name()
