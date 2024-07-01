@@ -14,7 +14,7 @@ mirror_banc(x, units = c("nm", "microns", "raw"), subset = NULL)
 \item{subset}{Optional argument to transform only a subset of a neuron list.}
 }
 \value{
-Trge transformed object (calibrated according to the units argument)
+The transformed object (calibrated according to the units argument)
 }
 \description{
 Mirror points, neurons in BANC space

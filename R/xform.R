@@ -90,8 +90,10 @@ transform_fanc2manc <- function(x, inverse = F, ...) {
 #' @param units Units for both input \emph{and} output data.
 #' @param subset Optional argument to transform only a subset of a neuron list.
 #'
-#' @return Trge transformed object (calibrated according to the units argument)
+#' @return The transformed object (calibrated according to the units argument)
 #' @export
+#' @importFrom nat.templatebrains mirror_brain templatebrain
+#' @importFrom nat xyzmatrix<-
 #'
 #' @examples
 #' BANC.surf.m <- mirror_banc(BANC.surf)
@@ -102,11 +104,13 @@ transform_fanc2manc <- function(x, inverse = F, ...) {
 #' wire3d(BANC.surf.m, col='red')
 #' }
 mirror_banc <- function(x, units=c("nm", "microns", "raw"), subset=NULL) {
+  # for thin plate splines
+  check_package_available("Morpho")
   units=match.arg(units)
 
   if(!is.null(subset)) {
     xs=x[subset]
-    xst=mirror_banc(xs, units = units, mirror_reg = fancr::mirror_banc_lm)
+    xst=mirror_banc(xs, units = units)
     x[subset]=xst
     return(x)
   }
@@ -122,7 +126,6 @@ mirror_banc <- function(x, units=c("nm", "microns", "raw"), subset=NULL) {
 
   xyzf=mirror_brain(x, brain = BANCmesh, mirrorAxis = 'X', transform = 'flip')
   xyzf2=xform(xyzf, reg = fancr::mirror_banc_lm)
-
   # convert from nm to original units if necessary
   if(units=='microns')
     xyzf2=xyzf2/1e3

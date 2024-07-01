@@ -38,7 +38,8 @@ Suggests:
     spelling,
     arrow,
     knitr,
-    nat.nblast
+    nat.nblast,
+    Morpho
 Remotes: 
     natverse/nat,
     natverse/nat.nblast,
