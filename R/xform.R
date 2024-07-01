@@ -153,6 +153,9 @@ mirror_banc <- function(x, units=c("nm", "microns", "raw"), subset=NULL) {
 #' @return A vector of point displacements (calibrated according to
 #'   \code{units}, nm is the default) where 0 is at the midline and positive
 #'   values are to the fly's right.
+#' @export
+#' @importFrom nat is.neuronlist nvertices
+#' @importFrom dplyr group_by summarise
 #' @inheritParams mirror_banc
 #' @seealso \code{\link{mirror_banc}}
 #' @examples
@@ -169,7 +172,7 @@ banc_lr_position <- function(x, units=c("nm", "microns", "raw"), group=FALSE) {
     if(!is.neuronlist(x))
       stop("I only know how to group results for neuronlists")
     df=data.frame(lrdiff=lrdiff, id=rep(names(x), nvertices(x)))
-    dff=dplyr::group_by(df, .data$id) %>% dplyr::summarise(lrdiff=mean(lrdiff))
+    dff=summarise(group_by(df, .data$id), lrdiff=mean(lrdiff))
     # group / summarise reorders result ...
     lrdiff=dff$lrdiff[match(names(x), dff$id)]
   }
