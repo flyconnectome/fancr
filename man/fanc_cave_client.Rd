@@ -2,9 +2,12 @@
 % Please edit documentation in R/cave.R
 \name{fanc_cave_client}
 \alias{fanc_cave_client}
+\alias{banc_cave_client}
 \title{Low level access to FANC's CAVE annotation infrastructure}
 \usage{
 fanc_cave_client()
+
+banc_cave_client()
 }
 \value{
 A reticulate R object wrapping the python CAVEclient.

@@ -2,12 +2,18 @@
 % Please edit documentation in R/urls.R
 \name{choose_fanc}
 \alias{choose_fanc}
+\alias{choose_banc}
 \alias{with_fanc}
+\alias{with_banc}
 \title{Choose or (temporarily) use the FANC autosegmentation}
 \usage{
 choose_fanc(set = TRUE)
 
-with_fanc(expr)
+choose_banc(set = TRUE)
+
+with_fanc(expr, force = TRUE)
+
+with_banc(expr)
 }
 \arguments{
 \item{set}{Whether or not to permanently set the FANC autosegmentation as the
@@ -15,6 +21,9 @@ default for \code{\link{fafbseg}} functions.}
 
 \item{expr}{An expression to evaluate while FANC is the default
 autosegmentation}
+
+\item{force}{Whether to insist on using FANC even if BANC is the active
+dataset. This option defaults to TRUE for the convenience of end users.}
 }
 \value{
 If \code{set=TRUE} a list containing the previous values of the
@@ -22,7 +31,18 @@ relevant global options (in the style of \code{\link{options}}. If
 \code{set=FALSE} a named list containing the option values.
 }
 \description{
-Choose or (temporarily) use the FANC autosegmentation
+\code{choose_fanc} with \code{set=T} (the default) permanently
+sets FANC to be the default dataset for \code{flywire_.*} functions,
+whereas \code{with_fanc(expr)} runs \code{expr} with FANC as the temporary
+target dataset.
+
+\code{choose_banc} will permanently change the default dataset
+to BANC. Remember to switch back with \code{choose_fanc} if needed.
+
+\code{with_banc} provides a simple way to access the
+\href{https://github.com/jasper-tms/the-BANC-fly-connectome/wiki}{BANC}
+dataset. Just wrap \code{flywire_.*} or \code{fanc_.*} functions with this
+to target them at the BANC.
 }
 \details{
 \code{fancr} inherits a significant amount of infrastructure from
@@ -32,6 +52,12 @@ containing URIs pointing to voxel-wise segmentation, mesh etc data. These
 are normally contained within a single neuroglancer URL which points to
 multiple data layers. For FANC this is the neuroglancer scene returned by
 \code{\link{fanc_scene}}.
+
+In general we would recommend using \code{fanc_.*} functions or
+\code{with_fanc} if you expect to interact with multiple datasets.
+
+note that \code{with_banc(fanc_xyz2id)} is not yet functional as
+there is no XYZ location / supervoxel id service yet available as yet.
 }
 \examples{
 \dontrun{
@@ -45,4 +71,13 @@ with_fanc(fafbseg::flywire_islatest('648518346498254576'))
 with_fanc(fafbseg::flywire_latestid('648518346498254576'))
 with_fanc(fafbseg::flywire_latestid('648518346494405175'))
 }
+\dontrun{
+# supervoxel id to root id
+with_banc(fafbseg::flywire_rootid('76071705504180616'))
+# is this id up to date?
+with_banc(fafbseg::flywire_islatest('720575941472355131'))
+# find up to date root id
+with_banc(fafbseg::flywire_latestid('720575941472355131'))
+}
+
 }

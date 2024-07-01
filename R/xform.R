@@ -82,3 +82,99 @@ transform_fanc2manc <- function(x, inverse = F, ...) {
   reg = fanc_to_manc_reg()
   xform(x, reg=reg, swap=inverse,... )
 }
+
+
+#' Mirror points, neurons in BANC space
+#'
+#' @details This is mirroring registration is currently not bad in central brain
+#' and thoracic ganglion, not so good in abdominal ganglion, very poor in optic
+#' lobes.
+#'
+#' @param x Points, neurons or other objects compatible with \code{xyzmatrix}
+#' @param units Units for both input \emph{and} output data.
+#' @param subset Optional argument to transform only a subset of a neuron list.
+#'
+#' @return The transformed object (calibrated according to the units argument)
+#' @export
+#' @importFrom nat.templatebrains mirror_brain templatebrain
+#' @importFrom nat xyzmatrix<-
+#' @seealso \code{\link{banc_lr_position}}
+#' @examples
+#' BANC.surf.m <- mirror_banc(BANC.surf)
+#' \dontrun{
+#' library(nat)
+#' wire3d(BANC.surf)
+#' # clearly not great in some places, especially optic lobe, but still useful
+#' wire3d(BANC.surf.m, col='red')
+#' }
+mirror_banc <- function(x, units=c("nm", "microns", "raw"), subset=NULL) {
+  # for thin plate splines
+  check_package_available("Morpho")
+  units=match.arg(units)
+
+  if(!is.null(subset)) {
+    xs=x[subset]
+    xst=mirror_banc(xs, units = units)
+    x[subset]=xst
+    return(x)
+  }
+  BANCmesh=templatebrain("BANC",
+                     BoundingBox = structure(c(79392.9, 966179.9, 35524.5, 1131169.6, -62.8, 315466.7
+                     ), dim = 2:3, class = "boundingbox"))
+  # convert to nm if necessary
+  xyz=xyzmatrix(x)
+  if(units=='microns')
+    xyz=xyz*1e3
+  else if(units=='raw')
+    xyz=banc_raw2nm(xyz)
+
+  xyzf=mirror_brain(x, brain = BANCmesh, mirrorAxis = 'X', transform = 'flip')
+  xyzf2=xform(xyzf, reg = fancr::mirror_banc_lm)
+  # convert from nm to original units if necessary
+  if(units=='microns')
+    xyzf2=xyzf2/1e3
+  else if(units=='raw')
+    xyzf2=banc_nm2raw(xyzf2)
+
+  xyzmatrix(x)=xyzf2
+  x
+}
+
+
+#' Predict whether a point is on the left or right of the BANC dataset
+#'
+#' @details This is not perfect as it assumes that the X displacement from the
+#'   midline is a good indicator of LR displacement. This is generally true but
+#'   not infallible. Furthermore it will only be as good as the registration
+#'   used by \code{\link{mirror_banc}} (still variable).
+#' @param x An object from which xyzmatrix can extract points, calibrated in nm.
+#' @param group Whether to return the mean displacement per neuron (when
+#'   \code{x} is a \code{neuronlist})
+#' @return A vector of point displacements (calibrated according to
+#'   \code{units}, nm is the default) where 0 is at the midline and positive
+#'   values are to the fly's right.
+#' @export
+#' @importFrom nat is.neuronlist nvertices
+#' @importFrom dplyr group_by summarise
+#' @inheritParams mirror_banc
+#' @seealso \code{\link{mirror_banc}}
+#' @examples
+#' library(nat)
+#' lrdiffs=banc_lr_position(xyzmatrix(BANC.surf))
+#' \dontrun{
+#' points3d(xyzmatrix(BANC.surf), col=ifelse(lrdiffs>0, 'green', 'red'))
+#' }
+banc_lr_position <- function(x, units=c("nm", "microns", "raw"), group=FALSE) {
+  xyz=xyzmatrix(x)
+  xyzt=mirror_banc(xyz, units = units)
+  lrdiff=xyzt[,1]-xyz[,1]
+  if(group) {
+    if(!is.neuronlist(x))
+      stop("I only know how to group results for neuronlists")
+    df=data.frame(lrdiff=lrdiff, id=rep(names(x), nvertices(x)))
+    dff=summarise(group_by(df, .data$id), lrdiff=mean(lrdiff))
+    # group / summarise reorders result ...
+    lrdiff=dff$lrdiff[match(names(x), dff$id)]
+  }
+  lrdiff
+}

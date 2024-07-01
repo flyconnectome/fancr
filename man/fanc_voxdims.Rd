@@ -2,15 +2,24 @@
 % Please edit documentation in R/coords.R
 \name{fanc_voxdims}
 \alias{fanc_voxdims}
+\alias{banc_voxdims}
 \alias{fanc_nm2raw}
 \alias{fanc_raw2nm}
+\alias{banc_raw2nm}
+\alias{banc_nm2raw}
 \title{Handle raw and nm calibrated FANC coordinates}
 \usage{
 fanc_voxdims(url = choose_fanc(set = FALSE)[["fafbseg.sampleurl"]])
 
+banc_voxdims(url = choose_banc(set = FALSE)[["fafbseg.sampleurl"]])
+
 fanc_nm2raw(x, vd = fanc_voxdims())
 
 fanc_raw2nm(x, vd = fanc_voxdims())
+
+banc_raw2nm(x, vd = banc_voxdims())
+
+banc_nm2raw(x, vd = banc_voxdims())
 }
 \arguments{
 \item{url}{Optional neuroglancer URL containing voxel size. Defaults to
@@ -31,6 +40,9 @@ coordinates
 \description{
 \code{fanc_voxdims} returns the image voxel dimensions which
 are normally used to scale between \bold{raw} and \bold{nm} coordinates.
+
+\code{banc_voxdims} returns the image voxel dimensions for the
+BANC which are normally used to scale between raw and nm coordinates.
 }
 \details{
 relies on nat >= 1.10.4

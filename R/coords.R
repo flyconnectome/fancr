@@ -17,6 +17,16 @@ fanc_voxdims <- memoise::memoise(function(url=choose_fanc(set=FALSE)[['fafbseg.s
 })
 
 
+#' @description \code{banc_voxdims} returns the image voxel dimensions for the
+#'   BANC which are normally used to scale between raw and nm coordinates.
+#'
+#' @rdname fanc_voxdims
+#' @export
+banc_voxdims <- memoise::memoise(function(url=choose_banc(set=FALSE)[['fafbseg.sampleurl']]) {
+  fafbseg::flywire_voxdims(url)
+})
+
+
 #' @param x 3D coordinates in any form compatible with \code{\link{xyzmatrix}}
 #'
 #' @return for \code{fanc_raw2nm} and \code{fanc_nm2raw} an Nx3 matrix of
@@ -49,3 +59,12 @@ fanc_raw2nm <- function(x, vd=fanc_voxdims()) {
   xyz[,3]=xyz[,3]*vd[3]
   xyz
 }
+
+#' @export
+#' @rdname fanc_voxdims
+banc_raw2nm <- function(x, vd=banc_voxdims()) fanc_raw2nm(x, vd=vd)
+
+#' @export
+#' @rdname fanc_voxdims
+banc_nm2raw <- function(x, vd=banc_voxdims()) fanc_nm2raw(x, vd=vd)
+

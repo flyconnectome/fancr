@@ -36,7 +36,7 @@ fanc_partner_summary <- function(rootids, partners = c("outputs", "inputs"),
                                  ...) {
   if(is.null(datastack_name))
     datastack_name = fanc_datastack_name()
-  with_fanc(
+  with_fanc(force = FALSE,
     fafbseg::flywire_partner_summary(
       rootids,
       threshold = threshold,

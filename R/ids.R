@@ -105,7 +105,7 @@ fanc_supervoxels <- function(x, voxdims=c(4.3,4.3,45)) {
 #' @examples
 #' fanc_islatest("648518346473954669")
 fanc_islatest <- function(x, timestamp=NULL, ...) {
-  with_fanc(flywire_islatest(x=x, timestamp = timestamp, ...))
+  with_fanc(flywire_islatest(x=x, timestamp = timestamp, ...), force = FALSE)
 }
 
 
@@ -122,7 +122,7 @@ fanc_islatest <- function(x, timestamp=NULL, ...) {
 #' fanc_latestid("648518346473954669")
 #' }
 fanc_latestid <- function(rootid, sample=1000L, cloudvolume.url=NULL, Verbose=FALSE, ...) {
-  with_fanc(flywire_latestid(rootid=rootid, sample = sample, Verbose=Verbose, ...))
+  with_fanc(flywire_latestid(rootid=rootid, sample = sample, Verbose=Verbose, ...), force = FALSE)
 }
 
 
@@ -207,8 +207,13 @@ fanc_ids <- function(x, integer64=NA) {
 #' }
 fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, cellid_table = NULL, rval=c("ids", 'data.frame')) {
   rval=match.arg(rval)
-  if(is.null(cellid_table))
-    cellid_table=fanc_cellid_table()
+  use_banc <- getOption("fancr.use_banc", default = FALSE)
+
+  if(is.null(cellid_table)) {
+    cellid_table=if(use_banc) fanc_cellid_table(fac = banc_cave_client())
+    else fanc_cellid_table()
+  }
+
   if(!is.null(rootids)) {
     rootids=fanc_ids(rootids, integer64=F)
   idlist=list(pt_root_id=rootids)
@@ -240,8 +245,13 @@ fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, c
 #' }
 fanc_segid_from_cellid <- function(cellids=NULL, timestamp=NULL, version=NULL, rval=c("ids", 'data.frame'), integer64=FALSE, cellid_table = NULL) {
   rval=match.arg(rval)
-  if(is.null(cellid_table))
-    cellid_table=fanc_cellid_table()
+  use_banc <- getOption("fancr.use_banc", default = FALSE)
+
+  if(is.null(cellid_table)) {
+    cellid_table=if(use_banc) fanc_cellid_table(fac = banc_cave_client())
+    else fanc_cellid_table()
+  }
+
   if(!is.null(cellids)) {
     cellids <- checkmate::assert_integerish(cellids, coerce = T)
     idlist=list(id=cellids)

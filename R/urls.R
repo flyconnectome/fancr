@@ -52,6 +52,11 @@ fanc_scene <- function(ids=NULL, open=FALSE) {
 
 #' Choose or (temporarily) use the FANC autosegmentation
 #'
+#' @description \code{choose_fanc} with \code{set=T} (the default) permanently
+#'   sets FANC to be the default dataset for \code{flywire_.*} functions,
+#'   whereas \code{with_fanc(expr)} runs \code{expr} with FANC as the temporary
+#'   target dataset.
+#'
 #' @details \code{fancr} inherits a significant amount of infrastructure from
 #'   the \code{\link{fafbseg}} package. This has the concept of the
 #'   \emph{active} autosegmentation, which in turn defines one or more R options
@@ -59,6 +64,10 @@ fanc_scene <- function(ids=NULL, open=FALSE) {
 #'   are normally contained within a single neuroglancer URL which points to
 #'   multiple data layers. For FANC this is the neuroglancer scene returned by
 #'   \code{\link{fanc_scene}}.
+#'
+#'   In general we would recommend using \code{fanc_.*} functions or
+#'   \code{with_fanc} if you expect to interact with multiple datasets.
+#'
 #' @param set Whether or not to permanently set the FANC autosegmentation as the
 #'   default for \code{\link{fafbseg}} functions.
 
@@ -75,11 +84,32 @@ fanc_scene <- function(ids=NULL, open=FALSE) {
 #' }
 choose_fanc <- function(set=TRUE) {
   fafbseg::choose_segmentation(fanc_scene(), set=set,
-                               moreoptions=list(fafbseg.cave.datastack_name=fanc_datastack_name()))
+                               moreoptions=list(fafbseg.cave.datastack_name=fanc_datastack_name(),
+                                                fancr.use_banc=FALSE))
 }
+
+banc_datastack_name <- function() 'brain_and_nerve_cord'
+banc_scene <- function() "https://spelunker.cave-explorer.org/#!middleauth+https://global.daf-apis.com/nglstate/api/v1/5952656075915264"
+
+#' @description \code{choose_banc} will permanently change the default dataset
+#'   to BANC. Remember to switch back with \code{choose_fanc} if needed.
+#'
+#' @rdname choose_fanc
+#' @export
+choose_banc <- function(set=TRUE) {
+  fafbseg::choose_segmentation(banc_scene(),
+                               set=set,
+                               moreoptions=list(
+                                 fafbseg.cave.datastack_name=banc_datastack_name(),
+                                 fancr.use_banc=TRUE
+                                 ))
+}
+
 
 #' @param expr An expression to evaluate while FANC is the default
 #'   autosegmentation
+#' @param force Whether to insist on using FANC even if BANC is the active
+#'   dataset. This option defaults to TRUE for the convenience of end users.
 #' @rdname choose_fanc
 #' @export
 #' @examples
@@ -90,12 +120,42 @@ choose_fanc <- function(set=TRUE) {
 #' with_fanc(fafbseg::flywire_latestid('648518346498254576'))
 #' with_fanc(fafbseg::flywire_latestid('648518346494405175'))
 #' }
-with_fanc <- function(expr) {
-  op <- choose_fanc(set = TRUE)
-  on.exit(options(op))
+with_fanc <- function(expr, force=TRUE) {
+  use_banc <- !force && getOption("fancr.use_banc", default = FALSE)
+  if(!use_banc) {
+    op <- choose_fanc(set = TRUE)
+    on.exit(options(op))
+  }
   force(expr)
 }
 
 fanc_fetch <- function(url, token=fanc_token(), ...) {
   flywire_fetch(url, token=token, ...)
+}
+
+
+#' @description \code{with_banc} provides a simple way to access the
+#'   \href{https://github.com/jasper-tms/the-BANC-fly-connectome/wiki}{BANC}
+#'   dataset. Just wrap \code{flywire_.*} or \code{fanc_.*} functions with this
+#'   to target them at the BANC.
+#'
+#' @details note that \code{with_banc(fanc_xyz2id)} is not yet functional as
+#'   there is no XYZ location / supervoxel id service yet available as yet.
+#'
+#' @rdname choose_fanc
+#' @export
+#' @examples
+#' \dontrun{
+#' # supervoxel id to root id
+#' with_banc(fafbseg::flywire_rootid('76071705504180616'))
+#' # is this id up to date?
+#' with_banc(fafbseg::flywire_islatest('720575941472355131'))
+#' # find up to date root id
+#' with_banc(fafbseg::flywire_latestid('720575941472355131'))
+#' }
+#'
+with_banc <- function(expr) {
+  op <- choose_banc(set = TRUE)
+  on.exit(options(op))
+  force(expr)
 }
