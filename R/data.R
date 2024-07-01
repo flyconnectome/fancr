@@ -30,3 +30,18 @@
 #' }
 "BANC.surf"
 
+#' Provisional template brain object for BANC
+#'
+#' @name BANC
+#' @docType data
+#' @description This is calibrated in nm. See \code{data-raw/BANC.R} for details
+#'   of how it was generated. It is still provisional pending synpase
+#'   cloud-based registrations.
+#'
+#' @examples
+#' BANC
+#' # Depends on nat
+#' library(nat)
+#' boundingbox(BANC)
+"BANC"
+
