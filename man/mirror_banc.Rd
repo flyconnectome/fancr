@@ -19,6 +19,11 @@ The transformed object (calibrated according to the units argument)
 \description{
 Mirror points, neurons in BANC space
 }
+\details{
+This is mirroring registration is currently not bad in central brain
+and thoracic ganglion, not so good in abdominal ganglion, very poor in optic
+lobes.
+}
 \examples{
 BANC.surf.m <- mirror_banc(BANC.surf)
 \dontrun{
@@ -27,4 +32,7 @@ wire3d(BANC.surf)
 # clearly not great in some places, especially optic lobe, but still useful
 wire3d(BANC.surf.m, col='red')
 }
+}
+\seealso{
+\code{\link{banc_lr_position}}
 }

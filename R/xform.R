@@ -86,6 +86,10 @@ transform_fanc2manc <- function(x, inverse = F, ...) {
 
 #' Mirror points, neurons in BANC space
 #'
+#' @details This is mirroring registration is currently not bad in central brain
+#' and thoracic ganglion, not so good in abdominal ganglion, very poor in optic
+#' lobes.
+#'
 #' @param x Points, neurons or other objects compatible with \code{xyzmatrix}
 #' @param units Units for both input \emph{and} output data.
 #' @param subset Optional argument to transform only a subset of a neuron list.
@@ -94,7 +98,7 @@ transform_fanc2manc <- function(x, inverse = F, ...) {
 #' @export
 #' @importFrom nat.templatebrains mirror_brain templatebrain
 #' @importFrom nat xyzmatrix<-
-#'
+#' @seealso \code{\link{banc_lr_position}}
 #' @examples
 #' BANC.surf.m <- mirror_banc(BANC.surf)
 #' \dontrun{
@@ -134,4 +138,40 @@ mirror_banc <- function(x, units=c("nm", "microns", "raw"), subset=NULL) {
 
   xyzmatrix(x)=xyzf2
   x
+}
+
+
+#' Predict whether a point is on the left or right of the BANC dataset
+#'
+#' @details This is not perfect as it assumes that the X displacement from the
+#'   midline is a good indicator of LR displacement. This is generally true but
+#'   not infallible. Furthermore it will only be as good as the registration
+#'   used by \code{\link{mirror_banc}} (still variable).
+#' @param x An object from which xyzmatrix can extract points, calibrated in nm.
+#' @param group Whether to return the mean displacement per neuron (when
+#'   \code{x} is a \code{neuronlist})
+#' @return A vector of point displacements (calibrated according to
+#'   \code{units}, nm is the default) where 0 is at the midline and positive
+#'   values are to the fly's right.
+#' @inheritParams mirror_banc
+#' @seealso \code{\link{mirror_banc}}
+#' @examples
+#' library(nat)
+#' lrdiffs=banc_lr_position(xyzmatrix(BANC.surf))
+#' \dontrun{
+#' points3d(xyzmatrix(BANC.surf), col=ifelse(lrdiffs>0, 'green', 'red'))
+#' }
+banc_lr_position <- function(x, units=c("nm", "microns", "raw"), group=FALSE) {
+  xyz=xyzmatrix(x)
+  xyzt=mirror_banc(xyz, units = units)
+  lrdiff=xyzt[,1]-xyz[,1]
+  if(group) {
+    if(!is.neuronlist(x))
+      stop("I only know how to group results for neuronlists")
+    df=data.frame(lrdiff=lrdiff, id=rep(names(x), nvertices(x)))
+    dff=dplyr::group_by(df, .data$id) %>% dplyr::summarise(lrdiff=mean(lrdiff))
+    # group / summarise reorders result ...
+    lrdiff=dff$lrdiff[match(names(x), dff$id)]
+  }
+  lrdiff
 }
