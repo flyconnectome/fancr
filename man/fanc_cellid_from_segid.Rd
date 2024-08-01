@@ -48,8 +48,8 @@ with additional columns.}
 character vectors. Default value of NA leaves the ids unmodified.}
 }
 \value{
-Either a vector of ids or a data.frame depending on \code{rval}. For
-cell ids the vector will be an integer for root ids (segment ids), a
+Either a vector of ids or a data.frame depending on \code{rval}. A
+cellid vector will be integer; for root ids (segment ids), a
 character vector or an \code{bit64::integer64} vector depending on the
 \code{integer64} argument.
 }

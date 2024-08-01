@@ -31,6 +31,11 @@ test_that("fanc_ids works", {
 test_that("fanc_cellid_from_segid", {
   rid=fanc_latestid("648518346486614449")
   expect_equal(fanc_cellid_from_segid(rid),12967L)
+  expect_s3_class(df <- fanc_cellid_from_segid(rid, rval = 'dat'), 'data.frame')
+  expect_equal(df$id, 12967L)
+
+  expect_type(allids <- fanc_cellid_from_segid(), 'integer')
+  expect_true(length(allids)>20000)
 
   # skip this test because we can't be sure it will work
   # expect_equal(

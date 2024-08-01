@@ -193,8 +193,8 @@ fanc_ids <- function(x, integer64=NA) {
 #'   with additional columns.
 #' @param cellid_table Optional name of cell id table (the default value of
 #'   \code{NULL} should find the correct table).
-#' @return Either a vector of ids or a data.frame depending on \code{rval}. For
-#'   cell ids the vector will be an integer for root ids (segment ids), a
+#' @return Either a vector of ids or a data.frame depending on \code{rval}. A
+#'   cellid vector will be integer; for root ids (segment ids), a
 #'   character vector or an \code{bit64::integer64} vector depending on the
 #'   \code{integer64} argument.
 #' @inheritParams fanc_ids
@@ -222,9 +222,9 @@ fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, c
   res=fanc_cave_query(table = cellid_table, timestamp=timestamp,
                       version=version, filter_in_dict=idlist, live=live)
   if(is.null(rootids)) {
-    if(rval=='ids') {
-      fanc_ids(res[['id']], integer64 = F)
-    } else res
+    if(rval=='ids')
+      res <- as.integer(fanc_ids(res[['id']], integer64 = T))
+    return(res)
   }
   ids64=fanc_ids(rootids, integer64=T)
   if(!all(found <- ids64 %in% res$pt_root_id)) {
