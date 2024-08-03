@@ -1,111 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/404.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/SUPPORT.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/articles/BANC.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/index.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/BANC.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/BANC.surf.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/FANC.surf.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/banc_lr_position.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/choose_fanc.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/dr_fanc.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc4to3.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_cave_client.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_cave_query.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_cellid_from_segid.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_change_log.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_ids.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_islatest.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_latestid.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_leaves.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_partner_summary.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_read_l2dp.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_rootid.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_scene.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_set_token.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_voxdims.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fanc_xyz2id.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/fancr-package.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/mirror_banc.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/mirror_banc_lm.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/read_fanc_meshes.html</loc>
-  </url>
-  <url>
-    <loc>https://flyconnectome.github.io/fancr/reference/transform_fanc2manc.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://flyconnectome.github.io/fancr/404.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/LICENSE.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/SUPPORT.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/articles/BANC.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/articles/index.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/authors.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/index.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/news/index.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/BANC.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/BANC.surf.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/FANC.surf.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/banc_lr_position.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/choose_fanc.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/dr_fanc.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc4to3.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_cave_client.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_cave_query.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_cellid_from_segid.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_change_log.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_ids.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_islatest.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_latestid.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_leaves.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_partner_summary.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_read_l2dp.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_rootid.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_scene.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_set_token.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_voxdims.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fanc_xyz2id.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/fancr-package.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/index.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/mirror_banc.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/mirror_banc_lm.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/read_fanc_meshes.html</loc></url>
+<url><loc>https://flyconnectome.github.io/fancr/reference/transform_fanc2manc.html</loc></url>
 </urlset>
+
