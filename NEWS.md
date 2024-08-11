@@ -1,4 +1,12 @@
-# fancr (development version)
+# fancr 0.5.0
+
+## What's Changed
+* add fanc_cellid_table() and use it for cell ids by @jefferis in https://github.com/flyconnectome/fancr/pull/7
+* basic support for the BANC via `with_banc()`, `banc_cave_query()`, `banc_cave_client()` by @jefferis in https://github.com/flyconnectome/fancr/pull/8
+* fix `fanc_partner_summary()` for banc data
+* fix `fanc_cellid_from_segid()` for when rootids=NULL
+
+**Full Changelog**: https://github.com/flyconnectome/fancr/compare/v0.4.0...v0.5.0
 
 # fancr 0.4.0
 
