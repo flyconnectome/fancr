@@ -216,7 +216,7 @@ fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, c
 
   if(!is.null(rootids)) {
     rootids=fanc_ids(rootids, integer64=F)
-  idlist=list(pt_root_id=rootids)
+    idlist=list(pt_root_id=rootids)
   } else idlist=NULL
   live=is.null(timestamp) && is.null(version)
   res=fanc_cave_query(table = cellid_table, timestamp=timestamp,
