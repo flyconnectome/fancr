@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">fancr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,22 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="fancr-development-version">fancr (development version)<a class="anchor" aria-label="anchor" href="#fancr-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.5.1" id="fancr-051">fancr 0.5.1<a class="anchor" aria-label="anchor" href="#fancr-051"></a></h2>
+<ul><li>update <code><a href="../reference/fanc_cave_query.html">fanc_cave_query()</a></code> and <code><a href="../reference/fanc_cave_query.html">banc_cave_query()</a></code> to match changes in the underlying <code><a href="https://rdrr.io/pkg/fafbseg/man/flywire_cave_query.html" class="external-link">fafbseg::flywire_cave_query()</a></code> crucially changing default from <code>live=TRUE</code> to <code>live=!is.null(version)</code>.</li>
+<li>By insisting on fafbseg &gt;= 0.15.0 also provides support for new timetravel argument / and CAVE live live query.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.5.0" id="fancr-050">fancr 0.5.0<a class="anchor" aria-label="anchor" href="#fancr-050"></a></h2>
+<div class="section level3">
+<h3 id="whats-changed-0-5-0">What’s Changed<a class="anchor" aria-label="anchor" href="#whats-changed-0-5-0"></a></h3>
+<ul><li>add fanc_cellid_table() and use it for cell ids by <a href="https://github.com/jefferis" class="external-link">@jefferis</a> in <a href="https://github.com/flyconnectome/fancr/pull/7" class="external-link uri">https://github.com/flyconnectome/fancr/pull/7</a>
+</li>
+<li>basic support for the BANC via <code><a href="../reference/choose_fanc.html">with_banc()</a></code>, <code><a href="../reference/fanc_cave_query.html">banc_cave_query()</a></code>, <code><a href="../reference/fanc_cave_client.html">banc_cave_client()</a></code> by <a href="https://github.com/jefferis" class="external-link">@jefferis</a> in <a href="https://github.com/flyconnectome/fancr/pull/8" class="external-link uri">https://github.com/flyconnectome/fancr/pull/8</a>
+</li>
+<li>fix <code><a href="../reference/fanc_partner_summary.html">fanc_partner_summary()</a></code> for banc data</li>
+<li>fix <code><a href="../reference/fanc_cellid_from_segid.html">fanc_cellid_from_segid()</a></code> for when rootids=NULL</li>
+</ul><p><strong>Full Changelog</strong>: <a href="https://github.com/flyconnectome/fancr/compare/v0.4.0" class="external-link uri">https://github.com/flyconnectome/fancr/compare/v0.4.0</a>…v0.5.0</p>
+</div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="fancr-040">fancr 0.4.0<a class="anchor" aria-label="anchor" href="#fancr-040"></a></h2>

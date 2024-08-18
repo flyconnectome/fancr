@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">fancr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,10 +59,64 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="va">fcc</span><span class="op">=</span><span class="fu">fanc_cave_client</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">tables</span><span class="op">=</span><span class="va">fcc</span><span class="op">$</span><span class="va">annotation</span><span class="op">$</span><span class="fu">get_tables</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in py_call_impl(callable, call_args$unnamed, call_args$named):</span> &lt;...truncated...&gt;n    aligned_volume_names = infoclient.get_aligned_volumes()\\n", "  File \\"/usr/local/lib/python3.9/site-packages/caveclient/infoservice.py\\", line 187, in get_aligned_volumes\\n    return handle_response(response)\\n", "  File \\"/usr/local/lib/python3.9/site-packages/caveclient/base.py\\", line 81, in handle_response\\n    _raise_for_status(response, log_warning=log_warning)\\n", "  File \\"/usr/local/lib/python3.9/site-packages/caveclient/base.py\\", line 72, in _raise_for_status\\n    raise requests.HTTPError(http_error_msg, response=r)\\n", "requests.exceptions.HTTPError: 502 Server Error: Bad Gateway for url: https://global.daf-apis.com/info/api/v2/aligned_volume content:b\'&lt;html&gt;\\\\r\\\\n&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;\\\\r\\\\n&lt;body&gt;\\\\r\\\\n&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;\\\\r\\\\n&lt;hr&gt;&lt;center&gt;nginx/1.23.2&lt;/center&gt;\\\\r\\\\n&lt;/body&gt;\\\\r\\\\n&lt;/html&gt;\\\\r\\\\n\'\\n"]}\n'</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> Run `reticulate::py_last_error()` for details.</span>
 <span class="r-in"><span><span class="va">fcc</span><span class="op">$</span><span class="va">materialize</span><span class="op">$</span><span class="fu">get_table_metadata</span><span class="op">(</span><span class="va">tables</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(cl, parent.frame()):</span> object 'tables' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 33006</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $schema</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "cell_type_local"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $table_name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "wing_motor_neuron_table_v0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $aligned_volume</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "fanc_v4"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $valid</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $created</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2022-12-01T08:10:39.475152"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $schema_type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "cell_type_local"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $user_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "690"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $description</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "left and right wing motor neurons, with their identities. Identites that are still under review are denoted with a \"_u\" suffix. The left wing MNs will be in Azevedo et. al., in prep and the right side MNs are paired across the midline by eye. Table is managed by Ellen Lesser, Tuthill Lab."</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $notice_text</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $reference_table</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $flat_segmentation_source</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $write_permission</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "PRIVATE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $read_permission</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "PUBLIC"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $last_modified</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2023-10-26T22:28:02.250171"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $segmentation_source</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $pcg_table_name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "mar2021_prod"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $last_updated</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2024-08-18T08:10:01.270751"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $voxel_resolution</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  4.3  4.3 45.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
