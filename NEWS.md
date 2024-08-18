@@ -1,3 +1,11 @@
+# fancr 0.5.1
+
+* update `fanc_cave_query()` and `banc_cave_query()` to match changes in the 
+  underlying `fafbseg::flywire_cave_query()` crucially changing default from
+  `live=TRUE` to `live=!is.null(version)`.
+* By insisting on fafbseg >= 0.15.0 also provides support for new timetravel
+  argument / and CAVE live live query.
+
 # fancr 0.5.0
 
 ## What's Changed
