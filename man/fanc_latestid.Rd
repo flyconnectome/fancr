@@ -6,6 +6,8 @@
 \usage{
 fanc_latestid(
   rootid,
+  timestamp = NULL,
+  version = NULL,
   sample = 1000L,
   cloudvolume.url = NULL,
   Verbose = FALSE,
@@ -15,6 +17,12 @@ fanc_latestid(
 \arguments{
 \item{rootid}{One ore more FlyWire rootids defining a segment (in any form
 interpretable by \code{\link[fafbseg]{ngl_segments}})}
+
+\item{timestamp}{An optional timestamp as a string or POSIXct, interpreted as
+UTC when no timezone is specified.}
+
+\item{version}{An optional CAVE materialisation version number. See details
+and examples.}
 
 \item{sample}{An absolute or fractional number of supervoxel ids to map to
 rootids or \code{FALSE} (see details).}
@@ -34,6 +42,10 @@ Find the latest id for a FANC root id
 \examples{
 \dontrun{
 fanc_latestid("648518346473954669")
+# the latest materialisation version
+fanc_latestid("648518346486614449", version='latest')
+# up to the second
+fanc_latestid("648518346486614449", timestamp='now')
 }
 }
 \seealso{

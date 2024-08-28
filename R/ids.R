@@ -120,8 +120,13 @@ fanc_islatest <- function(x, timestamp=NULL, ...) {
 #' @examples
 #' \dontrun{
 #' fanc_latestid("648518346473954669")
+#' # the latest materialisation version
+#' fanc_latestid("648518346486614449", version='latest')
+#' # up to the second
+#' fanc_latestid("648518346486614449", timestamp='now')
 #' }
-fanc_latestid <- function(rootid, sample=1000L, cloudvolume.url=NULL, Verbose=FALSE, ...) {
+fanc_latestid <- function(rootid, timestamp = NULL, version = NULL,
+                          sample=1000L, cloudvolume.url=NULL, Verbose=FALSE, ...) {
   with_fanc(flywire_latestid(rootid=rootid, sample = sample, Verbose=Verbose, ...), force = FALSE)
 }
 
