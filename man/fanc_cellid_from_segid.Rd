@@ -80,7 +80,7 @@ wiki}.
 fanc_cellid_from_segid(fanc_latestid("648518346486614449"))
 }
 \donttest{
-fanc_cellid_from_segid(fanc_latestid("648518346486614449"))
+fanc_segid_from_cellid(12967)
 }
 }
 \seealso{

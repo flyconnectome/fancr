@@ -246,7 +246,7 @@ fanc_cellid_from_segid <- function(rootids=NULL, timestamp=NULL, version=NULL, c
 #'
 #' @examples
 #' \donttest{
-#' fanc_cellid_from_segid(fanc_latestid("648518346486614449"))
+#' fanc_segid_from_cellid(12967)
 #' }
 fanc_segid_from_cellid <- function(cellids=NULL, timestamp=NULL, version=NULL, rval=c("ids", 'data.frame'), integer64=FALSE, cellid_table = NULL) {
   rval=match.arg(rval)
