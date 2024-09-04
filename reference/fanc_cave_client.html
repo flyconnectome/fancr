@@ -60,32 +60,23 @@
 <span class="r-in"><span><span class="va">fcc</span><span class="op">=</span><span class="fu">fanc_cave_client</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">tables</span><span class="op">=</span><span class="va">fcc</span><span class="op">$</span><span class="va">annotation</span><span class="op">$</span><span class="fu">get_tables</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">fcc</span><span class="op">$</span><span class="va">materialize</span><span class="op">$</span><span class="fu">get_table_metadata</span><span class="op">(</span><span class="va">tables</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 33006</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $schema</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $schema_type</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "cell_type_local"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $table_name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "wing_motor_neuron_table_v0"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $aligned_volume</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "fanc_v4"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "leftt1_local_premotor_table_v4"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $valid</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $created</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2022-12-01T08:10:39.475152"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $schema_type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "cell_type_local"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2023-07-06T22:46:55.605435"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $user_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "690"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "188"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $description</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "left and right wing motor neurons, with their identities. Identites that are still under review are denoted with a \"_u\" suffix. The left wing MNs will be in Azevedo et. al., in prep and the right side MNs are paired across the midline by eye. Table is managed by Ellen Lesser, Tuthill Lab."</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Primary neurite points for T1 premotor neurons. This table updates the preceeding v3 table, with a fundamentally different scheme. The classification_system now indicates the hemilineage, rather than a letter classification code. Cell_type a place holder for more detailed cell type in the future. Currently, some hemilineages have cell_type information, e.g. 08A or 04B, to indicate some subclasses based on neurite entry points. Additional information will be added in reference tables, e.g. neurotransmitter, preferred motor module, nb clone, MANC homolog etc. Maintained by Tony Azevedo."</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $notice_text</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
@@ -103,16 +94,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "PUBLIC"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $last_modified</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2023-10-26T22:28:02.250171"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $segmentation_source</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $pcg_table_name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "mar2021_prod"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $last_updated</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2024-08-18T08:10:01.270751"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2023-07-06T22:46:55.605435"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $voxel_resolution</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]  4.3  4.3 45.0</span>
